@@ -1,6 +1,6 @@
 # Südafrika, Oktober 2026
 
-Reisebegleiter für unsere Selbstfahrer-Reise mit Kleinkindern:
+Reisebegleiter für unsere Selbstfahrer-Reise mit einem 4-jährigen Kind:
 **4.–26. Oktober 2026, Kapstadt bis Lalibela.**
 
 👉 **[Seite öffnen](https://salsafever21.github.io/southafrica/)**
@@ -12,8 +12,8 @@ Reisebegleiter für unsere Selbstfahrer-Reise mit Kleinkindern:
 | **Tagesplan** | Zwei Ansichten: **Liste** (alle 23 Tage untereinander) und **Wochenkalender** (Zeitraster mit farbigen Balken, Abfahrtszeiten und Fahrtdauer). Check-in/out, fixe Buchungen und je ein Vorschlag pro Tag. Das Fenster 12:30–15:00 bleibt für den Mittagsschlaf frei. |
 | **Restaurants** | 104 kinderfreundliche Lokale, alle mit Bewertung ab 4,2 (Google bzw. TripAdvisor, Stand 22.08.2026). |
 | **Aktivitäten** | 76 Aktivitäten, geprüft auf Eignung für 0- bis 5-Jährige: Dauer, Kinderwagentauglichkeit, Mindestalter, Preis, beste Tageszeit. |
-| **Infos & Sicherheit** | Dazu die **Vorbereitungs-Checkliste** mit 21 datierten Aufgaben – dieselben stecken als Termine mit Erinnerung im Kalender. |
-| _(Fortsetzung)_ | Notrufnummern, Einreise, Auto & Verkehr, Sicherheit, Strand- und Wildtierregeln, Schlechtwetterideen – auf Deutsch zusammengefasst aus den Reiseunterlagen. |
+| **Checkliste** | 21 datierte Aufgaben zum Abhaken – dieselben stecken als Termine mit Erinnerung im Kalender. |
+| **Infos & Sicherheit** | Notrufnummern, Einreise, Auto & Verkehr, Sicherheit, Strand- und Wildtierregeln, Schlechtwetterideen – auf Deutsch zusammengefasst aus den Reiseunterlagen. |
 | **Kalender & Karten** | Abonnierbarer Ferienkalender (`reise.ics`), Ein-Klick-Routen pro Etappe und die Anleitung für den Google-My-Maps-Import. |
 
 ### Weitere Funktionen
@@ -23,6 +23,8 @@ Reisebegleiter für unsere Selbstfahrer-Reise mit Kleinkindern:
 - **Bearbeiten.** Termine ausblenden, verschieben, umbenennen, eigene ergänzen; ganze Kategorien per Häkchen abschalten. Daraus lässt sich eine neue `reise.ics` erzeugen.
 - **Handschuhfach-Seite.** Ein Klick auf *Drucken* gibt eine A4-Seite mit Notrufnummern, Unterkunftsadressen, Fahrzeiten und Buchungen aus.
 - **Sonnenauf- und -untergang** pro Tag und Ort, offline berechnet.
+- **Hell / Dunkel / Automatisch** oben rechts umschaltbar.
+- **Vollständig responsiv.** Der Kalender zeigt auf breiten Bildschirmen die ganze Woche, auf dem Handy einen Tag – kein seitliches Scrollen.
 - **Einstellungen sichern/laden** überträgt Favoriten und Kalenderänderungen zwischen Geräten.
 
 Die Seite passt sich hellem und dunklem Systemdesign an und funktioniert auf dem Handy.
