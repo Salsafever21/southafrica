@@ -1,6 +1,6 @@
 # Südafrika, Oktober 2026
 
-Reisebegleiter für unsere Selbstfahrer-Reise mit einem 4-jährigen Kind:
+Reisebegleiter für unsere Selbstfahrer-Reise mit einem 4-jährigen Kind (läuft selbst, kein Kinderwagen):
 **4.–26. Oktober 2026, Kapstadt bis Lalibela.**
 
 👉 **[Seite öffnen](https://salsafever21.github.io/southafrica/)**
@@ -23,6 +23,7 @@ Reisebegleiter für unsere Selbstfahrer-Reise mit einem 4-jährigen Kind:
 - **Heute-Ansicht.** Vor der Reise ein Countdown mit den nächsten offenen Vorbereitungspunkten, während der Reise der aktuelle Tag mit den nächsten Terminen.
 - **Bearbeiten.** Termine ausblenden, verschieben, umbenennen, eigene ergänzen; ganze Kategorien per Häkchen abschalten. Daraus lässt sich eine neue `reise.ics` erzeugen.
 - **Handschuhfach-Seite.** Ein Klick auf *Drucken* gibt eine A4-Seite mit Notrufnummern, Unterkunftsadressen, Fahrzeiten und Buchungen aus.
+- **Einplanen mit einem Klick.** Der grüne Haken auf jeder Karte fragt nach Datum und Zeit, rechnet die Anfahrt vom vorherigen Termin oder von der Unterkunft aus, trägt sie als eigene Fahrt ein und warnt bei Terminüberschneidungen.
 - **Preise überall.** Jede Aktivität zeigt den Familienpreis (2 Erwachsene + 1 Kind) in Rand und Franken, jedes Restaurant eine Spanne. Der Kurs ist im Budget-Reiter einstellbar und schlägt sofort auf alle Beträge durch.
 - **Routenkarte** als SVG mit echter Küstenlinie – ohne externen Kartendienst, also auch offline.
 - **Sonnenauf- und -untergang** pro Tag und Ort, offline berechnet.
