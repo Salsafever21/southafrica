@@ -22,6 +22,8 @@
  --sun:#B4671B; --sun-soft:#F6E9D8;
  --warn:#8A3A1E; --warn-soft:#F7E4DC;
  --ok:#2C6E49; --ok-soft:#E3EFE7;
+ --idea:#6A4C93; --idea-soft:#EDE7F4;
+ --rest:#8A8F93; --rest-soft:#ECEDEA;
  --shadow:0 1px 2px rgba(22,32,31,.05),0 8px 20px -14px rgba(22,32,31,.28);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -32,6 +34,8 @@
  --sun:#E2A660; --sun-soft:#33261A;
  --warn:#E79877; --warn-soft:#39211A;
  --ok:#7FC79B; --ok-soft:#17291F;
+ --idea:#B79BE0; --idea-soft:#241A33;
+ --rest:#8A9490; --rest-soft:#222B29;
  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 24px -16px rgba(0,0,0,.7);
 }}
 :root[data-theme="dark"]{
@@ -42,6 +46,8 @@
  --sun:#E2A660; --sun-soft:#33261A;
  --warn:#E79877; --warn-soft:#39211A;
  --ok:#7FC79B; --ok-soft:#17291F;
+ --idea:#B79BE0; --idea-soft:#241A33;
+ --rest:#8A9490; --rest-soft:#222B29;
  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 24px -16px rgba(0,0,0,.7);
 }
 *{box-sizing:border-box}
@@ -183,6 +189,67 @@ input[type=search]{flex:1 1 200px;min-width:0;padding:9px 12px;border:1px solid 
 .legend i{font-style:normal;font-family:"IBM Plex Mono",monospace;width:20px;height:20px;display:grid;
  place-items:center;border-radius:50%;font-size:.72rem;font-weight:600}
 
+/* ---- Wochenkalender ---- */
+.planbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0 0;padding-top:14px;border-top:1px solid var(--line)}
+.wknav{display:flex;align-items:center;gap:8px;margin:22px 0 12px;flex-wrap:wrap}
+.wknav button{font:inherit;font-family:"IBM Plex Mono",monospace;font-size:.9rem;width:38px;height:38px;
+ border:1px solid var(--line2);background:var(--surface);color:var(--ink);cursor:pointer;border-radius:2px}
+.wknav button:hover{border-color:var(--accent);color:var(--accent-ink)}
+.wknav select{font:inherit;font-size:.88rem;padding:8px 10px;border:1px solid var(--line2);border-radius:2px;
+ background:var(--surface);color:var(--ink);flex:1 1 220px;min-width:0}
+.calwrap{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface);box-shadow:var(--shadow)}
+.cal{min-width:680px;--h:48px;--gut:54px}
+.calrow{display:grid;grid-template-columns:var(--gut) repeat(7,minmax(0,1fr))}
+.calhd{border-bottom:1px solid var(--line2);background:var(--surface2);position:sticky;top:0;z-index:2}
+.calhd>div{padding:8px 6px;text-align:center;border-left:1px solid var(--line)}
+.calhd>div:first-child{border-left:0}
+.calhd .wd{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.calhd .dm{font-family:"Bricolage Grotesque",Karla,sans-serif;font-weight:600;font-size:1.05rem;line-height:1.1}
+.calhd .out .wd,.calhd .out .dm{opacity:.32}
+.calstay{border-bottom:1px solid var(--line);padding:0;position:relative;min-height:30px}
+.calstay>div:first-child{border-right:1px solid var(--line)}
+.staybar{margin:4px 3px;padding:4px 9px;border-radius:3px;background:var(--accent);color:var(--ground);
+ font-size:.74rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center}
+.calchips{border-bottom:1px solid var(--line2)}
+.calchips>div{padding:4px 3px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:3px;min-height:8px}
+.calchips>div:first-child{border-left:0}
+.chip{font-size:.66rem;line-height:1.25;padding:3px 5px;border-radius:2px;background:var(--surface2);
+ color:var(--ink2);cursor:pointer;border:0;text-align:left;font-family:inherit;width:100%}
+.chip.warnung{background:var(--warn-soft);color:var(--warn);font-weight:700}
+.chip.fahrt{background:var(--sun-soft);color:var(--sun)}
+.calbody{position:relative}
+.calbody .gut{border-right:1px solid var(--line);position:relative}
+.hlab{position:absolute;right:6px;transform:translateY(-50%);}
+.hlab:first-child{transform:translateY(0)}
+.hlab{font-family:"IBM Plex Mono",monospace;
+ font-size:.68rem;color:var(--ink3);font-variant-numeric:tabular-nums}
+.dcol{position:relative;border-left:1px solid var(--line);
+ background:repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--h) - 1px),var(--line) calc(var(--h) - 1px),var(--line) var(--h))}
+.dcol.we{background-color:var(--surface2)}
+.blk{position:absolute;border-radius:3px;padding:3px 5px;overflow:hidden;cursor:pointer;border:0;
+ font-family:inherit;text-align:left;line-height:1.2;color:var(--ground);background:var(--rest)}
+.blk b{display:block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;font-weight:600;letter-spacing:.02em}
+.blk.tiny{padding:1px 5px;display:flex;gap:5px;align-items:center;white-space:nowrap}
+.blk.tiny b{font-size:.62rem}
+.blk.tiny span{font-size:.66rem;overflow:hidden;text-overflow:ellipsis}
+.blk span{display:block;font-size:.7rem;font-weight:600;overflow:hidden}
+.blk.fahrt{background:var(--sun)}
+.blk.buchung{background:var(--accent)}
+.blk.checkin,.blk.checkout{background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--accent)}
+.blk.tipp{background:var(--idea)}
+.blk.frei{background:var(--rest-soft);color:var(--ink3);border:1px dashed var(--line2)}
+.blk.sel{outline:3px solid var(--ink);outline-offset:1px;z-index:5}
+.evdetail{margin-top:14px;padding:16px 18px;border:1px solid var(--line);border-left:4px solid var(--accent);
+ border-radius:3px;background:var(--surface);box-shadow:var(--shadow)}
+.evdetail h3{font-family:"Bricolage Grotesque",Karla,sans-serif;font-weight:600;font-size:1.05rem;margin:0 0 3px}
+.evdetail .when{font-family:"IBM Plex Mono",monospace;font-size:.76rem;color:var(--accent);letter-spacing:.05em;margin:0 0 8px}
+.evdetail p{margin:0;font-size:.9rem;color:var(--ink2)}
+.evdetail.empty{border-left-color:var(--line2);color:var(--ink3);font-size:.86rem}
+.callegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:.78rem;color:var(--ink3)}
+.callegend span{display:inline-flex;align-items:center;gap:6px}
+.callegend i{width:14px;height:14px;border-radius:2px;display:inline-block}
+.calnote{margin-top:10px;font-size:.78rem;color:var(--ink3)}
+@media (max-width:640px){.cal{--h:44px;--gut:44px}}
 /* ---- Info ---- */
 .igrp{margin-top:44px;scroll-margin-top:120px}
 .igrp>h2{font-family:"Bricolage Grotesque",Karla,sans-serif;font-weight:800;font-size:1.6rem;
@@ -258,6 +325,33 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 </nav>
 
 <div class="panel on" id="p-plan">
+ <div class="planbar">
+  <div class="tog viewtog" role="group" aria-label="Ansicht">
+   <button type="button" data-v="liste" aria-pressed="true">Liste</button>
+   <button type="button" data-v="woche" aria-pressed="false">Wochenkalender</button>
+  </div>
+  <a class="btn" style="margin-left:auto" href="https://calendar.google.com/calendar/u/0/r?cid=webcal%3A%2F%2Fsalsafever21.github.io%2Fsouthafrica%2Freise.ics" target="_blank" rel="noopener">Als Kalender abonnieren</a>
+ </div>
+
+ <div id="v-woche" hidden>
+  <div class="wknav">
+   <button type="button" id="wkprev" aria-label="Woche zurück">‹</button>
+   <select id="wksel" aria-label="Woche wählen"></select>
+   <button type="button" id="wknext" aria-label="Woche vor">›</button>
+  </div>
+  <div class="calwrap"><div class="cal" id="cal"></div></div>
+  <div class="evdetail empty" id="evdetail">Auf einen Balken tippen, um Details zu sehen.</div>
+  <div class="callegend">
+   <span><i style="background:var(--sun)"></i> Fahrt</span>
+   <span><i style="background:var(--accent)"></i> Gebucht</span>
+   <span><i style="background:var(--accent-soft);border:1px solid var(--accent)"></i> Check-in / out</span>
+   <span><i style="background:var(--idea)"></i> Vorschlag</span>
+   <span><i style="background:var(--rest-soft);border:1px dashed var(--line2)"></i> Mittagsschlaf</span>
+  </div>
+  <p class="calnote">Die Fahrtbalken zeigen die <b>Abfahrtszeit und die realistische Dauer mit Kleinkindern</b> – nicht die Google-Zeit. Was keine Uhrzeit hat, steht als Zettel oben im jeweiligen Tag.</p>
+ </div>
+
+ <div id="v-liste">
  <div class="legend">
   <span><i style="background:var(--sun-soft);color:var(--sun)">→</i> Fahrt</span>
   <span><i style="background:var(--accent);color:var(--ground)">✓</i> Gebucht</span>
@@ -293,7 +387,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <span class="tx"><b>Mittagsschlaf</b></span></li></ul></article><article class="day fahrt">
 <header class="dh"><div><span class="dd">Do 8. Okt</span><h3>Kapstadt → Paarl</h3><p>Adara Palmiet Valley Estate</p></div><span class="et">Etappe 2</span></header>
 <ul class="tl"><li class="it checkout"><span class="tm">10:00</span><span class="ic" aria-hidden="true">⌂</span>
-<span class="tx"><b>Check-out Adamsgarth</b></span></li><li class="it fahrt"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">→</span>
+<span class="tx"><b>Check-out Adamsgarth</b></span></li><li class="it fahrt"><span class="tm">10:15</span><span class="ic" aria-hidden="true">→</span>
 <span class="tx"><b>Hout Bay → Adara Palmiet Valley, Paarl</b><span class="dt">79 km · Google 60–65 Min · <b>realistisch 1:20–1:30 h</b> · M6 → Kloof Nek → City Bowl → N1. <b>Zur Rushhour besser</b> über Constantia Nek → M3 → N2 → N1 (84 km, ~75 Min), das umgeht die Innenstadt.</span></span></li><li class="it tipp"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">·</span>
 <span class="tx"><b>Unterwegs: Kirstenbosch</b><span class="dt">Liegt fast auf dem Weg, wenn ihr über Constantia Nek fahrt. 1,5 Std. einplanen.</span></span></li><li class="it checkin"><span class="tm">14:00</span><span class="ic" aria-hidden="true">⌂</span>
 <span class="tx"><b>Check-in Adara Palmiet Valley</b><span class="dt">Sonstraal Road, Klein Drakenstein, Paarl – ca. 5 km östlich von Paarl.</span></span></li><li class="it buchung"><span class="tm">18:30</span><span class="ic" aria-hidden="true">✓</span>
@@ -313,7 +407,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <span class="tx"><b>Alternative statt Vergenoegd: Spier</b><span class="dt">Elemental Play Garden mit Wasserspiel, liegt Richtung Stellenbosch – lässt sich mit Tokara zu einem Bogen verbinden.</span></span></li></ul></article><article class="day fahrt">
 <header class="dh"><div><span class="dd">So 11. Okt</span><h3>Paarl → Whale Coast</h3><p>Rivergate Guest Farm, Stanford</p></div><span class="et">Etappe 3</span></header>
 <ul class="tl"><li class="it checkout"><span class="tm">10:00</span><span class="ic" aria-hidden="true">⌂</span>
-<span class="tx"><b>Check-out Adara</b></span></li><li class="it fahrt"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">→</span>
+<span class="tx"><b>Check-out Adara</b></span></li><li class="it fahrt"><span class="tm">10:15</span><span class="ic" aria-hidden="true">→</span>
 <span class="tx"><b>Paarl → Stanford (direkt)</b><span class="dt">158 km · Google 2:00–2:10 h · <b>realistisch 3:00–3:15 h mit einer Pause</b> · N1 → R300 → N2 über Sir Lowry's Pass → R43 über Hermanus. Komplett geteert.</span></span></li><li class="it tipp"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">·</span>
 <span class="tx"><b>EMPFEHLUNG: Umweg über Stony Point</b><span class="dt">Statt direkt: N2 → Abfahrt Gordon's Bay → <b>R44 Küstenstrasse</b> → Stony Point Pinguine (Betty's Bay) → Kleinmond → Hermanus → Stanford. 174 km statt 158, ca. 2:40 h reine Fahrzeit statt 2:05. Ihr spart euch damit die 3,5-Stunden-Tagestour nach Betty's Bay und die Kinder haben genau zur richtigen Zeit eine Pause.</span></span></li><li class="it tipp"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">·</span>
 <span class="tx"><b>Stopp: Dassiesfontein Farm Stall</b><span class="dt">An der N2 zwischen Bot River und Caledon, mit Spielbereich.</span></span></li><li class="it checkin"><span class="tm">14:00</span><span class="ic" aria-hidden="true">⌂</span>
@@ -333,7 +427,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <span class="tx"><b>Nachmittag ruhig</b><span class="dt">Platbos Forest (schattig, weicher Waldboden) oder Grotto Beach Lagune.</span></span></li></ul></article><article class="day fahrt">
 <header class="dh"><div><span class="dd">Mi 14. Okt</span><h3>Whale Coast → Melozhori</h3><p>Melozhori Private Game Reserve</p></div><span class="et">Etappe 4</span></header>
 <ul class="tl"><li class="it checkout"><span class="tm">10:00</span><span class="ic" aria-hidden="true">⌂</span>
-<span class="tx"><b>Check-out Rivergate</b></span></li><li class="it fahrt"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">→</span>
+<span class="tx"><b>Check-out Rivergate</b></span></li><li class="it fahrt"><span class="tm">10:15</span><span class="ic" aria-hidden="true">→</span>
 <span class="tx"><b>Stanford → Melozhori</b><span class="dt">91 km · Google 1:05–1:15 h · <b>realistisch 1:35–1:45 h</b> · R326 über Akkedisberg-Pass (geteert) → N2 → Abfahrt Stormsvlei → R317 6 km nordwärts.</span></span></li><li class="it warnung"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">!</span>
 <span class="tx"><b>Letzte Versorgung vor der Lodge</b><span class="dt">Stormsvlei Farm Stall am N2-Abzweig ist <b>dauerhaft geschlossen</b>. Letzte Einkaufsmöglichkeit: Riviersonderend oder Caledon. Die Lodge ist Selbstverpflegung mit Halbpension-Option – Semi-Catering (R850/Erw., R350/Kind unter 8) muss vorab bestellt sein.</span></span></li><li class="it checkin"><span class="tm">14:00</span><span class="ic" aria-hidden="true">⌂</span>
 <span class="tx"><b>Check-in Melozhori Cottage</b><span class="dt">Zwei En-Suite-Schlafzimmer, Pizzaofen, Braai, Hot Tub, kleiner Splash Pool. Brot und Früchte zur Ankunft.</span></span></li><li class="it tipp"><span class="tm">16:00</span><span class="ic" aria-hidden="true">·</span>
@@ -373,7 +467,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <span class="tx"><b>Mittagsschlaf im Auto auf der Rückfahrt</b></span></li></ul></article><article class="day fahrt">
 <header class="dh"><div><span class="dd">Di 20. Okt</span><h3>Plettenberg Bay → Addo</h3><p>Woodall Country House &amp; Spa</p></div><span class="et">Etappe 7</span></header>
 <ul class="tl"><li class="it checkout"><span class="tm">09:00</span><span class="ic" aria-hidden="true">⌂</span>
-<span class="tx"><b>Check-out Emily Moon (bis 10:00)</b></span></li><li class="it fahrt"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">→</span>
+<span class="tx"><b>Check-out Emily Moon (bis 10:00)</b></span></li><li class="it fahrt"><span class="tm">09:15</span><span class="ic" aria-hidden="true">→</span>
 <span class="tx"><b>Plettenberg Bay → Woodall, Addo</b><span class="dt">272–311 km · Google 3:05–3:30 h · <b>realistisch 4:45–5:15 h mit zwei Pausen</b> · Empfohlen: N2 durchgehend bis Gqeberha, weiter Richtung Makhanda, Abfahrt 761 auf die R335, 43 km nordwärts durch Addo Village.</span></span></li><li class="it tipp"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">·</span>
 <span class="tx"><b>Stopp: Nanaga Farm Stall</b><span class="dt">Am Kreuz N10/R72, berühmt für Roosterkoek und Ananassaft, mit Spielbereich und grossen Rasenflächen.</span></span></li><li class="it warnung"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">!</span>
 <span class="tx"><b>Letzte 1,2 km Schotter</b><span class="dt">Rechts von der R335 am Woodall-Schild abbiegen, nach 40 m nochmals rechts vor dem Elephant House, dann 1,2 km. Für einen Pkw problemlos, bei Regen langsam. <b>Das ist der einzige Schotterabschnitt der ganzen Reise.</b></span></span></li><li class="it checkin"><span class="tm">14:00</span><span class="ic" aria-hidden="true">⌂</span>
@@ -411,10 +505,12 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <header class="dh"><div><span class="dd">Mo 26. Okt</span><h3>Lalibela → Flughafen</h3><p>Abreise Gqeberha</p></div><span class="et">Etappe 8</span></header>
 <ul class="tl"><li class="it warnung"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">!</span>
 <span class="tx"><b>Vier Stunden vor Abflug im Camp starten</b><span class="dt">Transfer Camp → Rezeption im Safarifahrzeug 20–30 Min, dann 96 km bis zum Flughafen, dazu Mietwagenrückgabe.</span></span></li><li class="it checkout"><span class="tm">11:00</span><span class="ic" aria-hidden="true">⌂</span>
-<span class="tx"><b>Check-out Mark&#x27;s Camp</b></span></li><li class="it fahrt"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">→</span>
-<span class="tx"><b>Lalibela → Flughafen Gqeberha (PLZ)</b><span class="dt">96 km · Google 1:05–1:15 h · <b>realistisch 1:35–1:50 h</b> · N2 südwestwärts an Nanaga vorbei → M4 → M9 → M11.</span></span></li><li class="it tipp"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">·</span>
+<span class="tx"><b>Check-out Mark&#x27;s Camp</b></span></li><li class="it fahrt"><span class="tm">10:30</span><span class="ic" aria-hidden="true">→</span>
+<span class="tx"><b>Transfer + Fahrt zum Flughafen Gqeberha</b><span class="dt">Transfer Camp → Rezeption 20–30 Min, dann 96 km · Google 1:05–1:15 h · <b>realistisch 1:35–1:50 h</b> · N2 südwestwärts an Nanaga vorbei → M4 → M9 → M11.</span></span></li><li class="it tipp"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">·</span>
 <span class="tx"><b>Letzter Stopp: SANCCOB oder Grass Roof</b><span class="dt">SANCCOB Pinguin-Rehabilitation, 15 Min. vom Flughafen, Fütterung 09:30. Oder Grass Roof Farm mit gratis Spielplatz direkt neben den Tischen (08:00–16:30) – damit sich die Kinder vor dem Flug austoben.</span></span></li><li class="it warnung"><span class="tm">&nbsp;</span><span class="ic" aria-hidden="true">!</span>
 <span class="tx"><b>Sacramento hat montags zu</b><span class="dt">Falls ihr das Restaurant in Schoenmakerskop eingeplant hattet.</span></span></li></ul></article></div>
+ </div>
+ <script type="application/json" id="caldata">{"timed":[{"id":"d4i1","d":"2026-10-04","s":840,"e":870,"art":"checkin","titel":"Check-in Adamsgarth Guesthouse","detail":"26 Mount Rhodes Drive, Hout Bay – am Hang oberhalb des Tals, nicht im Zentrum.","st":"1"},{"id":"d4i3","d":"2026-10-04","s":510,"e":630,"art":"tipp","titel":"Optional: Oranjezicht Market","detail":"So 08:30–14:00, Granger Bay. Nur wenn ihr früh landet und noch Energie habt.","st":"1"},{"id":"d5i0","d":"2026-10-05","s":480,"e":570,"art":"tipp","titel":"Boulders Beach Pinguine","detail":"55–65 Min ab Hout Bay über die M4 (oder 31 km über Chapman's Peak, Maut ca. R60). Früh da sein – der Parkplatz ist klein.","st":"1"},{"id":"d5i2","d":"2026-10-05","s":750,"e":900,"art":"frei","titel":"Mittagsschlaf","detail":"Auf der Halbinselstrecke schläft es sich im Auto gut.","st":"1"},{"id":"d6i0","d":"2026-10-06","s":480,"e":600,"art":"tipp","titel":"Tafelberg-Seilbahn, erste Fahrt","detail":"35–45 Min ab Hout Bay. Am Morgen Betriebsstatus prüfen – bei Wind wird geschlossen. Tickets vorab online.","st":"1"},{"id":"d6i2","d":"2026-10-06","s":750,"e":900,"art":"frei","titel":"Mittagsschlaf","detail":"","st":"1"},{"id":"d6i3","d":"2026-10-06","s":930,"e":1050,"art":"tipp","titel":"Sea Point Promenade oder Pavilion","detail":"11 km flacher Asphaltweg – die beste Kinderwagenstrecke der Stadt.","st":"1"},{"id":"d7i0","d":"2026-10-07","s":540,"e":600,"art":"tipp","titel":"Duiker Island Robbenfahrt","detail":"40 Minuten – die kürzeste Tierbeobachtungstour der Region. Hafen 8 Min. von der Unterkunft.","st":"1"},{"id":"d7i1","d":"2026-10-07","s":600,"e":720,"art":"tipp","titel":"Bay Harbour Market","detail":"Mi + Do 09:30–17:00, überdacht. Gleicher Hafen, kein zweiter Weg.","st":"1"},{"id":"d7i2","d":"2026-10-07","s":660,"e":780,"art":"tipp","titel":"Alternativ World of Birds","detail":"10 Min. entfernt, Pinguinfütterung 11:30, Monkey Jungle 11:30–13:00, eigener Kleinkind-Spielplatz.","st":"1"},{"id":"d7i3","d":"2026-10-07","s":750,"e":900,"art":"frei","titel":"Mittagsschlaf","detail":"","st":"1"},{"id":"d8i0","d":"2026-10-08","s":600,"e":630,"art":"checkout","titel":"Check-out Adamsgarth","detail":"","st":"2"},{"id":"d8i1","d":"2026-10-08","s":615,"e":705,"art":"fahrt","titel":"Hout Bay → Adara Palmiet Valley, Paarl","detail":"79 km · Google 60–65 Min · realistisch 1:20–1:30 h · M6 → Kloof Nek → City Bowl → N1. Zur Rushhour besser über Constantia Nek → M3 → N2 → N1 (84 km, ~75 Min), das umgeht die Innenstadt.","st":"2"},{"id":"d8i3","d":"2026-10-08","s":840,"e":870,"art":"checkin","titel":"Check-in Adara Palmiet Valley","detail":"Sonstraal Road, Klein Drakenstein, Paarl – ca. 5 km östlich von Paarl.","st":"2"},{"id":"d8i4","d":"2026-10-08","s":1110,"e":1200,"art":"buchung","titel":"Abendessen Adara Restaurant","detail":"GEBUCHT · in eurer Unterkunft, keine Fahrt nötig.","st":"2"},{"id":"d9i0","d":"2026-10-09","s":540,"e":660,"art":"tipp","titel":"Fairview Ziegenturm oder Le Bonheur Krokodile","detail":"Fairview: 15 Min, gratis, 45 Min. Le Bonheur: 20 Min, geführte Runde alle 45 Min.","st":"2"},{"id":"d9i1","d":"2026-10-09","s":705,"e":740,"art":"fahrt","titel":"Losfahren zum Boschendal Deli","detail":"22 km · 28–32 Min mit Kleinkindern · N1 → R45 → R310. Geteert, kein Pass.","st":"2"},{"id":"d9i2","d":"2026-10-09","s":750,"e":840,"art":"buchung","titel":"Mittagessen Deli Boschendal","detail":"GEBUCHT · Danach: Tree-House-Spielplatz und Pumptrack auf dem Gelände – gute Gelegenheit zum Austoben vor der Rückfahrt.","st":"2"},{"id":"d9i3","d":"2026-10-09","s":930,"e":1080,"art":"frei","titel":"Zurück, Mittagsschlaf im Auto","detail":"","st":"2"},{"id":"d10i0","d":"2026-10-10","s":540,"e":600,"art":"tipp","titel":"Vergenoegd Enten-Parade","detail":"09:00-Parade (die um 12:00 fällt in den Mittagsschlaf). 45–50 Min. Fahrt – früh los. Gratis, dauert 15–30 Min.","st":"2"},{"id":"d10i1","d":"2026-10-10","s":700,"e":745,"art":"fahrt","titel":"Losfahren zu Tokara","detail":"28,5 km · 38–45 Min mit Kleinkindern · über den Helshoogte Pass. Kurvenreich – bei Reiseübelkeit vorsorgen.","st":"2"},{"id":"d10i2","d":"2026-10-10","s":750,"e":840,"art":"buchung","titel":"Mittagessen Tokara Delicatessen","detail":"GEBUCHT · Klettergerüst, viel Auslauf und Pfauen auf dem Gelände.","st":"2"},{"id":"d10i3","d":"2026-10-10","s":900,"e":1050,"art":"frei","titel":"Zurück, Mittagsschlaf","detail":"","st":"2"},{"id":"d11i0","d":"2026-10-11","s":600,"e":630,"art":"checkout","titel":"Check-out Adara","detail":"","st":"3"},{"id":"d11i1","d":"2026-10-11","s":615,"e":810,"art":"fahrt","titel":"Paarl → Stanford (direkt)","detail":"158 km · Google 2:00–2:10 h · realistisch 3:00–3:15 h mit einer Pause · N1 → R300 → N2 über Sir Lowry's Pass → R43 über Hermanus. Komplett geteert.","st":"3"},{"id":"d11i4","d":"2026-10-11","s":840,"e":870,"art":"checkin","titel":"Check-in Rivergate Guest Farm","detail":"Wortelgat Road, 2 km ausserhalb Stanford am Klein River.","st":"3"},{"id":"d12i0","d":"2026-10-12","s":510,"e":550,"art":"tipp","titel":"Hermanus Cliff Path, Gearing's Point","detail":"35–40 Min ab Stanford. Wale oft auf 20–50 m an den Felsen – gratis, kinderwagentauglich, jederzeit abbrechbar.","st":"3"},{"id":"d12i2","d":"2026-10-12","s":750,"e":900,"art":"frei","titel":"Mittagsschlaf","detail":"","st":"3"},{"id":"d12i3","d":"2026-10-12","s":930,"e":1050,"art":"tipp","titel":"Stanford Hills Estate","detail":"8 Min. von der Unterkunft. Rasen, Enten, ein zahmes Schwein und ein Teich mit Ruderbooten.","st":"3"},{"id":"d13i0","d":"2026-10-13","s":465,"e":510,"art":"fahrt","titel":"Losfahren zum Whale Watching","detail":"Falls die Tour ab Hermanus New Harbour startet: 35–40 Min ab Rivergate, Check-in meist 30 Min. vorher.","st":"3"},{"id":"d13i1","d":"2026-10-13","s":540,"e":720,"art":"buchung","titel":"Whale Watching 09:00–12:00","detail":"GEBUCHT · 3 Stunden.","st":"3"},{"id":"d13i4","d":"2026-10-13","s":870,"e":1020,"art":"frei","titel":"Nachmittag ruhig","detail":"Platbos Forest (schattig, weicher Waldboden) oder Grotto Beach Lagune.","st":"3"},{"id":"d14i0","d":"2026-10-14","s":600,"e":630,"art":"checkout","titel":"Check-out Rivergate","detail":"","st":"4"},{"id":"d14i1","d":"2026-10-14","s":615,"e":720,"art":"fahrt","titel":"Stanford → Melozhori","detail":"91 km · Google 1:05–1:15 h · realistisch 1:35–1:45 h · R326 über Akkedisberg-Pass (geteert) → N2 → Abfahrt Stormsvlei → R317 6 km nordwärts.","st":"4"},{"id":"d14i3","d":"2026-10-14","s":840,"e":870,"art":"checkin","titel":"Check-in Melozhori Cottage","detail":"Zwei En-Suite-Schlafzimmer, Pizzaofen, Braai, Hot Tub, kleiner Splash Pool. Brot und Früchte zur Ankunft.","st":"4"},{"id":"d14i4","d":"2026-10-14","s":960,"e":1110,"art":"tipp","titel":"Game Drive","detail":"Eine geführte Fahrt ist bei 2+ Nächten inklusive. Mindestalter vorab klären: info@melozhori.co.za","st":"4"},{"id":"d15i1","d":"2026-10-15","s":540,"e":588,"art":"tipp","titel":"Optional: Bontebok National Park","detail":"40–48 Min ab Melozhori. Selbstfahrer-Safari im eigenen Auto – die entspannteste Safariform mit Kleinkindern. Status nach dem Hochwasser 2026 vorab prüfen: +27 28 514 2735.","st":"4"},{"id":"d16i1","d":"2026-10-16","s":450,"e":840,"art":"fahrt","titel":"Melozhori → Plettenberg Bay","detail":"R317 → N2 durchgehend ostwärts: Swellendam – Riversdale – Mossel Bay – George – Wilderness – Knysna – Plett. Komplett geteert, gut ausgebaut.","st":"5"},{"id":"d16i2","d":"2026-10-16","s":615,"e":690,"art":"tipp","titel":"Stopp 1: Dias Museum Mossel Bay","detail":"Umweg nur 9 km. Lebensgrosse Karavelle im Trockendock, Garten mit Meerblick. Oder: Die Skeerhok Padstal bei Heidelberg (4,7) bzw. Ou Meul Riversdale mit grossem Spielplatz.","st":"5"},{"id":"d16i3","d":"2026-10-16","s":780,"e":855,"art":"tipp","titel":"Stopp 2: Timberlake Village","detail":"Direkt an der N2, kein Umweg. Spielplatz, Bäckerei, Naughty Monkey Cafe. Für ein 4-jähriges Kind: Acrobranch „Acro-twigs\" (ab 4 Jahren, R130, 45 Min).","st":"5"},{"id":"d16i4","d":"2026-10-16","s":900,"e":975,"art":"tipp","titel":"Stopp 3: Knysna Elephant Park","detail":"20 Min. vor eurer Lodge, direkt an der N2. Kein Mindestalter, unter 5 gratis, Touren alle 30 Min bis 15:30. Die perfekte Ankunfts-Belohnung.","st":"5"},{"id":"d16i5","d":"2026-10-16","s":1005,"e":1035,"art":"checkin","titel":"Check-in Emily Moon River Lodge","detail":"Rietvlei Road, nördlich der Stadt am Bitou River.","st":"5"},{"id":"d17i0","d":"2026-10-17","s":480,"e":600,"art":"tipp","titel":"Birds of Eden","detail":"25–30 Min. Überkuppelt, also wind- und regensicher, über 1 km durchgehende Holzstege – die kinderwagenfreundlichste Aktivität der Etappe.","st":"6"},{"id":"d17i2","d":"2026-10-17","s":690,"e":780,"art":"tipp","titel":"Mittagessen Bramon Wine Estate","detail":"Direkt nebenan, Tische zwischen den Reben, viel Platz zum Laufen. Nur 11:00–16:00.","st":"6"},{"id":"d17i3","d":"2026-10-17","s":810,"e":960,"art":"frei","titel":"Mittagsschlaf","detail":"","st":"6"},{"id":"d18i0","d":"2026-10-18","s":450,"e":540,"art":"tipp","titel":"Robberg Gap-Rundweg","detail":"2,1 km, mit Kleinkind 60–75 Min. Nur mit Kraxe – Holztreppen und Felspfad. Robbenkolonie und Wale in Küstennähe. Früh: kühl, windstill.","st":"6"},{"id":"d18i1","d":"2026-10-18","s":600,"e":720,"art":"tipp","titel":"Central Beach","detail":"Der geschützteste Badeplatz in Plett, im Windschatten der Beacon-Isle-Landzunge.","st":"6"},{"id":"d18i3","d":"2026-10-18","s":930,"e":1050,"art":"tipp","titel":"Nachmittags Jukani","detail":"Katzen sind später aktiver, Wege sind buggytauglich.","st":"6"},{"id":"d19i0","d":"2026-10-19","s":540,"e":566,"art":"tipp","titel":"Knysna Elephant Park","detail":"22–26 Min, direkt an der N2. Falls ihr am Fahrtag nicht dazugekommen seid.","st":"6"},{"id":"d19i1","d":"2026-10-19","s":660,"e":718,"art":"tipp","titel":"Knysna Heads, East Head","detail":"50–58 Min ab Emily Moon – die letzten 7 km durch die Stadt kosten mehr Zeit als die N2-Distanz vermuten lässt. Parken praktisch am Aussichtspunkt.","st":"6"},{"id":"d19i3","d":"2026-10-19","s":780,"e":930,"art":"frei","titel":"Mittagsschlaf im Auto auf der Rückfahrt","detail":"","st":"6"},{"id":"d20i0","d":"2026-10-20","s":540,"e":570,"art":"checkout","titel":"Check-out Emily Moon (bis 10:00)","detail":"","st":"7"},{"id":"d20i1","d":"2026-10-20","s":555,"e":870,"art":"fahrt","titel":"Plettenberg Bay → Woodall, Addo","detail":"272–311 km · Google 3:05–3:30 h · realistisch 4:45–5:15 h mit zwei Pausen · Empfohlen: N2 durchgehend bis Gqeberha, weiter Richtung Makhanda, Abfahrt 761 auf die R335, 43 km nordwärts durch Addo Village.","st":"7"},{"id":"d20i4","d":"2026-10-20","s":840,"e":870,"art":"checkin","titel":"Check-in Woodall Country House","detail":"Woodall Farm, Jan Smuts Avenue, Addo. Tische im Restaurant sind für Hausgäste automatisch reserviert.","st":"7"},{"id":"d21i0","d":"2026-10-21","s":405,"e":570,"art":"tipp","titel":"Selbstfahrer-Safari im Addo NP","detail":"Nur 18–22 Min ab Woodall. Tor öffnet 07:00. Im eigenen Auto mit Klimaanlage – die entspannteste Safariform mit Kleinkindern. Ausweis mitbringen, das ist Pflicht.","st":"7"},{"id":"d21i2","d":"2026-10-21","s":750,"e":900,"art":"frei","titel":"Mittagsschlaf","detail":"","st":"7"},{"id":"d21i3","d":"2026-10-21","s":960,"e":1080,"art":"tipp","titel":"Addo Main Camp Wasserloch & Underground Hide","detail":"Im Eintritt enthalten. Elefanten auf Augenhöhe wenige Meter vor der Nase, Wasserloch flutlichtbeleuchtet.","st":"7"},{"id":"d22i0","d":"2026-10-22","s":540,"e":660,"art":"tipp","titel":"Daniell Cheetah Project, Kirkwood","detail":"45 Min. Predator Tour genau 1 Std, dazu Streichelbereich mit Kaninchen und Meerschweinchen und handaufgezogene Kudus.","st":"7"},{"id":"d22i2","d":"2026-10-22","s":960,"e":1080,"art":"tipp","titel":"Addo Wildlife Centre","detail":"5 Min. von Woodall, R20 pro Person, 45 Min. Begehbare Voliere, Eulen, Äffchen. Danach Abendessen im Tangelo im selben Haus.","st":"7"},{"id":"d23i1","d":"2026-10-23","s":615,"e":700,"art":"fahrt","titel":"Woodall → Lalibela Rezeption","detail":"68 km · Google 55–60 Min · realistisch 1:15–1:25 h · R335 südwärts → R342 durch den Addo-Korridor → Paterson → N2 ostwärts 27 km. Spätestens 10:30 losfahren.","st":"8"},{"id":"d23i3","d":"2026-10-23","s":720,"e":750,"art":"checkin","titel":"Check-in Mark's Camp","detail":"Lunch ca. 14:00. All-Inclusive.","st":"8"},{"id":"d23i4","d":"2026-10-23","s":960,"e":1140,"art":"tipp","titel":"Erste Safari-Fahrt","detail":"Kinder ab 2 Jahren fahren mit, in einem eigenen Fahrzeug mit eigenem Ranger. Familien mit ähnlich alten Kindern werden zusammen eingeteilt.","st":"8"},{"id":"d24i0","d":"2026-10-24","s":360,"e":540,"art":"tipp","titel":"Morgen-Safari","detail":"Sonnenaufgang im Oktober ca. 05:50. Warme Decke und Mütze – im offenen Fahrzeug ist es früh kalt.","st":"8"},{"id":"d24i1","d":"2026-10-24","s":600,"e":720,"art":"tipp","titel":"Kinderprogramm „Tiny Trackers\"","detail":"Schnitzeljagd, Basteln, Steine bemalen, Tierspuren bestimmen. Dazu zwei Pools, Jungle Gym und Sandkasten. Zwischen 10 und 16 Uhr passiert auf Safari ohnehin nichts.","st":"8"},{"id":"d24i2","d":"2026-10-24","s":720,"e":870,"art":"frei","titel":"Mittagsschlaf","detail":"Das Camp ist diskret eingezäunt.","st":"8"},{"id":"d24i3","d":"2026-10-24","s":960,"e":1140,"art":"tipp","titel":"Nachmittags-Safari","detail":"","st":"8"},{"id":"d25i0","d":"2026-10-25","s":360,"e":540,"art":"tipp","titel":"Morgen-Safari","detail":"","st":"8"},{"id":"d25i2","d":"2026-10-25","s":960,"e":1140,"art":"tipp","titel":"Nachmittags-Safari","detail":"","st":"8"},{"id":"d26i1","d":"2026-10-26","s":660,"e":690,"art":"checkout","titel":"Check-out Mark's Camp","detail":"","st":"8"},{"id":"d26i2","d":"2026-10-26","s":630,"e":740,"art":"fahrt","titel":"Transfer + Fahrt zum Flughafen Gqeberha","detail":"Transfer Camp → Rezeption 20–30 Min, dann 96 km · Google 1:05–1:15 h · realistisch 1:35–1:50 h · N2 südwestwärts an Nanaga vorbei → M4 → M9 → M11.","st":"8"}],"allday":[{"d":"2026-10-04","st":"1","titel":"Ankunft Kapstadt","sub":"Adamsgarth Guesthouse, Hout Bay","typ":"ankunft","items":[{"art":"fahrt","titel":"Flughafen CPT → Adamsgarth Guesthouse","detail":"33 km · Google 35–40 Min · realistisch 50–60 Min · Route N2 → M3 → Constantia Nek → Hout Bay. Dazu Mietwagenübernahme in CPT: realistisch 45–90 Min extra."},{"art":"tipp","titel":"Ankunftstag ruhig halten","detail":"Hout Bay Hafen ist 8–10 Min. entfernt: Mariner's Wharf, Strand, Dunes Restaurant mit eingezäuntem Spielplatz. Mehr braucht der erste Tag nicht."}]},{"d":"2026-10-05","st":"1","titel":"Kapstadt","sub":"Halbinsel-Tag","typ":"stand","items":[{"art":"tipp","titel":"Danach St James / Dalebrook Gezeitenbecken","detail":"Nur 15 Min. weiter. Ummauerte Becken ohne Brandung – der sicherste Badeplatz für Kleinkinder."},{"art":"warnung","titel":"Blue Train Park heute geschlossen","detail":"Montags zu (ausser in Schulferien) – Term 4 startet am 6.10., also heute wahrscheinlich zu."}]},{"d":"2026-10-06","st":"1","titel":"Kapstadt","sub":"Stadt-Tag","typ":"stand","items":[{"art":"tipp","titel":"Danach Green Point Urban Park","detail":"Tot-Lot-Spielplatz für 1–6 Jahre, gratis, durchgehend geteert."}]},{"d":"2026-10-07","st":"1","titel":"Kapstadt","sub":"Nahbereich Hout Bay","typ":"stand","items":[]},{"d":"2026-10-08","st":"2","titel":"Kapstadt → Paarl","sub":"Adara Palmiet Valley Estate","typ":"fahrt","items":[{"art":"tipp","titel":"Unterwegs: Kirstenbosch","detail":"Liegt fast auf dem Weg, wenn ihr über Constantia Nek fahrt. 1,5 Std. einplanen."}]},{"d":"2026-10-09","st":"2","titel":"Paarl","sub":"Winelands","typ":"stand","items":[]},{"d":"2026-10-10","st":"2","titel":"Paarl","sub":"Winelands","typ":"stand","items":[{"art":"tipp","titel":"Alternative statt Vergenoegd: Spier","detail":"Elemental Play Garden mit Wasserspiel, liegt Richtung Stellenbosch – lässt sich mit Tokara zu einem Bogen verbinden."}]},{"d":"2026-10-11","st":"3","titel":"Paarl → Whale Coast","sub":"Rivergate Guest Farm, Stanford","typ":"fahrt","items":[{"art":"tipp","titel":"EMPFEHLUNG: Umweg über Stony Point","detail":"Statt direkt: N2 → Abfahrt Gordon's Bay → R44 Küstenstrasse → Stony Point Pinguine (Betty's Bay) → Kleinmond → Hermanus → Stanford. 174 km statt 158, ca. 2:40 h reine Fahrzeit statt 2:05. Ihr spart euch damit die 3,5-Stunden-Tagestour nach Betty's Bay und die Kinder haben genau zur richtigen Zeit eine Pause."},{"art":"tipp","titel":"Stopp: Dassiesfontein Farm Stall","detail":"An der N2 zwischen Bot River und Caledon, mit Spielbereich."}]},{"d":"2026-10-12","st":"3","titel":"Whale Coast","sub":"Hermanus","typ":"stand","items":[{"art":"tipp","titel":"Danach Fernkloof Nature Reserve","detail":"10 Min. weiter, gratis, Picknickplatz und Teich."}]},{"d":"2026-10-13","st":"3","titel":"Whale Coast","sub":"Whale Watching","typ":"stand","items":[{"art":"warnung","titel":"Prüft das mit den Kleinkindern","detail":"Die Hermanus-Anbieter verlangen für alle Kinder unter 13 Jahren eine Schwimmweste während der ganzen Fahrt und weisen selbst darauf hin, dass Kinder unter 2 Jahren die Weste als unangenehm empfinden und sie sich schlecht mit einer Babytrage kombinieren lässt. Drei Stunden auf offener See ohne Ausstiegsmöglichkeit sind für 0–3-Jährige viel. Überlegt: ein Elternteil fährt mit dem grösseren Kind, der andere bleibt an Land – oder ihr fragt beim Anbieter nach Kinder-Westengrössen und einer kürzeren Tour."},{"art":"tipp","titel":"Landalternative: De Kelders Klippenpfad","detail":"26–30 Min ab Stanford. Der beste Landbeobachtungspunkt der Küste für Mutter-Kalb-Paare – windgeschützt, oberer Pfad teilweise mit Buggy machbar."}]},{"d":"2026-10-14","st":"4","titel":"Whale Coast → Melozhori","sub":"Melozhori Private Game Reserve","typ":"fahrt","items":[{"art":"warnung","titel":"Letzte Versorgung vor der Lodge","detail":"Stormsvlei Farm Stall am N2-Abzweig ist dauerhaft geschlossen. Letzte Einkaufsmöglichkeit: Riviersonderend oder Caledon. Die Lodge ist Selbstverpflegung mit Halbpension-Option – Semi-Catering (R850/Erw., R350/Kind unter 8) muss vorab bestellt sein."}]},{"d":"2026-10-15","st":"4","titel":"Melozhori","sub":"Overberg","typ":"stand","items":[{"art":"tipp","titel":"Auf dem Reservat bleiben","detail":"Melozhori ist raubtierfrei – unbegleitete Spaziergänge und Vogelbeobachtung sind erlaubt. Selbstfahren im Reservat ist nicht gestattet."},{"art":"tipp","titel":"Optional: Swellendam","detail":"40–48 Min. Drostdy Museum mit ummauertem Rosengarten und Handwerkshof, dazu Grace + Merci oder Woodpecker Pizzadeli."},{"art":"warnung","titel":"Robertson ist weiter als es aussieht","detail":"42 km, aber 55–65 Min – zwei Pässe, kurvig. Four Cousins hat zwar den grössten Spielplatz der Region, aber überlegt, ob sich die Fahrt an einem von zwei Tagen lohnt."}]},{"d":"2026-10-16","st":"5","titel":"Melozhori → Plettenberg Bay","sub":"Der lange Fahrtag","typ":"fahrt","items":[{"art":"warnung","titel":"Das ist die härteste Etappe der Reise","detail":"350 km · Google 3:45–4:00 h · realistisch 5:45–6:30 h mit zwei Pausen. Bei Check-out um 10:00 wärt ihr erst gegen 16:30 da. Fahrt früher los – 07:30 statt 10:00. Die R62-Variante über Oudtshoorn wäre 420–466 km und ist an einem Tag mit Kleinkindern nicht machbar."},{"art":"warnung","titel":"Redberry Farm und Elephant Park gehen nicht beide","detail":"Beide schliessen um 16:00. Entweder Erdbeeren pflücken in George (Umweg 10 km, Mo–Sa 9–16) oder Elefanten kurz vor Plett."}]},{"d":"2026-10-17","st":"6","titel":"Plettenberg Bay","sub":"Animal Alley","typ":"stand","items":[{"art":"tipp","titel":"Kombiticket prüfen","detail":"Birds of Eden + Monkeyland R704/R352, alle drei mit Jukani R900/R450. Realistisch schafft ihr maximal zwei pro Tag – fragt vorher, ob das Triptic auf zwei Tage aufteilbar ist."}]},{"d":"2026-10-18","st":"6","titel":"Plettenberg Bay","sub":"Strand & Robberg","typ":"stand","items":[{"art":"warnung","titel":"Baden im Oktober","detail":"Blue-Flag-Saison startet erst am 1. Dezember – jetzt keine oder nur Wochenend-Lifeguards, Wasser 16–18 °C. Knietief und in Armlänge."}]},{"d":"2026-10-19","st":"6","titel":"Plettenberg Bay","sub":"Knysna","typ":"stand","items":[{"art":"warnung","titel":"Raptor Rescue heute geschlossen","detail":"Montags zu. Auch île de pain in Knysna hat montags zu."}]},{"d":"2026-10-20","st":"7","titel":"Plettenberg Bay → Addo","sub":"Woodall Country House & Spa","typ":"fahrt","items":[{"art":"tipp","titel":"Stopp: Nanaga Farm Stall","detail":"Am Kreuz N10/R72, berühmt für Roosterkoek und Ananassaft, mit Spielbereich und grossen Rasenflächen."},{"art":"warnung","titel":"Letzte 1,2 km Schotter","detail":"Rechts von der R335 am Woodall-Schild abbiegen, nach 40 m nochmals rechts vor dem Elephant House, dann 1,2 km. Für einen Pkw problemlos, bei Regen langsam. Das ist der einzige Schotterabschnitt der ganzen Reise."}]},{"d":"2026-10-21","st":"7","titel":"Addo","sub":"Addo Elephant National Park","typ":"stand","items":[{"art":"warnung","titel":"Woodalls eigene Game Drives: ab 6 Jahren","detail":"Die geführten Fahrten von Woodall (R2150 p.P., 07:30 und 14:00) haben Mindestalter 6 – ausser als private Safari. Auch die Parkfahrten von Addo selbst sind erst ab 6. Für euch also: selbst fahren."}]},{"d":"2026-10-22","st":"7","titel":"Addo","sub":"Sundays River Valley","typ":"stand","items":[{"art":"tipp","titel":"Alternativ: Sundays River Kurz-Bootsfahrt","detail":"Colchester. 1,5 Std – die kürzeste Bootsoption, Mindestalter 0. Die grosse Cruise mit Sandboarding dauert 2,5 Std."}]},{"d":"2026-10-23","st":"8","titel":"Addo → Lalibela","sub":"Mark's Camp","typ":"fahrt","items":[{"art":"warnung","titel":"Zeitkritisch: Check-in nur 12:00–13:00","detail":"Ihr fahrt nicht selbst ins Camp. Das Auto bleibt an der Rezeption an der N2, ein Ranger bringt euch im Safarifahrzeug weiter (ca. 20–30 Min)."},{"art":"warnung","titel":"Navi: „Lalibela Game Reserve\" eingeben","detail":"Ausdrückliche Warnung der Lodge: auf keinen Fall einer GPS-Empfehlung über Schotterpisten folgen. Die Zufahrt liegt direkt an der N2."},{"art":"warnung","titel":"Kinder unter 2 Jahren dürfen nicht auf Safari","detail":"Laut Lalibelas eigener Broschüre: unter 2 Jahren keine Safari-Fahrten, das Kind bleibt mit Child-Minder oder Nanny im Camp – im Preis enthalten. Kinderbetreuung während Morgen- und Abendfahrten sowie während der Mahlzeiten der Erwachsenen ist inklusive."}]},{"d":"2026-10-24","st":"8","titel":"Lalibela","sub":"All-Inclusive","typ":"stand","items":[]},{"d":"2026-10-25","st":"8","titel":"Lalibela","sub":"All-Inclusive","typ":"stand","items":[{"art":"tipp","titel":"Kinder unter 8 essen früher","detail":"Eigenes Kindermenü, eigener Bereich. Sagt Wünsche und Allergien beim Lodge-Manager an."}]},{"d":"2026-10-26","st":"8","titel":"Lalibela → Flughafen","sub":"Abreise Gqeberha","typ":"abreise","items":[{"art":"warnung","titel":"Vier Stunden vor Abflug im Camp starten","detail":"Transfer Camp → Rezeption im Safarifahrzeug 20–30 Min, dann 96 km bis zum Flughafen, dazu Mietwagenrückgabe."},{"art":"tipp","titel":"Letzter Stopp: SANCCOB oder Grass Roof","detail":"SANCCOB Pinguin-Rehabilitation, 15 Min. vom Flughafen, Fütterung 09:30. Oder Grass Roof Farm mit gratis Spielplatz direkt neben den Tischen (08:00–16:30) – damit sich die Kinder vor dem Flug austoben."},{"art":"warnung","titel":"Sacramento hat montags zu","detail":"Falls ihr das Restaurant in Schoenmakerskop eingeplant hattet."}]}],"stays":[{"st":"1","name":"Adamsgarth Guesthouse","adr":"26 Mount Rhodes Drive, Hout Bay, Kapstadt","von":"2026-10-04","bis":"2026-10-08","naechte":4},{"st":"2","name":"Adara Palmiet Valley Estate","adr":"Sonstraal Road, Klein Drakenstein, Paarl","von":"2026-10-08","bis":"2026-10-11","naechte":3},{"st":"3","name":"Rivergate Guest Farm","adr":"Wortelgat Road, Stanford","von":"2026-10-11","bis":"2026-10-14","naechte":3},{"st":"4","name":"Melozhori Private Game Reserve","adr":"R317, Stormsvlei, Overberg","von":"2026-10-14","bis":"2026-10-16","naechte":2},{"st":"6","name":"Emily Moon River Lodge","adr":"Rietvlei Road, Plettenberg Bay","von":"2026-10-16","bis":"2026-10-20","naechte":4},{"st":"7","name":"Woodall Country House & Spa","adr":"Woodall Farm, Jan Smuts Avenue, Addo","von":"2026-10-20","bis":"2026-10-23","naechte":3},{"st":"8","name":"Lalibela Mark's Camp","adr":"Lalibela Game Reserve, N2, Paterson","von":"2026-10-23","bis":"2026-10-26","naechte":3}]}</script>
 </div>
 
 <div class="panel" id="p-rest">
@@ -2766,6 +2862,151 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
    document.getElementById(t==='r'?'er':'ea').style.display=n?'none':'block';
  }
  apply('r'); apply('a');
+
+ // ---- Wochenkalender ----
+ (function(){
+  var el=document.getElementById('caldata'); if(!el) return;
+  var D=JSON.parse(el.textContent);
+  var byDay={}, chips={};
+  D.timed.forEach(function(t){ (byDay[t.d]=byDay[t.d]||[]).push(t) });
+  D.allday.forEach(function(a){ chips[a.d]=a });
+  var H0=6, H1=21, WD=['Mo','Di','Mi','Do','Fr','Sa','So'];
+  function iso(d){return d.toISOString().slice(0,10)}
+  function mon(d){var x=new Date(d);var g=(x.getUTCDay()+6)%7;x.setUTCDate(x.getUTCDate()-g);return x}
+  // Reisewochen: 7-Tage-Bloecke ab dem Anreisetag – so bleibt keine Spalte leer
+  var weeks=[], w=new Date('2026-10-04T00:00:00Z'), last=new Date('2026-10-26T00:00:00Z');
+  while(w<=last){ weeks.push(new Date(w)); w.setUTCDate(w.getUTCDate()+7) }
+  var sel=document.getElementById('wksel'), cur=0;
+  weeks.forEach(function(m,i){
+    var e=new Date(m); e.setUTCDate(e.getUTCDate()+6);
+    var o=document.createElement('option'); o.value=i;
+    var MN=['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sept','Okt','Nov','Dez'];
+    o.textContent='Woche '+(i+1)+': '+m.getUTCDate()+'. '+MN[m.getUTCMonth()]+' – '+e.getUTCDate()+'. '+MN[e.getUTCMonth()];
+    sel.appendChild(o);
+  });
+  cur=0;
+  function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+  function lanes(list){
+    var srt=list.slice().sort(function(a,b){return a.s-b.s||b.e-a.e}), out=[], cl=[], clEnd=-1;
+    function flush(){ var n=0; cl.forEach(function(x){n=Math.max(n,x.lane+1)});
+      cl.forEach(function(x){x.lanes=n}); out=out.concat(cl); cl=[]; clEnd=-1; }
+    srt.forEach(function(ev){
+      if(cl.length && ev.s>=clEnd) flush();
+      var used={}; cl.forEach(function(x){ if(x.e>ev.s) used[x.lane]=1 });
+      var L=0; while(used[L]) L++;
+      ev.lane=L; cl.push(ev); clEnd=Math.max(clEnd,ev.e);
+    });
+    flush(); return out;
+  }
+  var det=document.getElementById('evdetail');
+  function show(ev,node){
+    [].slice.call(document.querySelectorAll('.blk.sel')).forEach(function(x){x.classList.remove('sel')});
+    if(node) node.classList.add('sel');
+    det.className='evdetail';
+    var when = ev.s!=null ? hhmm(ev.s)+' – '+hhmm(ev.e)+'  ·  '+Math.round((ev.e-ev.s)/60*10)/10+' h' : 'ohne feste Uhrzeit';
+    det.innerHTML='<h3></h3><p class="when"></p><p></p>';
+    det.querySelector('h3').textContent=ev.titel;
+    det.querySelector('.when').textContent=when;
+    det.querySelector('p:last-child').textContent=ev.detail||'';
+    try{det.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
+  }
+  function render(){
+    sel.value=cur;
+    var m=weeks[cur], days=[];
+    for(var i=0;i<7;i++){var d=new Date(m); d.setUTCDate(d.getUTCDate()+i); days.push(d)}
+    var cal=document.getElementById('cal'); cal.innerHTML='';
+    // Kopf
+    var hd=document.createElement('div'); hd.className='calrow calhd';
+    hd.appendChild(document.createElement('div'));
+    days.forEach(function(d,i){
+      var c=document.createElement('div');
+      if(!chips[iso(d)]) c.className='out';
+      c.innerHTML='<div class="wd">'+WD[(d.getUTCDay()+6)%7]+'</div><div class="dm">'+d.getUTCDate()+'.</div>';
+      hd.appendChild(c);
+    });
+    cal.appendChild(hd);
+    // Unterkunftsbalken
+    var st=document.createElement('div'); st.className='calrow calstay';
+    st.appendChild(document.createElement('div'));
+    for(var i=0;i<7;i++){ st.appendChild(document.createElement('div')) }
+    D.stays.forEach(function(s){
+      var a=days.findIndex(function(d){return iso(d)>=s.von && iso(d)<s.bis});
+      if(a<0) return;
+      var b=a; while(b+1<7 && iso(days[b+1])<s.bis) b++;
+      var bar=document.createElement('div'); bar.className='staybar';
+      bar.style.gridColumn=(a+2)+' / span '+(b-a+1);
+      bar.style.gridRow='1'; bar.textContent=s.name; bar.title=s.name+' · '+s.adr;
+      st.appendChild(bar);
+    });
+    cal.appendChild(st);
+    // Zettel ohne Uhrzeit
+    var ch=document.createElement('div'); ch.className='calrow calchips';
+    ch.appendChild(document.createElement('div'));
+    days.forEach(function(d){
+      var c=document.createElement('div'), a=chips[iso(d)];
+      if(a) (a.items||[]).forEach(function(it){
+        var b=document.createElement('button'); b.type='button'; b.className='chip '+it.art;
+        b.textContent=(it.art==='warnung'?'⚠ ':'')+it.titel; b.title=it.titel;
+        b.addEventListener('click',function(){show({titel:it.titel,detail:it.detail,s:null},null)});
+        c.appendChild(b);
+      });
+      ch.appendChild(c);
+    });
+    cal.appendChild(ch);
+    // Zeitraster
+    var bd=document.createElement('div'); bd.className='calrow calbody';
+    var g=document.createElement('div'); g.className='gut';
+    g.style.height='calc('+(H1-H0)+' * var(--h))';
+    for(var h=H0;h<=H1;h++){
+      var l=document.createElement('div'); l.className='hlab';
+      l.style.top='calc('+(h-H0)+' * var(--h))'; l.textContent=String(h).padStart(2,'0')+':00';
+      g.appendChild(l);
+    }
+    bd.appendChild(g);
+    days.forEach(function(d,i){
+      var wd=(d.getUTCDay()+6)%7;
+      var col=document.createElement('div'); col.className='dcol'+(wd>4?' we':'');
+      col.style.height='calc('+(H1-H0)+' * var(--h))';
+      var list=lanes((byDay[iso(d)]||[]).slice());
+      list.forEach(function(ev){
+        var b=document.createElement('button'); b.type='button';
+        var top=(ev.s-H0*60)/60, hgt=Math.max((ev.e-ev.s)/60,0.42);
+        b.className='blk '+ev.art+(hgt<0.72?' tiny':'');
+        b.style.top='calc('+top+' * var(--h))';
+        b.style.height='calc('+hgt+' * var(--h) - 2px)';
+        var wpc=100/ev.lanes;
+        b.style.left='calc('+(ev.lane*wpc)+'% + 2px)';
+        b.style.width='calc('+wpc+'% - 4px)';
+        b.innerHTML='<b></b><span></span>';
+        var mins=ev.e-ev.s, dtxt=mins>=60?(Math.floor(mins/60)+':'+String(mins%60).padStart(2,'0')+' h'):(mins+' Min');
+        b.querySelector('b').textContent=hhmm(ev.s)+(ev.art==='fahrt'?'  ·  '+dtxt:'');
+        b.querySelector('span').textContent=(ev.art==='tipp'?'':'')+ev.titel;
+        b.title=hhmm(ev.s)+'–'+hhmm(ev.e)+'  '+ev.titel;
+        b.addEventListener('click',function(){show(ev,b)});
+        col.appendChild(b);
+      });
+      bd.appendChild(col);
+    });
+    cal.appendChild(bd);
+    document.getElementById('wkprev').disabled = cur===0;
+    document.getElementById('wknext').disabled = cur===weeks.length-1;
+  }
+  document.getElementById('wkprev').addEventListener('click',function(){if(cur>0){cur--;render()}});
+  document.getElementById('wknext').addEventListener('click',function(){if(cur<weeks.length-1){cur++;render()}});
+  sel.addEventListener('change',function(){cur=+sel.value;render()});
+  var rendered=false;
+  [].slice.call(document.querySelectorAll('.viewtog button')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.dataset.v;
+      [].slice.call(document.querySelectorAll('.viewtog button')).forEach(function(x){
+        x.setAttribute('aria-pressed',String(x===b));
+      });
+      document.getElementById('v-liste').hidden = v!=='liste';
+      document.getElementById('v-woche').hidden = v!=='woche';
+      if(v==='woche' && !rendered){ render(); rendered=true; }
+    });
+  });
+ })();
 
  // ---- Ein-Klick-Route pro Etappe ----
  function label(sec){
