@@ -1,0 +1,1255 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Suedafrika 2026//Reisekalender//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Südafrika Oktober 2026
+X-WR-CALDESC:Ferienkalender – Fahrten\, Buchungen und Tagesplan. Quelle: https://salsafever21.github.io/southafrica/
+X-WR-TIMEZONE:Africa/Johannesburg
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VTIMEZONE
+TZID:Africa/Johannesburg
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0200
+TZNAME:SAST
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:stay1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261008
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🛏 Etappe 1 · Adamsgarth Guesthouse
+DESCRIPTION:4 Nächte\n26 Mount Rhodes Drive\, Hout Bay\, Kapstadt\n\nGan
+ ze Reise: https://salsafever21.github.io/southafrica/
+LOCATION:26 Mount Rhodes Drive\, Hout Bay\, Kapstadt
+END:VEVENT
+BEGIN:VEVENT
+UID:stay2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261011
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🛏 Etappe 2 · Adara Palmiet Valley Estate
+DESCRIPTION:3 Nächte\nSonstraal Road\, Klein Drakenstein\, Paarl\n\nGanz
+ e Reise: https://salsafever21.github.io/southafrica/
+LOCATION:Sonstraal Road\, Klein Drakenstein\, Paarl
+END:VEVENT
+BEGIN:VEVENT
+UID:stay3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261014
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🛏 Etappe 3 · Rivergate Guest Farm
+DESCRIPTION:3 Nächte\nWortelgat Road\, Stanford\n\nGanze Reise: https://
+ salsafever21.github.io/southafrica/
+LOCATION:Wortelgat Road\, Stanford
+END:VEVENT
+BEGIN:VEVENT
+UID:stay4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261016
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🛏 Etappe 4 · Melozhori Private Game Reserve
+DESCRIPTION:2 Nächte\nR317\, Stormsvlei\, Overberg\n\nGanze Reise: https
+ ://salsafever21.github.io/southafrica/
+LOCATION:R317\, Stormsvlei\, Overberg
+END:VEVENT
+BEGIN:VEVENT
+UID:stay6@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261020
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🛏 Etappe 6 · Emily Moon River Lodge
+DESCRIPTION:4 Nächte\nRietvlei Road\, Plettenberg Bay\n\nGanze Reise: ht
+ tps://salsafever21.github.io/southafrica/
+LOCATION:Rietvlei Road\, Plettenberg Bay
+END:VEVENT
+BEGIN:VEVENT
+UID:stay7@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261023
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🛏 Etappe 7 · Woodall Country House & Spa
+DESCRIPTION:3 Nächte\nWoodall Farm\, Jan Smuts Avenue\, Addo\n\nGanze Re
+ ise: https://salsafever21.github.io/southafrica/
+LOCATION:Woodall Farm\, Jan Smuts Avenue\, Addo
+END:VEVENT
+BEGIN:VEVENT
+UID:stay8@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261026
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🛏 Etappe 8 · Lalibela Mark's Camp
+DESCRIPTION:3 Nächte\nLalibela Game Reserve\, N2\, Paterson\n\nGanze Rei
+ se: https://salsafever21.github.io/southafrica/
+LOCATION:Lalibela Game Reserve\, N2\, Paterson
+END:VEVENT
+BEGIN:VEVENT
+UID:d4i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261004T140000
+DTEND;TZID=Africa/Johannesburg:20261004T143000
+SUMMARY:🔑 Check-in Adamsgarth Guesthouse
+DESCRIPTION:26 Mount Rhodes Drive\, Hout Bay – am Hang oberhalb des Tal
+ s\, nicht im Zentrum.
+END:VEVENT
+BEGIN:VEVENT
+UID:d4i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261004T083000
+DTEND;TZID=Africa/Johannesburg:20261004T103000
+SUMMARY:💡 Idee: Optional: Oranjezicht Market
+DESCRIPTION:So 08:30–14:00\, Granger Bay. Nur wenn ihr früh landet und
+  noch Energie habt.
+END:VEVENT
+BEGIN:VEVENT
+UID:day4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:✈️ Ankunft Kapstadt
+DESCRIPTION:Etappe 1 · Ankunft Kapstadt — Adamsgarth Guesthouse\, Hout
+  Bay\n\n🚗 Flughafen CPT → Adamsgarth Guesthouse\n   33 km · Google 
+ 35–40 Min · realistisch 50–60 Min · Route N2 → M3 → Constantia 
+ Nek → Hout Bay. Dazu Mietwagenübernahme in CPT: realistisch 45–90 Mi
+ n extra.\n\n💡 Ankunftstag ruhig halten\n   Hout Bay Hafen ist 8–10 M
+ in. entfernt: Mariner's Wharf\, Strand\, Dunes Restaurant mit eingezäunt
+ em Spielplatz. Mehr braucht der erste Tag nicht.\n\nTagesplan: https://sa
+ lsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d5i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261005T080000
+DTEND;TZID=Africa/Johannesburg:20261005T093000
+SUMMARY:💡 Idee: Boulders Beach Pinguine
+DESCRIPTION:55–65 Min ab Hout Bay über die M4 (oder 31 km über Chapma
+ n's Peak\, Maut ca. R60). Früh da sein – der Parkplatz ist klein.
+END:VEVENT
+BEGIN:VEVENT
+UID:d5i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261005T123000
+DTEND;TZID=Africa/Johannesburg:20261005T150000
+SUMMARY:😴 Mittagsschlaf
+DESCRIPTION:Auf der Halbinselstrecke schläft es sich im Auto gut.
+END:VEVENT
+BEGIN:VEVENT
+UID:day5@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Kapstadt
+DESCRIPTION:Etappe 1 · Kapstadt — Halbinsel-Tag\n\n💡 Danach St Jame
+ s / Dalebrook Gezeitenbecken\n   Nur 15 Min. weiter. Ummauerte Becken ohn
+ e Brandung – der sicherste Badeplatz für Kleinkinder.\n\n⚠️ Blue T
+ rain Park heute geschlossen\n   Montags zu (ausser in Schulferien) – Te
+ rm 4 startet am 6.10.\, also heute wahrscheinlich zu.\n\nTagesplan: https
+ ://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d6i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261006T080000
+DTEND;TZID=Africa/Johannesburg:20261006T100000
+SUMMARY:💡 Idee: Tafelberg-Seilbahn\, erste Fahrt
+DESCRIPTION:35–45 Min ab Hout Bay. Am Morgen Betriebsstatus prüfen –
+  bei Wind wird geschlossen. Tickets vorab online.
+END:VEVENT
+BEGIN:VEVENT
+UID:d6i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261006T123000
+DTEND;TZID=Africa/Johannesburg:20261006T150000
+SUMMARY:😴 Mittagsschlaf
+END:VEVENT
+BEGIN:VEVENT
+UID:d6i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261006T153000
+DTEND;TZID=Africa/Johannesburg:20261006T173000
+SUMMARY:💡 Idee: Sea Point Promenade oder Pavilion
+DESCRIPTION:11 km flacher Asphaltweg – die beste Kinderwagenstrecke der
+  Stadt.
+END:VEVENT
+BEGIN:VEVENT
+UID:day6@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Kapstadt
+DESCRIPTION:Etappe 1 · Kapstadt — Stadt-Tag\n\n💡 Danach Green Point
+  Urban Park\n   Tot-Lot-Spielplatz für 1–6 Jahre\, gratis\, durchgehen
+ d geteert.\n\nTagesplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d7i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261007T090000
+DTEND;TZID=Africa/Johannesburg:20261007T100000
+SUMMARY:💡 Idee: Duiker Island Robbenfahrt
+DESCRIPTION:40 Minuten – die kürzeste Tierbeobachtungstour der Region.
+  Hafen 8 Min. von der Unterkunft.
+END:VEVENT
+BEGIN:VEVENT
+UID:d7i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261007T100000
+DTEND;TZID=Africa/Johannesburg:20261007T120000
+SUMMARY:💡 Idee: Bay Harbour Market
+DESCRIPTION:Mi + Do 09:30–17:00\, überdacht. Gleicher Hafen\, kein zwe
+ iter Weg.
+END:VEVENT
+BEGIN:VEVENT
+UID:d7i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261007T110000
+DTEND;TZID=Africa/Johannesburg:20261007T130000
+SUMMARY:💡 Idee: Alternativ World of Birds
+DESCRIPTION:10 Min. entfernt\, Pinguinfütterung 11:30\, Monkey Jungle 11
+ :30–13:00\, eigener Kleinkind-Spielplatz.
+END:VEVENT
+BEGIN:VEVENT
+UID:d7i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261007T123000
+DTEND;TZID=Africa/Johannesburg:20261007T150000
+SUMMARY:😴 Mittagsschlaf
+END:VEVENT
+BEGIN:VEVENT
+UID:day7@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261007
+DTEND;VALUE=DATE:20261008
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Kapstadt
+DESCRIPTION:Etappe 1 · Kapstadt — Nahbereich Hout Bay\n\nTagesplan: ht
+ tps://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d8i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261008T100000
+DTEND;TZID=Africa/Johannesburg:20261008T103000
+SUMMARY:🔑 Check-out Adamsgarth
+END:VEVENT
+BEGIN:VEVENT
+UID:d8i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261008T140000
+DTEND;TZID=Africa/Johannesburg:20261008T143000
+SUMMARY:🔑 Check-in Adara Palmiet Valley
+DESCRIPTION:Sonstraal Road\, Klein Drakenstein\, Paarl – ca. 5 km östl
+ ich von Paarl.
+END:VEVENT
+BEGIN:VEVENT
+UID:d8i4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261008T183000
+DTEND;TZID=Africa/Johannesburg:20261008T200000
+SUMMARY:✅ Abendessen Adara Restaurant
+DESCRIPTION:GEBUCHT · in eurer Unterkunft\, keine Fahrt nötig.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:✅ Abendessen Adara Restaurant
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:day8@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🚗 Kapstadt → Paarl
+DESCRIPTION:Etappe 2 · Kapstadt → Paarl — Adara Palmiet Valley Estat
+ e\n\n🚗 Hout Bay → Adara Palmiet Valley\, Paarl\n   79 km · Google 6
+ 0–65 Min · realistisch 1:20–1:30 h · M6 → Kloof Nek → City Bowl
+  → N1. Zur Rushhour besser über Constantia Nek → M3 → N2 → N1 (8
+ 4 km\, ~75 Min)\, das umgeht die Innenstadt.\n\n💡 Unterwegs: Kirstenbo
+ sch\n   Liegt fast auf dem Weg\, wenn ihr über Constantia Nek fahrt. 1\,
+ 5 Std. einplanen.\n\nTagesplan: https://salsafever21.github.io/southafric
+ a/
+END:VEVENT
+BEGIN:VEVENT
+UID:d9i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261009T090000
+DTEND;TZID=Africa/Johannesburg:20261009T110000
+SUMMARY:💡 Idee: Fairview Ziegenturm oder Le Bonheur Krokodile
+DESCRIPTION:Fairview: 15 Min\, gratis\, 45 Min. Le Bonheur: 20 Min\, gef
+ ührte Runde alle 45 Min.
+END:VEVENT
+BEGIN:VEVENT
+UID:d9i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261009T114500
+DTEND;TZID=Africa/Johannesburg:20261009T122000
+SUMMARY:🚗 Losfahren zum Boschendal Deli
+DESCRIPTION:22 km · 28–32 Min mit Kleinkindern · N1 → R45 → R310.
+  Geteert\, kein Pass.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:🚗 Losfahren zum Boschendal Deli
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d9i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261009T123000
+DTEND;TZID=Africa/Johannesburg:20261009T140000
+SUMMARY:✅ Mittagessen Deli Boschendal
+DESCRIPTION:GEBUCHT · Danach: Tree-House-Spielplatz und Pumptrack auf de
+ m Gelände – gute Gelegenheit zum Austoben vor der Rückfahrt.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:✅ Mittagessen Deli Boschendal
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d9i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261009T153000
+DTEND;TZID=Africa/Johannesburg:20261009T180000
+SUMMARY:😴 Zurück\, Mittagsschlaf im Auto
+END:VEVENT
+BEGIN:VEVENT
+UID:day9@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Paarl
+DESCRIPTION:Etappe 2 · Paarl — Winelands\n\nTagesplan: https://salsafe
+ ver21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d10i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261010T090000
+DTEND;TZID=Africa/Johannesburg:20261010T100000
+SUMMARY:💡 Idee: Vergenoegd Enten-Parade
+DESCRIPTION:09:00-Parade (die um 12:00 fällt in den Mittagsschlaf). 45
+ –50 Min. Fahrt – früh los. Gratis\, dauert 15–30 Min.
+END:VEVENT
+BEGIN:VEVENT
+UID:d10i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261010T114000
+DTEND;TZID=Africa/Johannesburg:20261010T122500
+SUMMARY:🚗 Losfahren zu Tokara
+DESCRIPTION:28\,5 km · 38–45 Min mit Kleinkindern · über den Helshoo
+ gte Pass. Kurvenreich – bei Reiseübelkeit vorsorgen.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:🚗 Losfahren zu Tokara
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d10i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261010T123000
+DTEND;TZID=Africa/Johannesburg:20261010T140000
+SUMMARY:✅ Mittagessen Tokara Delicatessen
+DESCRIPTION:GEBUCHT · Klettergerüst\, viel Auslauf und Pfauen auf dem G
+ elände.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:✅ Mittagessen Tokara Delicatessen
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d10i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261010T150000
+DTEND;TZID=Africa/Johannesburg:20261010T173000
+SUMMARY:😴 Zurück\, Mittagsschlaf
+END:VEVENT
+BEGIN:VEVENT
+UID:day10@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261011
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Paarl
+DESCRIPTION:Etappe 2 · Paarl — Winelands\n\n💡 Alternative statt Ver
+ genoegd: Spier\n   Elemental Play Garden mit Wasserspiel\, liegt Richtung
+  Stellenbosch – lässt sich mit Tokara zu einem Bogen verbinden.\n\nTag
+ esplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d11i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261011T100000
+DTEND;TZID=Africa/Johannesburg:20261011T103000
+SUMMARY:🔑 Check-out Adara
+END:VEVENT
+BEGIN:VEVENT
+UID:d11i4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261011T140000
+DTEND;TZID=Africa/Johannesburg:20261011T143000
+SUMMARY:🔑 Check-in Rivergate Guest Farm
+DESCRIPTION:Wortelgat Road\, 2 km ausserhalb Stanford am Klein River.
+END:VEVENT
+BEGIN:VEVENT
+UID:day11@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🚗 Paarl → Whale Coast
+DESCRIPTION:Etappe 3 · Paarl → Whale Coast — Rivergate Guest Farm\, 
+ Stanford\n\n🚗 Paarl → Stanford (direkt)\n   158 km · Google 2:00–
+ 2:10 h · realistisch 3:00–3:15 h mit einer Pause · N1 → R300 → N2
+  über Sir Lowry's Pass → R43 über Hermanus. Komplett geteert.\n\n💡
+  EMPFEHLUNG: Umweg über Stony Point\n   Statt direkt: N2 → Abfahrt Gor
+ don's Bay → R44 Küstenstrasse → Stony Point Pinguine (Betty's Bay) 
+ → Kleinmond → Hermanus → Stanford. 174 km statt 158\, ca. 2:40 h re
+ ine Fahrzeit statt 2:05. Ihr spart euch damit die 3\,5-Stunden-Tagestour 
+ nach Betty's Bay und die Kinder haben genau zur richtigen Zeit eine Pause
+ .\n\n💡 Stopp: Dassiesfontein Farm Stall\n   An der N2 zwischen Bot Riv
+ er und Caledon\, mit Spielbereich.\n\nTagesplan: https://salsafever21.git
+ hub.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d12i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261012T083000
+DTEND;TZID=Africa/Johannesburg:20261012T091000
+SUMMARY:💡 Idee: Hermanus Cliff Path\, Gearing's Point
+DESCRIPTION:35–40 Min ab Stanford. Wale oft auf 20–50 m an den Felsen
+  – gratis\, kinderwagentauglich\, jederzeit abbrechbar.
+END:VEVENT
+BEGIN:VEVENT
+UID:d12i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261012T123000
+DTEND;TZID=Africa/Johannesburg:20261012T150000
+SUMMARY:😴 Mittagsschlaf
+END:VEVENT
+BEGIN:VEVENT
+UID:d12i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261012T153000
+DTEND;TZID=Africa/Johannesburg:20261012T173000
+SUMMARY:💡 Idee: Stanford Hills Estate
+DESCRIPTION:8 Min. von der Unterkunft. Rasen\, Enten\, ein zahmes Schwein
+  und ein Teich mit Ruderbooten.
+END:VEVENT
+BEGIN:VEVENT
+UID:day12@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261012
+DTEND;VALUE=DATE:20261013
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Whale Coast
+DESCRIPTION:Etappe 3 · Whale Coast — Hermanus\n\n💡 Danach Fernkloof
+  Nature Reserve\n   10 Min. weiter\, gratis\, Picknickplatz und Teich.\n\
+ nTagesplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d13i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261013T074500
+DTEND;TZID=Africa/Johannesburg:20261013T083000
+SUMMARY:🚗 Losfahren zum Whale Watching
+DESCRIPTION:Falls die Tour ab Hermanus New Harbour startet: 35–40 Min a
+ b Rivergate\, Check-in meist 30 Min. vorher.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:🚗 Losfahren zum Whale Watching
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d13i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261013T090000
+DTEND;TZID=Africa/Johannesburg:20261013T120000
+SUMMARY:✅ Whale Watching 09:00–12:00
+DESCRIPTION:GEBUCHT · 3 Stunden.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:✅ Whale Watching 09:00–12:00
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d13i4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261013T143000
+DTEND;TZID=Africa/Johannesburg:20261013T170000
+SUMMARY:😴 Nachmittag ruhig
+DESCRIPTION:Platbos Forest (schattig\, weicher Waldboden) oder Grotto Bea
+ ch Lagune.
+END:VEVENT
+BEGIN:VEVENT
+UID:day13@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Whale Coast
+DESCRIPTION:Etappe 3 · Whale Coast — Whale Watching\n\n⚠️ Prüft d
+ as mit den Kleinkindern\n   Die Hermanus-Anbieter verlangen für alle Kin
+ der unter 13 Jahren eine Schwimmweste während der ganzen Fahrt und weise
+ n selbst darauf hin\, dass Kinder unter 2 Jahren die Weste als unangenehm
+  empfinden und sie sich schlecht mit einer Babytrage kombinieren lässt. 
+ Drei Stunden auf offener See ohne Ausstiegsmöglichkeit sind für 0–3-J
+ ährige viel. Überlegt: ein Elternteil fährt mit dem grösseren Kind\, 
+ der andere bleibt an Land – oder ihr fragt beim Anbieter nach Kinder-We
+ stengrössen und einer kürzeren Tour.\n\n💡 Landalternative: De Kelder
+ s Klippenpfad\n   26–30 Min ab Stanford. Der beste Landbeobachtungspunk
+ t der Küste für Mutter-Kalb-Paare – windgeschützt\, oberer Pfad teil
+ weise mit Buggy machbar.\n\nTagesplan: https://salsafever21.github.io/sou
+ thafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d14i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261014T100000
+DTEND;TZID=Africa/Johannesburg:20261014T103000
+SUMMARY:🔑 Check-out Rivergate
+END:VEVENT
+BEGIN:VEVENT
+UID:d14i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261014T140000
+DTEND;TZID=Africa/Johannesburg:20261014T143000
+SUMMARY:🔑 Check-in Melozhori Cottage
+DESCRIPTION:Zwei En-Suite-Schlafzimmer\, Pizzaofen\, Braai\, Hot Tub\, kl
+ einer Splash Pool. Brot und Früchte zur Ankunft.
+END:VEVENT
+BEGIN:VEVENT
+UID:d14i4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261014T160000
+DTEND;TZID=Africa/Johannesburg:20261014T183000
+SUMMARY:💡 Idee: Game Drive
+DESCRIPTION:Eine geführte Fahrt ist bei 2+ Nächten inklusive. Mindestal
+ ter vorab klären: info@melozhori.co.za
+END:VEVENT
+BEGIN:VEVENT
+UID:day14@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🚗 Whale Coast → Melozhori
+DESCRIPTION:Etappe 4 · Whale Coast → Melozhori — Melozhori Private G
+ ame Reserve\n\n🚗 Stanford → Melozhori\n   91 km · Google 1:05–1:1
+ 5 h · realistisch 1:35–1:45 h · R326 über Akkedisberg-Pass (geteert)
+  → N2 → Abfahrt Stormsvlei → R317 6 km nordwärts.\n\n⚠️ Letzte
+  Versorgung vor der Lodge\n   Stormsvlei Farm Stall am N2-Abzweig ist dau
+ erhaft geschlossen. Letzte Einkaufsmöglichkeit: Riviersonderend oder Cal
+ edon. Die Lodge ist Selbstverpflegung mit Halbpension-Option – Semi-Cat
+ ering (R850/Erw.\, R350/Kind unter 8) muss vorab bestellt sein.\n\nTagesp
+ lan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d15i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261015T090000
+DTEND;TZID=Africa/Johannesburg:20261015T094800
+SUMMARY:💡 Idee: Optional: Bontebok National Park
+DESCRIPTION:40–48 Min ab Melozhori. Selbstfahrer-Safari im eigenen Auto
+  – die entspannteste Safariform mit Kleinkindern. Status nach dem Hochw
+ asser 2026 vorab prüfen: +27 28 514 2735.
+END:VEVENT
+BEGIN:VEVENT
+UID:day15@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Melozhori
+DESCRIPTION:Etappe 4 · Melozhori — Overberg\n\n💡 Auf dem Reservat b
+ leiben\n   Melozhori ist raubtierfrei – unbegleitete Spaziergänge und 
+ Vogelbeobachtung sind erlaubt. Selbstfahren im Reservat ist nicht gestatt
+ et.\n\n💡 Optional: Swellendam\n   40–48 Min. Drostdy Museum mit umma
+ uertem Rosengarten und Handwerkshof\, dazu Grace + Merci oder Woodpecker 
+ Pizzadeli.\n\n⚠️ Robertson ist weiter als es aussieht\n   42 km\, abe
+ r 55–65 Min – zwei Pässe\, kurvig. Four Cousins hat zwar den grösst
+ en Spielplatz der Region\, aber überlegt\, ob sich die Fahrt an einem vo
+ n zwei Tagen lohnt.\n\nTagesplan: https://salsafever21.github.io/southafr
+ ica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d16i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261016T073000
+DTEND;TZID=Africa/Johannesburg:20261016T140000
+SUMMARY:🚗 Melozhori → Plettenberg Bay
+DESCRIPTION:R317 → N2 durchgehend ostwärts: Swellendam – Riversdale 
+ – Mossel Bay – George – Wilderness – Knysna – Plett. Komplett g
+ eteert\, gut ausgebaut.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:🚗 Melozhori → Plettenberg Bay
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d16i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261016T101500
+DTEND;TZID=Africa/Johannesburg:20261016T113000
+SUMMARY:💡 Idee: Stopp 1: Dias Museum Mossel Bay
+DESCRIPTION:Umweg nur 9 km. Lebensgrosse Karavelle im Trockendock\, Garte
+ n mit Meerblick. Oder: Die Skeerhok Padstal bei Heidelberg (4\,7) bzw. Ou
+  Meul Riversdale mit grossem Spielplatz.
+END:VEVENT
+BEGIN:VEVENT
+UID:d16i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261016T130000
+DTEND;TZID=Africa/Johannesburg:20261016T141500
+SUMMARY:💡 Idee: Stopp 2: Timberlake Village
+DESCRIPTION:Direkt an der N2\, kein Umweg. Spielplatz\, Bäckerei\, Naugh
+ ty Monkey Cafe. Für ein 4-jähriges Kind: Acrobranch „Acro-twigs" (ab 
+ 4 Jahren\, R130\, 45 Min).
+END:VEVENT
+BEGIN:VEVENT
+UID:d16i4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261016T150000
+DTEND;TZID=Africa/Johannesburg:20261016T161500
+SUMMARY:💡 Idee: Stopp 3: Knysna Elephant Park
+DESCRIPTION:20 Min. vor eurer Lodge\, direkt an der N2. Kein Mindestalter
+ \, unter 5 gratis\, Touren alle 30 Min bis 15:30. Die perfekte Ankunfts-B
+ elohnung.
+END:VEVENT
+BEGIN:VEVENT
+UID:d16i5@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261016T164500
+DTEND;TZID=Africa/Johannesburg:20261016T171500
+SUMMARY:🔑 Check-in Emily Moon River Lodge
+DESCRIPTION:Rietvlei Road\, nördlich der Stadt am Bitou River.
+END:VEVENT
+BEGIN:VEVENT
+UID:day16@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🚗 Melozhori → Plettenberg Bay
+DESCRIPTION:Etappe 5 · Melozhori → Plettenberg Bay — Der lange Fahrt
+ ag\n\n⚠️ Das ist die härteste Etappe der Reise\n   350 km · Google 
+ 3:45–4:00 h · realistisch 5:45–6:30 h mit zwei Pausen. Bei Check-out
+  um 10:00 wärt ihr erst gegen 16:30 da. Fahrt früher los – 07:30 stat
+ t 10:00. Die R62-Variante über Oudtshoorn wäre 420–466 km und ist an 
+ einem Tag mit Kleinkindern nicht machbar.\n\n⚠️ Redberry Farm und Ele
+ phant Park gehen nicht beide\n   Beide schliessen um 16:00. Entweder Erdb
+ eeren pflücken in George (Umweg 10 km\, Mo–Sa 9–16) oder Elefanten k
+ urz vor Plett.\n\nTagesplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d17i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261017T080000
+DTEND;TZID=Africa/Johannesburg:20261017T100000
+SUMMARY:💡 Idee: Birds of Eden
+DESCRIPTION:25–30 Min. Überkuppelt\, also wind- und regensicher\, übe
+ r 1 km durchgehende Holzstege – die kinderwagenfreundlichste Aktivität
+  der Etappe.
+END:VEVENT
+BEGIN:VEVENT
+UID:d17i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261017T113000
+DTEND;TZID=Africa/Johannesburg:20261017T130000
+SUMMARY:💡 Idee: Mittagessen Bramon Wine Estate
+DESCRIPTION:Direkt nebenan\, Tische zwischen den Reben\, viel Platz zum L
+ aufen. Nur 11:00–16:00.
+END:VEVENT
+BEGIN:VEVENT
+UID:d17i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261017T133000
+DTEND;TZID=Africa/Johannesburg:20261017T160000
+SUMMARY:😴 Mittagsschlaf
+END:VEVENT
+BEGIN:VEVENT
+UID:day17@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Plettenberg Bay
+DESCRIPTION:Etappe 6 · Plettenberg Bay — Animal Alley\n\n💡 Kombitic
+ ket prüfen\n   Birds of Eden + Monkeyland R704/R352\, alle drei mit Juka
+ ni R900/R450. Realistisch schafft ihr maximal zwei pro Tag – fragt vorh
+ er\, ob das Triptic auf zwei Tage aufteilbar ist.\n\nTagesplan: https://s
+ alsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d18i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261018T073000
+DTEND;TZID=Africa/Johannesburg:20261018T090000
+SUMMARY:💡 Idee: Robberg Gap-Rundweg
+DESCRIPTION:2\,1 km\, mit Kleinkind 60–75 Min. Nur mit Kraxe – Holztr
+ eppen und Felspfad. Robbenkolonie und Wale in Küstennähe. Früh: kühl\
+ , windstill.
+END:VEVENT
+BEGIN:VEVENT
+UID:d18i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261018T100000
+DTEND;TZID=Africa/Johannesburg:20261018T120000
+SUMMARY:💡 Idee: Central Beach
+DESCRIPTION:Der geschützteste Badeplatz in Plett\, im Windschatten der B
+ eacon-Isle-Landzunge.
+END:VEVENT
+BEGIN:VEVENT
+UID:d18i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261018T153000
+DTEND;TZID=Africa/Johannesburg:20261018T173000
+SUMMARY:💡 Idee: Nachmittags Jukani
+DESCRIPTION:Katzen sind später aktiver\, Wege sind buggytauglich.
+END:VEVENT
+BEGIN:VEVENT
+UID:day18@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Plettenberg Bay
+DESCRIPTION:Etappe 6 · Plettenberg Bay — Strand & Robberg\n\n⚠️ Ba
+ den im Oktober\n   Blue-Flag-Saison startet erst am 1. Dezember – jetzt
+  keine oder nur Wochenend-Lifeguards\, Wasser 16–18 °C. Knietief und i
+ n Armlänge.\n\nTagesplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d19i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261019T090000
+DTEND;TZID=Africa/Johannesburg:20261019T092600
+SUMMARY:💡 Idee: Knysna Elephant Park
+DESCRIPTION:22–26 Min\, direkt an der N2. Falls ihr am Fahrtag nicht da
+ zugekommen seid.
+END:VEVENT
+BEGIN:VEVENT
+UID:d19i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261019T110000
+DTEND;TZID=Africa/Johannesburg:20261019T115800
+SUMMARY:💡 Idee: Knysna Heads\, East Head
+DESCRIPTION:50–58 Min ab Emily Moon – die letzten 7 km durch die Stad
+ t kosten mehr Zeit als die N2-Distanz vermuten lässt. Parken praktisch a
+ m Aussichtspunkt.
+END:VEVENT
+BEGIN:VEVENT
+UID:d19i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261019T130000
+DTEND;TZID=Africa/Johannesburg:20261019T153000
+SUMMARY:😴 Mittagsschlaf im Auto auf der Rückfahrt
+END:VEVENT
+BEGIN:VEVENT
+UID:day19@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261020
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Plettenberg Bay
+DESCRIPTION:Etappe 6 · Plettenberg Bay — Knysna\n\n⚠️ Raptor Rescu
+ e heute geschlossen\n   Montags zu. Auch île de pain in Knysna hat monta
+ gs zu.\n\nTagesplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d20i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261020T090000
+DTEND;TZID=Africa/Johannesburg:20261020T093000
+SUMMARY:🔑 Check-out Emily Moon (bis 10:00)
+END:VEVENT
+BEGIN:VEVENT
+UID:d20i4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261020T140000
+DTEND;TZID=Africa/Johannesburg:20261020T143000
+SUMMARY:🔑 Check-in Woodall Country House
+DESCRIPTION:Woodall Farm\, Jan Smuts Avenue\, Addo. Tische im Restaurant 
+ sind für Hausgäste automatisch reserviert.
+END:VEVENT
+BEGIN:VEVENT
+UID:day20@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🚗 Plettenberg Bay → Addo
+DESCRIPTION:Etappe 7 · Plettenberg Bay → Addo — Woodall Country Hous
+ e & Spa\n\n🚗 Plettenberg Bay → Woodall\, Addo\n   272–311 km · Go
+ ogle 3:05–3:30 h · realistisch 4:45–5:15 h mit zwei Pausen · Empfoh
+ len: N2 durchgehend bis Gqeberha\, weiter Richtung Makhanda\, Abfahrt 761
+  auf die R335\, 43 km nordwärts durch Addo Village.\n\n💡 Stopp: Nanag
+ a Farm Stall\n   Am Kreuz N10/R72\, berühmt für Roosterkoek und Ananass
+ aft\, mit Spielbereich und grossen Rasenflächen.\n\n⚠️ Letzte 1\,2 k
+ m Schotter\n   Rechts von der R335 am Woodall-Schild abbiegen\, nach 40 m
+  nochmals rechts vor dem Elephant House\, dann 1\,2 km. Für einen Pkw pr
+ oblemlos\, bei Regen langsam. Das ist der einzige Schotterabschnitt der g
+ anzen Reise.\n\nTagesplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d21i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261021T064500
+DTEND;TZID=Africa/Johannesburg:20261021T093000
+SUMMARY:💡 Idee: Selbstfahrer-Safari im Addo NP
+DESCRIPTION:Nur 18–22 Min ab Woodall. Tor öffnet 07:00. Im eigenen Aut
+ o mit Klimaanlage – die entspannteste Safariform mit Kleinkindern. Ausw
+ eis mitbringen\, das ist Pflicht.
+END:VEVENT
+BEGIN:VEVENT
+UID:d21i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261021T123000
+DTEND;TZID=Africa/Johannesburg:20261021T150000
+SUMMARY:😴 Mittagsschlaf
+END:VEVENT
+BEGIN:VEVENT
+UID:d21i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261021T160000
+DTEND;TZID=Africa/Johannesburg:20261021T180000
+SUMMARY:💡 Idee: Addo Main Camp Wasserloch & Underground Hide
+DESCRIPTION:Im Eintritt enthalten. Elefanten auf Augenhöhe wenige Meter 
+ vor der Nase\, Wasserloch flutlichtbeleuchtet.
+END:VEVENT
+BEGIN:VEVENT
+UID:day21@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Addo
+DESCRIPTION:Etappe 7 · Addo — Addo Elephant National Park\n\n⚠️ Wo
+ odalls eigene Game Drives: ab 6 Jahren\n   Die geführten Fahrten von Woo
+ dall (R2150 p.P.\, 07:30 und 14:00) haben Mindestalter 6 – ausser als p
+ rivate Safari. Auch die Parkfahrten von Addo selbst sind erst ab 6. Für 
+ euch also: selbst fahren.\n\nTagesplan: https://salsafever21.github.io/so
+ uthafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d22i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261022T090000
+DTEND;TZID=Africa/Johannesburg:20261022T110000
+SUMMARY:💡 Idee: Daniell Cheetah Project\, Kirkwood
+DESCRIPTION:45 Min. Predator Tour genau 1 Std\, dazu Streichelbereich mit
+  Kaninchen und Meerschweinchen und handaufgezogene Kudus.
+END:VEVENT
+BEGIN:VEVENT
+UID:d22i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261022T160000
+DTEND;TZID=Africa/Johannesburg:20261022T180000
+SUMMARY:💡 Idee: Addo Wildlife Centre
+DESCRIPTION:5 Min. von Woodall\, R20 pro Person\, 45 Min. Begehbare Volie
+ re\, Eulen\, Äffchen. Danach Abendessen im Tangelo im selben Haus.
+END:VEVENT
+BEGIN:VEVENT
+UID:day22@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261022
+DTEND;VALUE=DATE:20261023
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Addo
+DESCRIPTION:Etappe 7 · Addo — Sundays River Valley\n\n💡 Alternativ:
+  Sundays River Kurz-Bootsfahrt\n   Colchester. 1\,5 Std – die kürzeste
+  Bootsoption\, Mindestalter 0. Die grosse Cruise mit Sandboarding dauert 
+ 2\,5 Std.\n\nTagesplan: https://salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d23i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261023T101500
+DTEND;TZID=Africa/Johannesburg:20261023T114000
+SUMMARY:🚗 Woodall → Lalibela Rezeption
+DESCRIPTION:68 km · Google 55–60 Min · realistisch 1:15–1:25 h · R
+ 335 südwärts → R342 durch den Addo-Korridor → Paterson → N2 ostw
+ ärts 27 km. Spätestens 10:30 losfahren.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:🚗 Woodall → Lalibela Rezeption
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d23i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261023T120000
+DTEND;TZID=Africa/Johannesburg:20261023T123000
+SUMMARY:🔑 Check-in Mark's Camp
+DESCRIPTION:Lunch ca. 14:00. All-Inclusive.
+END:VEVENT
+BEGIN:VEVENT
+UID:d23i4@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261023T160000
+DTEND;TZID=Africa/Johannesburg:20261023T190000
+SUMMARY:💡 Idee: Erste Safari-Fahrt
+DESCRIPTION:Kinder ab 2 Jahren fahren mit\, in einem eigenen Fahrzeug mit
+  eigenem Ranger. Familien mit ähnlich alten Kindern werden zusammen eing
+ eteilt.
+END:VEVENT
+BEGIN:VEVENT
+UID:day23@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:🚗 Addo → Lalibela
+DESCRIPTION:Etappe 8 · Addo → Lalibela — Mark's Camp\n\n⚠️ Zeitk
+ ritisch: Check-in nur 12:00–13:00\n   Ihr fahrt nicht selbst ins Camp. 
+ Das Auto bleibt an der Rezeption an der N2\, ein Ranger bringt euch im Sa
+ farifahrzeug weiter (ca. 20–30 Min).\n\n⚠️ Navi: „Lalibela Game R
+ eserve" eingeben\n   Ausdrückliche Warnung der Lodge: auf keinen Fall ei
+ ner GPS-Empfehlung über Schotterpisten folgen. Die Zufahrt liegt direkt 
+ an der N2.\n\n⚠️ Kinder unter 2 Jahren dürfen nicht auf Safari\n   L
+ aut Lalibelas eigener Broschüre: unter 2 Jahren keine Safari-Fahrten\, d
+ as Kind bleibt mit Child-Minder oder Nanny im Camp – im Preis enthalten
+ . Kinderbetreuung während Morgen- und Abendfahrten sowie während der Ma
+ hlzeiten der Erwachsenen ist inklusive.\n\nTagesplan: https://salsafever2
+ 1.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d24i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261024T060000
+DTEND;TZID=Africa/Johannesburg:20261024T090000
+SUMMARY:💡 Idee: Morgen-Safari
+DESCRIPTION:Sonnenaufgang im Oktober ca. 05:50. Warme Decke und Mütze 
+ – im offenen Fahrzeug ist es früh kalt.
+END:VEVENT
+BEGIN:VEVENT
+UID:d24i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261024T100000
+DTEND;TZID=Africa/Johannesburg:20261024T120000
+SUMMARY:💡 Idee: Kinderprogramm „Tiny Trackers"
+DESCRIPTION:Schnitzeljagd\, Basteln\, Steine bemalen\, Tierspuren bestimm
+ en. Dazu zwei Pools\, Jungle Gym und Sandkasten. Zwischen 10 und 16 Uhr p
+ assiert auf Safari ohnehin nichts.
+END:VEVENT
+BEGIN:VEVENT
+UID:d24i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261024T120000
+DTEND;TZID=Africa/Johannesburg:20261024T143000
+SUMMARY:😴 Mittagsschlaf
+DESCRIPTION:Das Camp ist diskret eingezäunt.
+END:VEVENT
+BEGIN:VEVENT
+UID:d24i3@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261024T160000
+DTEND;TZID=Africa/Johannesburg:20261024T190000
+SUMMARY:💡 Idee: Nachmittags-Safari
+END:VEVENT
+BEGIN:VEVENT
+UID:day24@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261025
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Lalibela
+DESCRIPTION:Etappe 8 · Lalibela — All-Inclusive\n\nTagesplan: https://
+ salsafever21.github.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d25i0@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261025T060000
+DTEND;TZID=Africa/Johannesburg:20261025T090000
+SUMMARY:💡 Idee: Morgen-Safari
+END:VEVENT
+BEGIN:VEVENT
+UID:d25i2@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261025T160000
+DTEND;TZID=Africa/Johannesburg:20261025T190000
+SUMMARY:💡 Idee: Nachmittags-Safari
+END:VEVENT
+BEGIN:VEVENT
+UID:day25@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:📍 Lalibela
+DESCRIPTION:Etappe 8 · Lalibela — All-Inclusive\n\n💡 Kinder unter 8
+  essen früher\n   Eigenes Kindermenü\, eigener Bereich. Sagt Wünsche u
+ nd Allergien beim Lodge-Manager an.\n\nTagesplan: https://salsafever21.gi
+ thub.io/southafrica/
+END:VEVENT
+BEGIN:VEVENT
+UID:d26i1@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;TZID=Africa/Johannesburg:20261026T110000
+DTEND;TZID=Africa/Johannesburg:20261026T113000
+SUMMARY:🔑 Check-out Mark's Camp
+END:VEVENT
+BEGIN:VEVENT
+UID:day26@southafrica.salsafever21
+DTSTAMP:20260823T174500Z
+LAST-MODIFIED:20260823T174500Z
+SEQUENCE:0
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261027
+TRANSP:TRANSPARENT
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:✈️ Lalibela → Flughafen
+DESCRIPTION:Etappe 8 · Lalibela → Flughafen — Abreise Gqeberha\n\n
+ ⚠️ Vier Stunden vor Abflug im Camp starten\n   Transfer Camp → Reze
+ ption im Safarifahrzeug 20–30 Min\, dann 96 km bis zum Flughafen\, dazu
+  Mietwagenrückgabe.\n\n🚗 Lalibela → Flughafen Gqeberha (PLZ)\n   96
+  km · Google 1:05–1:15 h · realistisch 1:35–1:50 h · N2 südwestw
+ ärts an Nanaga vorbei → M4 → M9 → M11.\n\n💡 Letzter Stopp: SANC
+ COB oder Grass Roof\n   SANCCOB Pinguin-Rehabilitation\, 15 Min. vom Flug
+ hafen\, Fütterung 09:30. Oder Grass Roof Farm mit gratis Spielplatz dire
+ kt neben den Tischen (08:00–16:30) – damit sich die Kinder vor dem Fl
+ ug austoben.\n\n⚠️ Sacramento hat montags zu\n   Falls ihr das Restau
+ rant in Schoenmakerskop eingeplant hattet.\n\nTagesplan: https://salsafev
+ er21.github.io/southafrica/
+END:VEVENT
+END:VCALENDAR
