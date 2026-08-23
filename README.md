@@ -12,6 +12,7 @@ Reisebegleiter für unsere Selbstfahrer-Reise mit einem 4-jährigen Kind:
 | **Tagesplan** | Zwei Ansichten: **Liste** (alle 23 Tage untereinander) und **Wochenkalender** (Zeitraster mit farbigen Balken, Abfahrtszeiten und Fahrtdauer). Check-in/out, fixe Buchungen und je ein Vorschlag pro Tag. Das Fenster 12:30–15:00 bleibt für den Mittagsschlaf frei. |
 | **Restaurants** | 104 kinderfreundliche Lokale, alle mit Bewertung ab 4,2 (Google bzw. TripAdvisor, Stand 22.08.2026). |
 | **Aktivitäten** | 76 Aktivitäten, geprüft auf Eignung für 0- bis 5-Jährige: Dauer, Kinderwagentauglichkeit, Mindestalter, Preis, beste Tageszeit. |
+| **Budget** | Alle Aktivitätspreise in Rand und Franken, Wechselkursrechner und eine Kostenaufstellung für die Reise. |
 | **Checkliste** | 21 datierte Aufgaben zum Abhaken – dieselben stecken als Termine mit Erinnerung im Kalender. |
 | **Infos & Sicherheit** | Notrufnummern, Einreise, Auto & Verkehr, Sicherheit, Strand- und Wildtierregeln, Schlechtwetterideen – auf Deutsch zusammengefasst aus den Reiseunterlagen. |
 | **Kalender & Karten** | Abonnierbarer Ferienkalender (`reise.ics`), Ein-Klick-Routen pro Etappe und die Anleitung für den Google-My-Maps-Import. |
@@ -22,6 +23,8 @@ Reisebegleiter für unsere Selbstfahrer-Reise mit einem 4-jährigen Kind:
 - **Heute-Ansicht.** Vor der Reise ein Countdown mit den nächsten offenen Vorbereitungspunkten, während der Reise der aktuelle Tag mit den nächsten Terminen.
 - **Bearbeiten.** Termine ausblenden, verschieben, umbenennen, eigene ergänzen; ganze Kategorien per Häkchen abschalten. Daraus lässt sich eine neue `reise.ics` erzeugen.
 - **Handschuhfach-Seite.** Ein Klick auf *Drucken* gibt eine A4-Seite mit Notrufnummern, Unterkunftsadressen, Fahrzeiten und Buchungen aus.
+- **Preise überall.** Jede Aktivität zeigt den Familienpreis (2 Erwachsene + 1 Kind) in Rand und Franken, jedes Restaurant eine Spanne. Der Kurs ist im Budget-Reiter einstellbar und schlägt sofort auf alle Beträge durch.
+- **Routenkarte** als SVG mit echter Küstenlinie – ohne externen Kartendienst, also auch offline.
 - **Sonnenauf- und -untergang** pro Tag und Ort, offline berechnet.
 - **Hell / Dunkel / Automatisch** oben rechts umschaltbar.
 - **Vollständig responsiv.** Der Kalender zeigt auf breiten Bildschirmen die ganze Woche, auf dem Handy einen Tag – kein seitliches Scrollen.
@@ -80,7 +83,7 @@ python3 ics.py ../reise.ics   # erzeugt den Kalender
 
 `gen2.py` schreibt auch `sw.js` neu – die Cache-Version darin hängt am Inhalt von `index.html`, damit Besucher nach einem Update nicht auf der alten Fassung sitzenbleiben.
 
-Inhalte ändern: `src/plan.py` (Tagesplan **und** Kalender), `src/akt.py` (Aktivitäten), `src/build.py` (Restaurants), `src/info.py` (Infotexte), `src/prep.py` (Vorbereitungs-Checkliste), `src/tpl.html` (Layout). `src/sun.py` rechnet die Sonnenzeiten, `src/events.py` führt Tagesplan und Kalender zusammen.
+Inhalte ändern: `src/plan.py` (Tagesplan **und** Kalender), `src/akt.py` (Aktivitäten), `src/build.py` (Restaurants), `src/info.py` (Infotexte), `src/prep.py` (Vorbereitungs-Checkliste), `src/tpl.html` (Layout). `src/preise.py` übersetzt die Preistexte in Zahlen, `src/karte.py` zeichnet die Routenkarte, `src/sun.py` rechnet die Sonnenzeiten, `src/events.py` führt Tagesplan und Kalender zusammen.
 
 Wochenkalender und ICS werden beide aus `src/plan.py` über `src/events.py` erzeugt – eine Zeitangabe dort landet in beiden. Der Kalender wird aus `src/plan.py` erzeugt – eine Änderung dort landet nach dem Push automatisch bei allen, die den Kalender abonniert haben.
 
