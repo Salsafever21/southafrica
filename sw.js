@@ -1,7 +1,8 @@
 // Automatisch erzeugt – nicht von Hand bearbeiten.
-const V = 'suedafrika-8985555024';
+const V = 'suedafrika-5945278f15';
 const SHELL = ['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png',
-               './reise.ics','./data/Suedafrika_Restaurants_und_Aktivitaeten.csv'];
+               './reise.ics','./docs/sars-reiseerklaerung.pdf',
+               './data/Suedafrika_Restaurants_und_Aktivitaeten.csv'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(SHELL).catch(()=>{})).then(()=>self.skipWaiting()));
