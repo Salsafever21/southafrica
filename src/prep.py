@@ -1,0 +1,53 @@
+# -*- coding: utf-8 -*-
+"""Vorbereitungsaufgaben mit Datum – erscheinen auf der Seite und im Kalender."""
+# (id, datum, titel, detail, dringlich)
+TASKS = [
+("p01","2026-08-25","Lalibela: Kinderprogramm und Kinderpreis bestätigen",
+ "Mit 4 Jahren darf euer Kind auf die Safari-Fahrten (Mindestalter 2). Bestätigen lassen: Anmeldung fürs Kinderprogramm „Tiny Trackers\", eigenes Kinderfahrzeug mit Ranger, Kinderpreis (2–12 Jahre zahlen 50 % plus 50 % der Abgaben), Zustellbett und Essenswünsche. stay@lalibela.co.za · +27 87 550 1885",True),
+("p02","2026-08-25","Melozhori anschreiben: Game Drive und Catering",
+ "Mindestalter für den Game Drive erfragen (wird nirgends publiziert). Semi-Catering bestellen falls gewünscht: R850/Erwachsener, R350/Kind unter 8, muss vor Anreise stehen. info@melozhori.co.za · +27 66 595 7823",True),
+("p03","2026-08-25","Whale Watching prüfen (13.10., 3 Std. mit 4-Jährigem)",
+ "Unter 13 Jahren ist durchgehend eine Schwimmweste Pflicht – Grösse für ein 4-jähriges Kind bestätigen lassen. Drei Stunden ohne Ausstieg sind lang: fragt nach einer kürzeren Tour. Notfalls Landbeobachtung (De Kelders oder Hermanus Cliff Path), da sind die Wale im Oktober oft 20–50 m vom Ufer entfernt.",True),
+("p04","2026-08-25","Woodall: private Familien-Safari anfragen",
+ "Die regulären Game Drives und auch die Parkfahrten in Addo haben Mindestalter 6 – mit 4 Jahren also nicht möglich. Private Safaris für Familien sind auf Anfrage erlaubt, Preis erfragen. Sonst bleibt die Selbstfahrer-Safari im eigenen Auto, die mit einem 4-Jährigen ohnehin entspannter ist. +27 42 233 0128",False),
+("p05","2026-09-07","Kinderpässe prüfen",
+ "Gültig mindestens 30 Tage über den Rückflug hinaus, zwei leere Seiten. Verlängerte Kinderpässe können bei der Einreise Probleme machen – im Zweifel neu ausstellen lassen.",True),
+("p06","2026-09-07","Reiseversicherung abschliessen",
+ "Medizinische Notfälle, Unfälle, Annullierung. Muss vor und während der Reise gelten, Prämie bei Buchung zahlen – der Schutz beginnt erst mit Zahlungseingang.",True),
+("p07","2026-09-07","Internationalen Führerschein besorgen",
+ "Nicht vorgeschrieben, aber empfohlen. Erspart Diskussionen bei Polizeikontrollen, Unfällen und Versicherungsfällen.",False),
+("p08","2026-09-14","Babylonstoren reservieren",
+ "Babel muss in der Hochsaison Wochen im Voraus gebucht werden. Das Greenhouse auf demselben Gelände ist die entspanntere Familienvariante. Gartenzugang R150, Kinder unter 18 gratis.",True),
+("p09","2026-09-14","Weingut-Picknicks buchen",
+ "Boschendal (24 Std. vorher), Nederburg, Warwick, Spier, Laborie. Alle nur mit Vorbestellung. Oktober ist Beginn der Hochsaison.",False),
+("p10","2026-09-14","Tafelberg-Tickets online kaufen",
+ "Vorab online ist günstiger. Anstehen muss man trotzdem, ausser mit den teuren Fast-Track-Tickets. Am Besuchstag morgens den Betriebsstatus prüfen – bei Wind wird geschlossen.",False),
+("p11","2026-09-14","Keurbooms River Ferry und Tenikwa buchen",
+ "Keurbooms: Buchung zwingend, Abfahrten nach Tide – Tidenplan für den 17.–20.10. erfragen, dazu Toiletten an Bord klären. Tenikwa: nur die „Wild Cat Experience\" (1 Std., kein Mindestalter). 069 733 0410",False),
+("p12","2026-09-21","E-SIM kaufen und Datenvolumen aufladen",
+ "Wichtig: das Datenvolumen noch in der Schweiz kaufen. Ohne Guthaben habt ihr bei der Ankunft keinen Empfang und könnt es offline nicht mehr kaufen. Saily oder Airalo.",True),
+("p13","2026-09-21","Reiseapotheke zusammenstellen",
+ "Erkältung, Fieber, Schmerzen, Magen-Darm, Übelkeit, Pflaster, persönliche Medikamente. Vor Ort gibt es alles bei Clicks oder Dis-Chem.",False),
+("p14","2026-09-21","Kindersitz bestätigen",
+ "African Twist Travel bucht Kindersitze bis 7 Jahre mit – für ein 4-jähriges Kind also enthalten. Kurz gegenprüfen, dass Alter und Gruppe stimmen. Ein Babybett braucht ihr nicht mehr, dafür bei den Unterkünften ein Zustellbett bestätigen.",False),
+("p15","2026-09-28","Öffnungsstatus der Wackelkandidaten prüfen",
+ "Bontebok NP nach dem Hochwasser (+27 28 514 2735) · Storms River Hängebrücken · Dunes Beach Restaurant Hout Bay · River Front Restaurant Addo · Viljoensdrift Bootsfahrt (+27 23 615 1017) · Klein River Cheese · SANCCOB montags (+27 41 583 1830)",True),
+("p16","2026-09-28","Offline-Karten in Google Maps laden",
+ "Westkap und Ostkap herunterladen. Auf der N2 und im Overberg ist der Empfang lückenhaft.",True),
+("p17","2026-09-28","Packen: feste Schuhe, Badeschuhe, Zwiebelprinzip",
+ "Euer Kind läuft selbst – eine feste Schuhe braucht ihr nicht. Für Robberg, Platbos und die Storms-River-Brücke trotzdem feste Schuhe einpacken, das sind Fels-, Wald- und Treppenwege. Badeschuhe für die Gezeitenbecken. Sonnencreme, Hut, Sonnenbrille. Warme Schicht für den Tafelberg und die frühen Pirschfahrten bei Lalibela.",False),
+("p18","2026-10-02","Notrufnummern auf Papier notieren",
+ "Falls das Handy gestohlen wird oder der Akku leer ist. Dazu Kopien von Pass und Kreditkartennummern getrennt aufbewahren. Die Druckseite auf dieser Website enthält alles.",True),
+("p19","2026-10-02","Namola-App installieren und einrichten",
+ "Notfall-App für Südafrika, ortet euch per GPS. Dazu Uber vollständig einrichten, solange ihr noch Empfang habt.",False),
+("p20","2026-10-03","SARS Reiseerklärung einreichen (alle 3 Personen)",
+ "Frühestens 24 Stunden vor Abflug – vorher lehnt das Formular das Ankunftsdatum ab. Eine Deklaration deckt alle drei ab: du als Hauptperson, Frau und Sohn als Travelling Companions. Alle Feldwerte stehen fertig im PDF unten, inklusive Adresse Adamsgarth, Flugdaten und Hinweis NIL statt FULL. Beide Pässe der Companions bereithalten. Nach dem Absenden kommt eine Bestätigungsmail mit QR-Code – als Screenshot aufs Handy legen.",True),
+("p21","2026-10-03","Flug-Check-in und Wetterprognose",
+ "Wetter für Kapstadt anschauen – danach entscheidet sich, ob der Tafelberg am 6.10. klappt oder ihr tauschen müsst.",False),
+]
+
+# Optionale Links pro Aufgabe: {task_id: [(Label, URL, typ)]}  typ: "pdf" | "web"
+LINKS = {
+ "p20": [("Ausfüllhilfe als PDF", "docs/sars-reiseerklaerung.pdf", "pdf"),
+         ("SARS-Formular öffnen", "https://tools.sars.gov.za/sarsonlinequery/traveller", "web")],
+}
