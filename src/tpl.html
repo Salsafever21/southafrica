@@ -412,6 +412,17 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
 .plks{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 0 27px}
+.syncstate{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;
+  font-size:.84rem;font-weight:600;border:1px solid var(--line);background:var(--surface2);color:var(--ink2);margin:0 0 12px}
+.syncstate.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.syncstate.busy{border-color:var(--sun);color:var(--sun);background:var(--sun-soft)}
+.syncstate.err{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
+#synckeyline code{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--surface2);
+  padding:2px 7px;border-radius:4px;word-break:break-all}
+#syncjoinrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+#syncjoinrow[hidden]{display:none}
+#synckeyin{flex:1 1 240px;min-width:0;font:inherit;font-family:"IBM Plex Mono",monospace;font-size:.86rem;
+  padding:8px 11px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);color:var(--ink)}
 .plk{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;
   border:1px solid var(--line);background:var(--surface2);color:var(--ink);
   font-size:.78rem;font-weight:600;text-decoration:none;line-height:1.2}
@@ -791,6 +802,126 @@ __CHECK__
   </div>
  </form></dialog>
 __PRINTCARD__
+
+<script>
+// ---------- Geraete-Abgleich (Supabase) ----------
+window.SYNC = (function(){
+  var RPC = 'https://ywpyurlzrexznzlarubm.supabase.co/rest/v1/rpc/';
+  var AK  = 'sb_publishable_rrRqZ0tgC3uI2utoSKNl_g_UTeJAIN2';
+  var KEYS = ['za-favs2','za-cal-edits','za-prep','za-budget','za-kurs'];
+  var SK = 'za-sync-key', SM = 'za-sync-meta';
+  var applying = false, timer = null, busy = false;
+  var listeners = [];
+
+  function ls(k){ try{ return localStorage.getItem(k) }catch(e){ return null } }
+  function lsSet(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
+  function meta(){ try{ return JSON.parse(ls(SM)||'{}')||{} }catch(e){ return {} } }
+  function saveMeta(m){ lsSet(SM, JSON.stringify(m)) }
+  function key(){ return ls(SK) || '' }
+  function on(){ return !!key() }
+  function emit(st,txt){ listeners.forEach(function(f){ try{ f(st,txt) }catch(e){} }) }
+
+  function newKey(){
+    var a='abcdefghijkmnopqrstuvwxyz23456789', o='';
+    var b=new Uint8Array(24);
+    if(window.crypto&&crypto.getRandomValues) crypto.getRandomValues(b);
+    else for(var j=0;j<24;j++) b[j]=Math.floor(Math.random()*256);
+    for(var i=0;i<24;i++) o+=a[b[i]%a.length];
+    return o;
+  }
+
+  // Jede Aenderung an einem Sync-Schluessel stempeln und Push planen
+  try{
+    var _set = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(k,v){
+      _set.call(this,k,v);
+      if(this===window.localStorage && !applying && KEYS.indexOf(k)>=0){
+        try{ var m=meta(); m[k]=Date.now(); saveMeta(m); plan(); }catch(e){}
+      }
+    };
+  }catch(e){}
+
+  function post(fn, body, ms){
+    var ctl = window.AbortController ? new AbortController() : null;
+    var to = setTimeout(function(){ if(ctl) ctl.abort() }, ms||9000);
+    return fetch(RPC+fn, {method:'POST', signal: ctl?ctl.signal:undefined,
+      headers:{'apikey':AK,'Content-Type':'application/json'},
+      body: JSON.stringify(body)})
+      .then(function(r){ clearTimeout(to); if(!r.ok) throw new Error('http '+r.status); return r.json() });
+  }
+
+  function run(){
+    var k = key();
+    if(!k) return Promise.resolve(false);
+    if(!navigator.onLine){ emit('off','offline'); return Promise.resolve(false) }
+    if(busy) return Promise.resolve(false);
+    busy = true; emit('busy','gleicht ab …');
+    return post('suedafrika_sync_get',{p_key:k}).then(function(remote){
+      if(!remote || typeof remote!=='object') remote={};
+      var m=meta(), out={}, changed=false;
+      KEYS.forEach(function(kk){
+        var lv=ls(kk), lt=m[kk]||0;
+        var r=remote[kk], rt=(r&&typeof r.t==='number')?r.t:0;
+        if(r && typeof r.v==='string' && rt>lt){
+          applying=true; lsSet(kk, r.v); applying=false;
+          m[kk]=rt; out[kk]={t:rt,v:r.v}; changed=true;
+        } else if(lv!=null){
+          if(!m[kk]){ m[kk]=lt=Date.now() }
+          out[kk]={t:m[kk], v:lv};
+        } else if(r){ out[kk]=r }
+      });
+      saveMeta(m);
+      var same = JSON.stringify(remote)===JSON.stringify(out);
+      var next = same ? Promise.resolve(out) : post('suedafrika_sync_put',{p_key:k,p_payload:out});
+      return next.then(function(){
+        busy=false; emit('ok', changed?'aktualisiert':'aktuell');
+        return changed;
+      });
+    }).catch(function(e){
+      busy=false; emit('err','kein Abgleich möglich');
+      return false;
+    });
+  }
+
+  function plan(){ if(!on()) return; clearTimeout(timer); timer=setTimeout(function(){ run() },2000) }
+
+  // Erststart: Schluessel aus dem Link uebernehmen
+  try{
+    var mm = /[#&]sync=([a-z0-9]{16,64})/i.exec(location.hash||'');
+    if(mm){ lsSet(SK, mm[1].toLowerCase()); saveMeta({});
+      history.replaceState(null,'',location.pathname+location.search); }
+  }catch(e){}
+
+  function boot(){
+    if(!on()) return;
+    run().then(function(changed){
+      if(changed && !sessionStorage.getItem('za-sync-reload')){
+        try{ sessionStorage.setItem('za-sync-reload','1') }catch(e){}
+        location.reload();
+      }
+    });
+  }
+  try{ sessionStorage.removeItem('za-sync-reload') }catch(e){}
+
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='visible' && on()) run().then(function(c){ if(c) location.reload() });
+  });
+  window.addEventListener('online', function(){ if(on()) run() });
+  setInterval(function(){ if(on() && document.visibilityState==='visible') run().then(function(c){ if(c) location.reload() }) }, 90000);
+
+  return {
+    on:on, key:key, run:run, keys:KEYS,
+    start:function(){ lsSet(SK,newKey()); saveMeta({}); return run() },
+    join:function(k){ k=String(k||'').trim().toLowerCase().replace(/[^a-z0-9]/g,'');
+      if(k.length<16||k.length>64) return Promise.reject(new Error('kurz'));
+      lsSet(SK,k); saveMeta({}); return run() },
+    stop:function(){ try{ localStorage.removeItem(SK); localStorage.removeItem(SM) }catch(e){} emit('none','aus') },
+    link:function(){ return location.origin+location.pathname+'#sync='+key() },
+    watch:function(f){ listeners.push(f) },
+    boot:boot
+  };
+})();
+</script>
 
 <script>
 (function(){
@@ -1793,6 +1924,44 @@ window.ROUTE = (function(){
  var r=document.getElementById('prepreset');
  if(r) r.addEventListener('click',function(){ st={}; save(); boxes.forEach(function(b){b.checked=false}); count() });
  count();
+})();
+
+// ---- Geraete-Abgleich: Bedienung ----
+(function(){
+ var box=document.getElementById('syncbox'); if(!box||!window.SYNC) return;
+ var st=document.getElementById('syncstate'),
+     bOn=document.getElementById('syncon'), bNow=document.getElementById('syncnow'),
+     bLink=document.getElementById('synclink'), bOff=document.getElementById('syncoff'),
+     bJoin=document.getElementById('syncjoin'), inp=document.getElementById('synckeyin'),
+     row=document.getElementById('syncjoinrow'), kl=document.getElementById('synckeyline');
+ var LBL={ok:'●',busy:'◐',err:'▲',off:'◌',none:'◌'};
+ function paint(state,txt){
+   var an=SYNC.on();
+   bOn.hidden=an; bNow.hidden=!an; bLink.hidden=!an; bOff.hidden=!an;
+   bJoin.hidden=an; kl.hidden=!an; if(an) row.hidden=true;
+   if(an) kl.innerHTML='Schlüssel: <code>'+SYNC.key()+'</code>';
+   st.className='syncstate '+(an?(state||'ok'):'none');
+   st.textContent = an ? (LBL[state||'ok']+' Abgleich aktiv · '+(txt||'bereit'))
+                       : '◌ Abgleich aus – Haken gelten nur in diesem Browser';
+ }
+ SYNC.watch(paint);
+ bOn.addEventListener('click',function(){ paint('busy','…'); SYNC.start(); });
+ bNow.addEventListener('click',function(){ SYNC.run().then(function(c){ if(c) location.reload() }) });
+ bOff.addEventListener('click',function(){ SYNC.stop(); paint() });
+ bJoin.addEventListener('click',function(){ row.hidden=!row.hidden; if(!row.hidden) inp.focus() });
+ document.getElementById('syncjoingo').addEventListener('click',function(){
+   SYNC.join(inp.value).then(function(){ location.reload() })
+     .catch(function(){ paint('err','Schlüssel unvollständig') });
+ });
+ bLink.addEventListener('click',function(){
+   var t=SYNC.link();
+   var done=function(){ bLink.textContent='Link kopiert ✓'; setTimeout(function(){bLink.textContent='Link fürs zweite Gerät kopieren'},2200) };
+   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done,function(){ prompt('Link:',t) });
+   else { var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select();
+          try{document.execCommand('copy'); done()}catch(e){} a.remove() }
+ });
+ paint();
+ SYNC.boot();
 })();
 
 // ---- Drucken ----

@@ -240,6 +240,23 @@ PREPLIST = ('<p class="sub">Diese Punkte stecken auch im abonnierten Kalender �
 
 CHECKPANEL = ('<section class="igrp" id="i-todo"><h2>Checkliste</h2>'
   '<div class="isec">' + PREPLIST + '</div>'
+  + '''<div class="isec" id="syncbox"><h3>Geräte-Abgleich</h3>
+<p class="sub">Ohne Abgleich gelten Haken, Kalenderänderungen und Merkliste nur in dem Browser, in dem du sie gesetzt hast – iPad und PC führen dann getrennte Listen. Mit Abgleich halten alle Geräte denselben Stand.</p>
+<div class="syncstate none" id="syncstate">◌ Abgleich aus</div>
+<div class="btnrow">
+ <button type="button" class="btn solid" id="syncon">Abgleich einschalten</button>
+ <button type="button" class="btn" id="syncnow" hidden>Jetzt abgleichen</button>
+ <button type="button" class="btn" id="synclink" hidden>Link fürs zweite Gerät kopieren</button>
+ <button type="button" class="btn" id="syncjoin">Bestehenden Schlüssel eintragen</button>
+ <button type="button" class="btn danger" id="syncoff" hidden>Abgleich ausschalten</button>
+</div>
+<div id="syncjoinrow" hidden>
+ <input id="synckeyin" type="text" inputmode="latin" autocomplete="off" spellcheck="false" placeholder="Schlüssel vom ersten Gerät">
+ <button type="button" class="btn solid" id="syncjoingo">Übernehmen</button>
+</div>
+<p class="hint" id="synckeyline" hidden></p>
+<p class="hint"><b>So geht es:</b> auf einem Gerät einschalten, dort <i>Link fürs zweite Gerät kopieren</i> und sich den Link selbst schicken. Auf dem zweiten Gerät den Link öffnen – fertig. Danach gleicht sich alles von selbst ab, beim Öffnen der Seite und während sie offen ist.</p>
+<p class="hint"><b>Was gespeichert wird:</b> nur Haken der Checkliste, deine Kalenderänderungen, die Merkliste und die Budget-Einstellungen. Keine Namen, keine Passdaten. Der Schlüssel ist das Passwort – wer ihn hat, sieht diesen Stand. Offline funktioniert alles weiter, der Abgleich holt es nach. <b>Im Claude-Vorschaufenster ist der Abgleich blockiert</b> – er läuft nur auf der richtigen Seite auf github.io.</p></div>'''
   '<div class="isec"><h3>Vor Ort kurz anrufen</h3>' + _ANRUF + '</div></section>')
 
 infohtml=[]

@@ -428,6 +428,17 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
 .plks{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 0 27px}
+.syncstate{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;
+  font-size:.84rem;font-weight:600;border:1px solid var(--line);background:var(--surface2);color:var(--ink2);margin:0 0 12px}
+.syncstate.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.syncstate.busy{border-color:var(--sun);color:var(--sun);background:var(--sun-soft)}
+.syncstate.err{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
+#synckeyline code{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--surface2);
+  padding:2px 7px;border-radius:4px;word-break:break-all}
+#syncjoinrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+#syncjoinrow[hidden]{display:none}
+#synckeyin{flex:1 1 240px;min-width:0;font:inherit;font-family:"IBM Plex Mono",monospace;font-size:.86rem;
+  padding:8px 11px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);color:var(--ink)}
 .plk{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;
   border:1px solid var(--line);background:var(--surface2);color:var(--ink);
   font-size:.78rem;font-weight:600;text-decoration:none;line-height:1.2}
@@ -823,7 +834,23 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 </div>
 
 <div class="panel" id="p-check">
-<section class="igrp" id="i-todo"><h2>Checkliste</h2><div class="isec"><p class="sub">Diese Punkte stecken auch im abonnierten Kalender – jeweils um 9 Uhr mit Erinnerung. Abgehakt wird hier, gespeichert in diesem Browser.</p><div class="prepbar"><span id="prepcount"></span><button type="button" class="btn" id="prepreset">Haken zurücksetzen</button></div><div class="pgrp"><h4><span class="pdate">25. August</span><span class="plead">Dienstag · 5 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p01"><span><b>Lalibela: Kinderprogramm und Kinderpreis bestätigen</b><em>Mit 4 Jahren darf euer Kind auf die Safari-Fahrten (Mindestalter 2). Bestätigen lassen: Anmeldung fürs Kinderprogramm „Tiny Trackers&quot;, eigenes Kinderfahrzeug mit Ranger, Kinderpreis (2–12 Jahre zahlen 50 % plus 50 % der Abgaben), Zustellbett und Essenswünsche. stay@lalibela.co.za · +27 87 550 1885</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p02"><span><b>Melozhori anschreiben: Game Drive und Catering</b><em>Mindestalter für den Game Drive erfragen (wird nirgends publiziert). Semi-Catering bestellen falls gewünscht: R850/Erwachsener, R350/Kind unter 8, muss vor Anreise stehen. info@melozhori.co.za · +27 66 595 7823</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p03"><span><b>Whale Watching prüfen (13.10., 3 Std. mit 4-Jährigem)</b><em>Unter 13 Jahren ist durchgehend eine Schwimmweste Pflicht – Grösse für ein 4-jähriges Kind bestätigen lassen. Drei Stunden ohne Ausstieg sind lang: fragt nach einer kürzeren Tour. Notfalls Landbeobachtung (De Kelders oder Hermanus Cliff Path), da sind die Wale im Oktober oft 20–50 m vom Ufer entfernt.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p04"><span><b>Woodall: private Familien-Safari anfragen</b><em>Die regulären Game Drives und auch die Parkfahrten in Addo haben Mindestalter 6 – mit 4 Jahren also nicht möglich. Private Safaris für Familien sind auf Anfrage erlaubt, Preis erfragen. Sonst bleibt die Selbstfahrer-Safari im eigenen Auto, die mit einem 4-Jährigen ohnehin entspannter ist. +27 42 233 0128</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">7. September</span><span class="plead">Montag · 3 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p05"><span><b>Kinderpässe prüfen</b><em>Gültig mindestens 30 Tage über den Rückflug hinaus, zwei leere Seiten. Verlängerte Kinderpässe können bei der Einreise Probleme machen – im Zweifel neu ausstellen lassen.</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p06"><span><b>Reiseversicherung abschliessen</b><em>Medizinische Notfälle, Unfälle, Annullierung. Muss vor und während der Reise gelten, Prämie bei Buchung zahlen – der Schutz beginnt erst mit Zahlungseingang.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p07"><span><b>Internationalen Führerschein besorgen</b><em>Nicht vorgeschrieben, aber empfohlen. Erspart Diskussionen bei Polizeikontrollen, Unfällen und Versicherungsfällen.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">14. September</span><span class="plead">Montag · 2 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p08"><span><b>Babylonstoren reservieren</b><em>Babel muss in der Hochsaison Wochen im Voraus gebucht werden. Das Greenhouse auf demselben Gelände ist die entspanntere Familienvariante. Gartenzugang R150, Kinder unter 18 gratis.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p09"><span><b>Weingut-Picknicks buchen</b><em>Boschendal (24 Std. vorher), Nederburg, Warwick, Spier, Laborie. Alle nur mit Vorbestellung. Oktober ist Beginn der Hochsaison.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p10"><span><b>Tafelberg-Tickets online kaufen</b><em>Vorab online ist günstiger. Anstehen muss man trotzdem, ausser mit den teuren Fast-Track-Tickets. Am Besuchstag morgens den Betriebsstatus prüfen – bei Wind wird geschlossen.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p11"><span><b>Keurbooms River Ferry und Tenikwa buchen</b><em>Keurbooms: Buchung zwingend, Abfahrten nach Tide – Tidenplan für den 17.–20.10. erfragen, dazu Toiletten an Bord klären. Tenikwa: nur die „Wild Cat Experience&quot; (1 Std., kein Mindestalter). 069 733 0410</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">21. September</span><span class="plead">Montag · 13 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p12"><span><b>E-SIM kaufen und Datenvolumen aufladen</b><em>Wichtig: das Datenvolumen noch in der Schweiz kaufen. Ohne Guthaben habt ihr bei der Ankunft keinen Empfang und könnt es offline nicht mehr kaufen. Saily oder Airalo.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p13"><span><b>Reiseapotheke zusammenstellen</b><em>Erkältung, Fieber, Schmerzen, Magen-Darm, Übelkeit, Pflaster, persönliche Medikamente. Vor Ort gibt es alles bei Clicks oder Dis-Chem.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p14"><span><b>Kindersitz bestätigen</b><em>African Twist Travel bucht Kindersitze bis 7 Jahre mit – für ein 4-jähriges Kind also enthalten. Kurz gegenprüfen, dass Alter und Gruppe stimmen. Ein Babybett braucht ihr nicht mehr, dafür bei den Unterkünften ein Zustellbett bestätigen.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">28. September</span><span class="plead">Montag · 6 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p15"><span><b>Öffnungsstatus der Wackelkandidaten prüfen</b><em>Bontebok NP nach dem Hochwasser (+27 28 514 2735) · Storms River Hängebrücken · Dunes Beach Restaurant Hout Bay · River Front Restaurant Addo · Viljoensdrift Bootsfahrt (+27 23 615 1017) · Klein River Cheese · SANCCOB montags (+27 41 583 1830)</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p16"><span><b>Offline-Karten in Google Maps laden</b><em>Westkap und Ostkap herunterladen. Auf der N2 und im Overberg ist der Empfang lückenhaft.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p17"><span><b>Packen: feste Schuhe, Badeschuhe, Zwiebelprinzip</b><em>Euer Kind läuft selbst – eine feste Schuhe braucht ihr nicht. Für Robberg, Platbos und die Storms-River-Brücke trotzdem feste Schuhe einpacken, das sind Fels-, Wald- und Treppenwege. Badeschuhe für die Gezeitenbecken. Sonnencreme, Hut, Sonnenbrille. Warme Schicht für den Tafelberg und die frühen Pirschfahrten bei Lalibela.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">2. Oktober</span><span class="plead">Freitag · 2 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p18"><span><b>Notrufnummern auf Papier notieren</b><em>Falls das Handy gestohlen wird oder der Akku leer ist. Dazu Kopien von Pass und Kreditkartennummern getrennt aufbewahren. Die Druckseite auf dieser Website enthält alles.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p19"><span><b>Namola-App installieren und einrichten</b><em>Notfall-App für Südafrika, ortet euch per GPS. Dazu Uber vollständig einrichten, solange ihr noch Empfang habt.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">3. Oktober</span><span class="plead">Samstag · 1 Tag vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p20"><span><b>SARS Reiseerklärung einreichen (alle 3 Personen)</b><em>Frühestens 24 Stunden vor Abflug – vorher lehnt das Formular das Ankunftsdatum ab. Eine Deklaration deckt alle drei ab: du als Hauptperson, Frau und Sohn als Travelling Companions. Alle Feldwerte stehen fertig im PDF unten, inklusive Adresse Adamsgarth, Flugdaten und Hinweis NIL statt FULL. Beide Pässe der Companions bereithalten. Nach dem Absenden kommt eine Bestätigungsmail mit QR-Code – als Screenshot aufs Handy legen.</em></span></label><div class="plks"><a class="plk pdf" href="docs/sars-reiseerklaerung.pdf" target="_blank" rel="noopener">⬇︎ Ausfüllhilfe als PDF</a><a class="plk web" href="https://tools.sars.gov.za/sarsonlinequery/traveller" target="_blank" rel="noopener">↗ SARS-Formular öffnen</a></div></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p21"><span><b>Flug-Check-in und Wetterprognose</b><em>Wetter für Kapstadt anschauen – danach entscheidet sich, ob der Tafelberg am 6.10. klappt oder ihr tauschen müsst.</em></span></label></li></ul></div></div><div class="isec"><h3>Vor Ort kurz anrufen</h3>
+<section class="igrp" id="i-todo"><h2>Checkliste</h2><div class="isec"><p class="sub">Diese Punkte stecken auch im abonnierten Kalender – jeweils um 9 Uhr mit Erinnerung. Abgehakt wird hier, gespeichert in diesem Browser.</p><div class="prepbar"><span id="prepcount"></span><button type="button" class="btn" id="prepreset">Haken zurücksetzen</button></div><div class="pgrp"><h4><span class="pdate">25. August</span><span class="plead">Dienstag · 5 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p01"><span><b>Lalibela: Kinderprogramm und Kinderpreis bestätigen</b><em>Mit 4 Jahren darf euer Kind auf die Safari-Fahrten (Mindestalter 2). Bestätigen lassen: Anmeldung fürs Kinderprogramm „Tiny Trackers&quot;, eigenes Kinderfahrzeug mit Ranger, Kinderpreis (2–12 Jahre zahlen 50 % plus 50 % der Abgaben), Zustellbett und Essenswünsche. stay@lalibela.co.za · +27 87 550 1885</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p02"><span><b>Melozhori anschreiben: Game Drive und Catering</b><em>Mindestalter für den Game Drive erfragen (wird nirgends publiziert). Semi-Catering bestellen falls gewünscht: R850/Erwachsener, R350/Kind unter 8, muss vor Anreise stehen. info@melozhori.co.za · +27 66 595 7823</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p03"><span><b>Whale Watching prüfen (13.10., 3 Std. mit 4-Jährigem)</b><em>Unter 13 Jahren ist durchgehend eine Schwimmweste Pflicht – Grösse für ein 4-jähriges Kind bestätigen lassen. Drei Stunden ohne Ausstieg sind lang: fragt nach einer kürzeren Tour. Notfalls Landbeobachtung (De Kelders oder Hermanus Cliff Path), da sind die Wale im Oktober oft 20–50 m vom Ufer entfernt.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p04"><span><b>Woodall: private Familien-Safari anfragen</b><em>Die regulären Game Drives und auch die Parkfahrten in Addo haben Mindestalter 6 – mit 4 Jahren also nicht möglich. Private Safaris für Familien sind auf Anfrage erlaubt, Preis erfragen. Sonst bleibt die Selbstfahrer-Safari im eigenen Auto, die mit einem 4-Jährigen ohnehin entspannter ist. +27 42 233 0128</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">7. September</span><span class="plead">Montag · 3 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p05"><span><b>Kinderpässe prüfen</b><em>Gültig mindestens 30 Tage über den Rückflug hinaus, zwei leere Seiten. Verlängerte Kinderpässe können bei der Einreise Probleme machen – im Zweifel neu ausstellen lassen.</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p06"><span><b>Reiseversicherung abschliessen</b><em>Medizinische Notfälle, Unfälle, Annullierung. Muss vor und während der Reise gelten, Prämie bei Buchung zahlen – der Schutz beginnt erst mit Zahlungseingang.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p07"><span><b>Internationalen Führerschein besorgen</b><em>Nicht vorgeschrieben, aber empfohlen. Erspart Diskussionen bei Polizeikontrollen, Unfällen und Versicherungsfällen.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">14. September</span><span class="plead">Montag · 2 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p08"><span><b>Babylonstoren reservieren</b><em>Babel muss in der Hochsaison Wochen im Voraus gebucht werden. Das Greenhouse auf demselben Gelände ist die entspanntere Familienvariante. Gartenzugang R150, Kinder unter 18 gratis.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p09"><span><b>Weingut-Picknicks buchen</b><em>Boschendal (24 Std. vorher), Nederburg, Warwick, Spier, Laborie. Alle nur mit Vorbestellung. Oktober ist Beginn der Hochsaison.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p10"><span><b>Tafelberg-Tickets online kaufen</b><em>Vorab online ist günstiger. Anstehen muss man trotzdem, ausser mit den teuren Fast-Track-Tickets. Am Besuchstag morgens den Betriebsstatus prüfen – bei Wind wird geschlossen.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p11"><span><b>Keurbooms River Ferry und Tenikwa buchen</b><em>Keurbooms: Buchung zwingend, Abfahrten nach Tide – Tidenplan für den 17.–20.10. erfragen, dazu Toiletten an Bord klären. Tenikwa: nur die „Wild Cat Experience&quot; (1 Std., kein Mindestalter). 069 733 0410</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">21. September</span><span class="plead">Montag · 13 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p12"><span><b>E-SIM kaufen und Datenvolumen aufladen</b><em>Wichtig: das Datenvolumen noch in der Schweiz kaufen. Ohne Guthaben habt ihr bei der Ankunft keinen Empfang und könnt es offline nicht mehr kaufen. Saily oder Airalo.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p13"><span><b>Reiseapotheke zusammenstellen</b><em>Erkältung, Fieber, Schmerzen, Magen-Darm, Übelkeit, Pflaster, persönliche Medikamente. Vor Ort gibt es alles bei Clicks oder Dis-Chem.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p14"><span><b>Kindersitz bestätigen</b><em>African Twist Travel bucht Kindersitze bis 7 Jahre mit – für ein 4-jähriges Kind also enthalten. Kurz gegenprüfen, dass Alter und Gruppe stimmen. Ein Babybett braucht ihr nicht mehr, dafür bei den Unterkünften ein Zustellbett bestätigen.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">28. September</span><span class="plead">Montag · 6 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p15"><span><b>Öffnungsstatus der Wackelkandidaten prüfen</b><em>Bontebok NP nach dem Hochwasser (+27 28 514 2735) · Storms River Hängebrücken · Dunes Beach Restaurant Hout Bay · River Front Restaurant Addo · Viljoensdrift Bootsfahrt (+27 23 615 1017) · Klein River Cheese · SANCCOB montags (+27 41 583 1830)</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p16"><span><b>Offline-Karten in Google Maps laden</b><em>Westkap und Ostkap herunterladen. Auf der N2 und im Overberg ist der Empfang lückenhaft.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p17"><span><b>Packen: feste Schuhe, Badeschuhe, Zwiebelprinzip</b><em>Euer Kind läuft selbst – eine feste Schuhe braucht ihr nicht. Für Robberg, Platbos und die Storms-River-Brücke trotzdem feste Schuhe einpacken, das sind Fels-, Wald- und Treppenwege. Badeschuhe für die Gezeitenbecken. Sonnencreme, Hut, Sonnenbrille. Warme Schicht für den Tafelberg und die frühen Pirschfahrten bei Lalibela.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">2. Oktober</span><span class="plead">Freitag · 2 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p18"><span><b>Notrufnummern auf Papier notieren</b><em>Falls das Handy gestohlen wird oder der Akku leer ist. Dazu Kopien von Pass und Kreditkartennummern getrennt aufbewahren. Die Druckseite auf dieser Website enthält alles.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p19"><span><b>Namola-App installieren und einrichten</b><em>Notfall-App für Südafrika, ortet euch per GPS. Dazu Uber vollständig einrichten, solange ihr noch Empfang habt.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">3. Oktober</span><span class="plead">Samstag · 1 Tag vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p20"><span><b>SARS Reiseerklärung einreichen (alle 3 Personen)</b><em>Frühestens 24 Stunden vor Abflug – vorher lehnt das Formular das Ankunftsdatum ab. Eine Deklaration deckt alle drei ab: du als Hauptperson, Frau und Sohn als Travelling Companions. Alle Feldwerte stehen fertig im PDF unten, inklusive Adresse Adamsgarth, Flugdaten und Hinweis NIL statt FULL. Beide Pässe der Companions bereithalten. Nach dem Absenden kommt eine Bestätigungsmail mit QR-Code – als Screenshot aufs Handy legen.</em></span></label><div class="plks"><a class="plk pdf" href="docs/sars-reiseerklaerung.pdf" target="_blank" rel="noopener">⬇︎ Ausfüllhilfe als PDF</a><a class="plk web" href="https://tools.sars.gov.za/sarsonlinequery/traveller" target="_blank" rel="noopener">↗ SARS-Formular öffnen</a></div></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p21"><span><b>Flug-Check-in und Wetterprognose</b><em>Wetter für Kapstadt anschauen – danach entscheidet sich, ob der Tafelberg am 6.10. klappt oder ihr tauschen müsst.</em></span></label></li></ul></div></div><div class="isec" id="syncbox"><h3>Geräte-Abgleich</h3>
+<p class="sub">Ohne Abgleich gelten Haken, Kalenderänderungen und Merkliste nur in dem Browser, in dem du sie gesetzt hast – iPad und PC führen dann getrennte Listen. Mit Abgleich halten alle Geräte denselben Stand.</p>
+<div class="syncstate none" id="syncstate">◌ Abgleich aus</div>
+<div class="btnrow">
+ <button type="button" class="btn solid" id="syncon">Abgleich einschalten</button>
+ <button type="button" class="btn" id="syncnow" hidden>Jetzt abgleichen</button>
+ <button type="button" class="btn" id="synclink" hidden>Link fürs zweite Gerät kopieren</button>
+ <button type="button" class="btn" id="syncjoin">Bestehenden Schlüssel eintragen</button>
+ <button type="button" class="btn danger" id="syncoff" hidden>Abgleich ausschalten</button>
+</div>
+<div id="syncjoinrow" hidden>
+ <input id="synckeyin" type="text" inputmode="latin" autocomplete="off" spellcheck="false" placeholder="Schlüssel vom ersten Gerät">
+ <button type="button" class="btn solid" id="syncjoingo">Übernehmen</button>
+</div>
+<p class="hint" id="synckeyline" hidden></p>
+<p class="hint"><b>So geht es:</b> auf einem Gerät einschalten, dort <i>Link fürs zweite Gerät kopieren</i> und sich den Link selbst schicken. Auf dem zweiten Gerät den Link öffnen – fertig. Danach gleicht sich alles von selbst ab, beim Öffnen der Seite und während sie offen ist.</p>
+<p class="hint"><b>Was gespeichert wird:</b> nur Haken der Checkliste, deine Kalenderänderungen, die Merkliste und die Budget-Einstellungen. Keine Namen, keine Passdaten. Der Schlüssel ist das Passwort – wer ihn hat, sieht diesen Stand. Offline funktioniert alles weiter, der Abgleich holt es nach. <b>Im Claude-Vorschaufenster ist der Abgleich blockiert</b> – er läuft nur auf der richtigen Seite auf github.io.</p></div><div class="isec"><h3>Vor Ort kurz anrufen</h3>
 <ul>
 <li><b>Tafelberg-Seilbahn</b> – am Morgen den Betriebsstatus prüfen (Wind).</li>
 <li><b>Dunes Beach Restaurant</b>, Hout Bay – war zwischenzeitlich als „temporarily closed“ gelistet.</li>
@@ -3562,6 +3589,126 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 </section>
 
 <script>
+// ---------- Geraete-Abgleich (Supabase) ----------
+window.SYNC = (function(){
+  var RPC = 'https://ywpyurlzrexznzlarubm.supabase.co/rest/v1/rpc/';
+  var AK  = 'sb_publishable_rrRqZ0tgC3uI2utoSKNl_g_UTeJAIN2';
+  var KEYS = ['za-favs2','za-cal-edits','za-prep','za-budget','za-kurs'];
+  var SK = 'za-sync-key', SM = 'za-sync-meta';
+  var applying = false, timer = null, busy = false;
+  var listeners = [];
+
+  function ls(k){ try{ return localStorage.getItem(k) }catch(e){ return null } }
+  function lsSet(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
+  function meta(){ try{ return JSON.parse(ls(SM)||'{}')||{} }catch(e){ return {} } }
+  function saveMeta(m){ lsSet(SM, JSON.stringify(m)) }
+  function key(){ return ls(SK) || '' }
+  function on(){ return !!key() }
+  function emit(st,txt){ listeners.forEach(function(f){ try{ f(st,txt) }catch(e){} }) }
+
+  function newKey(){
+    var a='abcdefghijkmnopqrstuvwxyz23456789', o='';
+    var b=new Uint8Array(24);
+    if(window.crypto&&crypto.getRandomValues) crypto.getRandomValues(b);
+    else for(var j=0;j<24;j++) b[j]=Math.floor(Math.random()*256);
+    for(var i=0;i<24;i++) o+=a[b[i]%a.length];
+    return o;
+  }
+
+  // Jede Aenderung an einem Sync-Schluessel stempeln und Push planen
+  try{
+    var _set = Storage.prototype.setItem;
+    Storage.prototype.setItem = function(k,v){
+      _set.call(this,k,v);
+      if(this===window.localStorage && !applying && KEYS.indexOf(k)>=0){
+        try{ var m=meta(); m[k]=Date.now(); saveMeta(m); plan(); }catch(e){}
+      }
+    };
+  }catch(e){}
+
+  function post(fn, body, ms){
+    var ctl = window.AbortController ? new AbortController() : null;
+    var to = setTimeout(function(){ if(ctl) ctl.abort() }, ms||9000);
+    return fetch(RPC+fn, {method:'POST', signal: ctl?ctl.signal:undefined,
+      headers:{'apikey':AK,'Content-Type':'application/json'},
+      body: JSON.stringify(body)})
+      .then(function(r){ clearTimeout(to); if(!r.ok) throw new Error('http '+r.status); return r.json() });
+  }
+
+  function run(){
+    var k = key();
+    if(!k) return Promise.resolve(false);
+    if(!navigator.onLine){ emit('off','offline'); return Promise.resolve(false) }
+    if(busy) return Promise.resolve(false);
+    busy = true; emit('busy','gleicht ab …');
+    return post('suedafrika_sync_get',{p_key:k}).then(function(remote){
+      if(!remote || typeof remote!=='object') remote={};
+      var m=meta(), out={}, changed=false;
+      KEYS.forEach(function(kk){
+        var lv=ls(kk), lt=m[kk]||0;
+        var r=remote[kk], rt=(r&&typeof r.t==='number')?r.t:0;
+        if(r && typeof r.v==='string' && rt>lt){
+          applying=true; lsSet(kk, r.v); applying=false;
+          m[kk]=rt; out[kk]={t:rt,v:r.v}; changed=true;
+        } else if(lv!=null){
+          if(!m[kk]){ m[kk]=lt=Date.now() }
+          out[kk]={t:m[kk], v:lv};
+        } else if(r){ out[kk]=r }
+      });
+      saveMeta(m);
+      var same = JSON.stringify(remote)===JSON.stringify(out);
+      var next = same ? Promise.resolve(out) : post('suedafrika_sync_put',{p_key:k,p_payload:out});
+      return next.then(function(){
+        busy=false; emit('ok', changed?'aktualisiert':'aktuell');
+        return changed;
+      });
+    }).catch(function(e){
+      busy=false; emit('err','kein Abgleich möglich');
+      return false;
+    });
+  }
+
+  function plan(){ if(!on()) return; clearTimeout(timer); timer=setTimeout(function(){ run() },2000) }
+
+  // Erststart: Schluessel aus dem Link uebernehmen
+  try{
+    var mm = /[#&]sync=([a-z0-9]{16,64})/i.exec(location.hash||'');
+    if(mm){ lsSet(SK, mm[1].toLowerCase()); saveMeta({});
+      history.replaceState(null,'',location.pathname+location.search); }
+  }catch(e){}
+
+  function boot(){
+    if(!on()) return;
+    run().then(function(changed){
+      if(changed && !sessionStorage.getItem('za-sync-reload')){
+        try{ sessionStorage.setItem('za-sync-reload','1') }catch(e){}
+        location.reload();
+      }
+    });
+  }
+  try{ sessionStorage.removeItem('za-sync-reload') }catch(e){}
+
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='visible' && on()) run().then(function(c){ if(c) location.reload() });
+  });
+  window.addEventListener('online', function(){ if(on()) run() });
+  setInterval(function(){ if(on() && document.visibilityState==='visible') run().then(function(c){ if(c) location.reload() }) }, 90000);
+
+  return {
+    on:on, key:key, run:run, keys:KEYS,
+    start:function(){ lsSet(SK,newKey()); saveMeta({}); return run() },
+    join:function(k){ k=String(k||'').trim().toLowerCase().replace(/[^a-z0-9]/g,'');
+      if(k.length<16||k.length>64) return Promise.reject(new Error('kurz'));
+      lsSet(SK,k); saveMeta({}); return run() },
+    stop:function(){ try{ localStorage.removeItem(SK); localStorage.removeItem(SM) }catch(e){} emit('none','aus') },
+    link:function(){ return location.origin+location.pathname+'#sync='+key() },
+    watch:function(f){ listeners.push(f) },
+    boot:boot
+  };
+})();
+</script>
+
+<script>
 (function(){
  var tabs=[].slice.call(document.querySelectorAll('.tabs button'));
  tabs.forEach(function(b){b.addEventListener('click',function(){
@@ -4562,6 +4709,44 @@ window.ROUTE = (function(){
  var r=document.getElementById('prepreset');
  if(r) r.addEventListener('click',function(){ st={}; save(); boxes.forEach(function(b){b.checked=false}); count() });
  count();
+})();
+
+// ---- Geraete-Abgleich: Bedienung ----
+(function(){
+ var box=document.getElementById('syncbox'); if(!box||!window.SYNC) return;
+ var st=document.getElementById('syncstate'),
+     bOn=document.getElementById('syncon'), bNow=document.getElementById('syncnow'),
+     bLink=document.getElementById('synclink'), bOff=document.getElementById('syncoff'),
+     bJoin=document.getElementById('syncjoin'), inp=document.getElementById('synckeyin'),
+     row=document.getElementById('syncjoinrow'), kl=document.getElementById('synckeyline');
+ var LBL={ok:'●',busy:'◐',err:'▲',off:'◌',none:'◌'};
+ function paint(state,txt){
+   var an=SYNC.on();
+   bOn.hidden=an; bNow.hidden=!an; bLink.hidden=!an; bOff.hidden=!an;
+   bJoin.hidden=an; kl.hidden=!an; if(an) row.hidden=true;
+   if(an) kl.innerHTML='Schlüssel: <code>'+SYNC.key()+'</code>';
+   st.className='syncstate '+(an?(state||'ok'):'none');
+   st.textContent = an ? (LBL[state||'ok']+' Abgleich aktiv · '+(txt||'bereit'))
+                       : '◌ Abgleich aus – Haken gelten nur in diesem Browser';
+ }
+ SYNC.watch(paint);
+ bOn.addEventListener('click',function(){ paint('busy','…'); SYNC.start(); });
+ bNow.addEventListener('click',function(){ SYNC.run().then(function(c){ if(c) location.reload() }) });
+ bOff.addEventListener('click',function(){ SYNC.stop(); paint() });
+ bJoin.addEventListener('click',function(){ row.hidden=!row.hidden; if(!row.hidden) inp.focus() });
+ document.getElementById('syncjoingo').addEventListener('click',function(){
+   SYNC.join(inp.value).then(function(){ location.reload() })
+     .catch(function(){ paint('err','Schlüssel unvollständig') });
+ });
+ bLink.addEventListener('click',function(){
+   var t=SYNC.link();
+   var done=function(){ bLink.textContent='Link kopiert ✓'; setTimeout(function(){bLink.textContent='Link fürs zweite Gerät kopieren'},2200) };
+   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done,function(){ prompt('Link:',t) });
+   else { var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select();
+          try{document.execCommand('copy'); done()}catch(e){} a.remove() }
+ });
+ paint();
+ SYNC.boot();
 })();
 
 // ---- Drucken ----
