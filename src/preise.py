@@ -10,6 +10,7 @@ ALTER = 4
 
 # Handkorrekturen dort, wo der Text mehrdeutig ist: name -> (erw, kind, note)
 OVERRIDE = {
+ "GOLD Restaurant": (560, 560, "14-Gänge-Menü R560 p.P., Kinderpreis auf Anfrage; Anzahlung R750 bereits bezahlt"),
  "Melozhori Game Drive": (0, 0, "1 Fahrt inklusive, weitere R500 p.P."),
  "Melozhori: Spaziergänge & E-Bikes": (0, 0, "Spaziergänge gratis, E-Bike R850/Tag"),
  "Lalibela Mark's Camp - Safari Drives": (0, 0, "im All-Inclusive enthalten"),

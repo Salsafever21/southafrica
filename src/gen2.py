@@ -76,7 +76,7 @@ def card_rest(c,i):
 <button class="planbtn" data-id="r{i}" aria-label="In den Kalender eintragen" title="In den Kalender eintragen">✓</button>
 <button class="fav" data-id="r{i}" aria-label="Merken" title="Merken">☆</button>
 <h3>{E(c["Name"])}</h3>
-<div class="meta">{ratechip(c)}<span class="cat">{E(c["Kategorie"])}</span><span class="pr">{price(c["Preis"])}</span></div>\n<div class="meta"><span class="prz">{_restzar(c["Preis"])}</span></div>
+<div class="meta">{'<span class="booked">✓ Gebucht</span>' if c["Reservierung"].strip().upper().startswith("GEBUCHT") else ''}{ratechip(c)}<span class="cat">{E(c["Kategorie"])}</span><span class="pr">{price(c["Preis"])}</span></div>\n<div class="meta"><span class="prz">{_restzar(c["Preis"])}</span></div>
 <p class="kid">{E(c["Kinderfreundlich"])}</p>
 <p class="addr">{E(c["Adresse"])} · {E(c["Ort"])}</p>
 {f'<p class="note{" warn" if warnp(note) else ""}">{E(note)}</p>' if note else ''}
@@ -351,6 +351,7 @@ _BUDGET = {
   {"id":"l5","t":"Souvenirs und Puffer","z":3000,"p":False},
   {"id":"l6","t":"Melozhori Semi-Catering (2 Nächte, optional)","z":4400,"p":False},
   {"id":"l7","t":"Unterkünfte, Flüge, Mietwagen (vorausbezahlt)","z":0,"p":True},
+  {"id":"l8","t":"GOLD Restaurant 6.10. (3× Menü R560, R750 angezahlt)","z":1680,"p":False},
  ]}
 BUDJSON = _json.dumps(_BUDGET, ensure_ascii=False, separators=(",",":"))
 

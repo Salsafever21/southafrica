@@ -20,6 +20,8 @@ DAYS = [
  ("","tipp","Danach Green Point Urban Park","Tot-Lot-Spielplatz für 1–6 Jahre, gratis, durchgehend geteert."),
  ("13:00","frei","Pause","",90),
  ("14:45","tipp","Sea Point Promenade und Pavilion","11 km flacher Asphaltweg mit Spielplätzen. Das Kinderbecken im Pavilion ist 40 cm tief und beaufsichtigt. Bis 17:00 gut machbar.",135),
+ ("18:40","fahrt","Losfahren zum GOLD Restaurant","Hout Bay → Green Point · 20 km · <b>35–45 Min</b> über Kloof Nek oder die M6 der Küste entlang. Parkplätze: Bennett Street oder das Parkhaus an der Somerset Road.",45),
+ ("19:30","buchung","Abendessen GOLD Restaurant","GEBUCHT · 3 Personen · <b>Ref. l5t5qc</b> · 14 kleine Gänge im Familienstil, dazu Trommeln, Tanz und Gesang. Anzahlung R750 bezahlt, Rest mit der Rechnung. Ohne das Djembe-Trommeln um 18:30 – wer mitmachen will, ruft vorher an. Ende gegen 22:00, Rückfahrt ~30 Min.",150),
 ]),
 ("Mi 7. Okt","1","Kapstadt","Nahbereich Hout Bay","stand",[
  ("09:00","tipp","Duiker Island Robbenfahrt","40 Minuten – die kürzeste Tierbeobachtungstour der Region. Hafen 8 Min. von der Unterkunft.",60),

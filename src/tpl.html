@@ -414,6 +414,8 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
  letter-spacing:.1em;text-transform:uppercase;background:var(--warn-soft);color:var(--warn);padding:2px 6px;border-radius:2px;vertical-align:2px}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
+.booked{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--ground);
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.04em}
 .plks{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 0 27px}
 .fold{padding:0}
 .fold>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
@@ -1811,8 +1813,14 @@ window.ROUTE = (function(){
  try{ var k=parseFloat(localStorage.getItem(KK)); if(k>0) kurs=k }catch(e){}
  try{ var b=JSON.parse(localStorage.getItem(BK)||'null'); if(b&&Array.isArray(b.lines)) lines=b.lines }catch(e){}
  if(!lines) lines = DEF.lines.map(function(x){var o={};for(var k2 in x)o[k2]=x[k2];return o});
+ else { // neue Standardzeilen (z.B. spätere Buchungen) einmalig in ein gespeichertes Budget nachtragen
+   var seen={}; ((b&&b.seen)||['l1','l2','l3','l4','l5','l6','l7']).forEach(function(i){ seen[i]=1 });
+   var added=false;
+   DEF.lines.forEach(function(x){ if(!seen[x.id]){ var o={}; for(var k3 in x)o[k3]=x[k3]; lines.push(o); added=true } });
+   if(added) saveB();
+ }
  function saveK(){ try{localStorage.setItem(KK,String(kurs))}catch(e){} }
- function saveB(){ try{localStorage.setItem(BK,JSON.stringify({lines:lines}))}catch(e){} }
+ function saveB(){ try{localStorage.setItem(BK,JSON.stringify({lines:lines, seen:DEF.lines.map(function(x){return x.id})}))}catch(e){} }
  function chf(z){ return z/kurs }
  function fz(n){ return 'R '+Math.round(n).toLocaleString('de-CH').replace(/\./g,' ') }
  function fc(n){ return 'CHF '+(Math.round(n*20)/20).toLocaleString('de-CH',{minimumFractionDigits:2,maximumFractionDigits:2}) }

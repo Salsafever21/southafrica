@@ -1,5 +1,5 @@
 // Automatisch erzeugt – nicht von Hand bearbeiten.
-const V = 'suedafrika-147b2c9dcf';
+const V = 'suedafrika-32ab0225ed';
 const SHELL = ['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png',
                './reise.ics','./docs/sars-reiseerklaerung.pdf',
                './data/Suedafrika_Restaurants_und_Aktivitaeten.csv'];
