@@ -171,10 +171,12 @@ input[type=search]{flex:1 1 200px;min-width:0;padding:9px 12px;border:1px solid 
  border-radius:50%;font-size:.72rem;font-weight:600;background:var(--surface2);color:var(--ink3);margin-top:1px}
 .it.fahrt .ic{background:var(--sun-soft);color:var(--sun)}
 .it.buchung .ic{background:var(--accent);color:var(--ground)}
+.it.plan .ic{background:var(--ok);color:var(--ground)}
 .it.checkin .ic,.it.checkout .ic{background:var(--accent-soft);color:var(--accent-ink)}
 .it.warnung .ic{background:var(--warn);color:var(--ground)}
 .tx>b{font-weight:700;display:block}
 .it.buchung .tx b{color:var(--accent-ink)}
+.it.plan .tx b{color:var(--ok)}
 .it.warnung .tx b{color:var(--warn)}
 .dt{display:block;font-size:.84rem;color:var(--ink2);margin-top:2px}
 .it.warnung .dt{color:var(--warn);background:var(--warn-soft);padding:6px 9px;border-radius:2px;margin-top:4px}
@@ -235,6 +237,7 @@ input[type=search]{flex:1 1 200px;min-width:0;padding:9px 12px;border:1px solid 
 .blk.buchung{background:var(--accent)}
 .blk.checkin,.blk.checkout{background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--accent)}
 .blk.tipp{background:var(--idea)}
+.blk.plan{background:var(--ok)}
 .blk.frei{background:var(--rest-soft);color:var(--ink3);border:1px dashed var(--line2)}
 .blk.sel{outline:3px solid var(--ink);outline-offset:1px;z-index:5}
 .evdetail{margin-top:14px;padding:16px 18px;border:1px solid var(--line);border-left:4px solid var(--accent);
@@ -412,8 +415,25 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
 .plks{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 0 27px}
+.fold{padding:0}
+.fold>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  padding:16px 18px;border-radius:inherit;user-select:none}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::after{content:"⌄";margin-left:auto;font-size:1.1rem;line-height:1;color:var(--ink3);
+  transition:transform .18s ease;flex:none}
+.fold[open]>summary::after{transform:rotate(180deg)}
+.fold>summary:hover .foldt{color:var(--accent)}
+.foldt{font-family:"Bricolage Grotesque",Karla,sans-serif;font-weight:700;font-size:1.02rem;color:var(--ink)}
+.fold>summary>.syncstate{margin:0}
+.fold>*:not(summary){padding-left:18px;padding-right:18px}
+.fold>*:last-child{padding-bottom:18px}
+@media(max-width:520px){
+  .fold>summary{flex-wrap:wrap;gap:8px;padding:14px}
+  .fold>summary::after{margin-left:auto}
+  .fold>*:not(summary){padding-left:14px;padding-right:14px}
+}
 .syncstate{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;
-  font-size:.84rem;font-weight:600;border:1px solid var(--line);background:var(--surface2);color:var(--ink2);margin:0 0 12px}
+  font-size:.78rem;font-weight:600;border:1px solid var(--line);background:var(--surface2);color:var(--ink2);margin:0 0 12px}
 .syncstate.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
 .syncstate.busy{border-color:var(--sun);color:var(--sun);background:var(--sun-soft)}
 .syncstate.err{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
@@ -574,6 +594,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
   <div class="cats"><b>Anzeigen</b>
    <label><input type="checkbox" data-cat="fahrt"> Fahrten</label>
    <label><input type="checkbox" data-cat="buchung"> Gebuchtes</label>
+   <label><input type="checkbox" data-cat="plan"> Geplant</label>
    <label><input type="checkbox" data-cat="checkin"> Check-in / out</label>
    <label><input type="checkbox" data-cat="tipp"> Vorschläge</label>
    <label><input type="checkbox" data-cat="warnung"> Warnungen</label>
@@ -789,7 +810,7 @@ __CHECK__
    <label class="fld"><span>Bis</span><input type="time" id="f_bis"></label>
   </div>
   <label class="fld"><span>Art</span><select id="f_art">
-   <option value="fahrt">Fahrt</option><option value="buchung">Gebucht</option>
+   <option value="fahrt">Fahrt</option><option value="buchung">Gebucht</option><option value="plan">Geplant</option>
    <option value="checkin">Check-in / out</option><option value="tipp">Vorschlag</option>
    <option value="warnung">Warnung</option><option value="frei">Pause</option>
   </select></label>
@@ -809,6 +830,7 @@ window.SYNC = (function(){
   var RPC = 'https://ywpyurlzrexznzlarubm.supabase.co/rest/v1/rpc/';
   var AK  = 'sb_publishable_rrRqZ0tgC3uI2utoSKNl_g_UTeJAIN2';
   var KEYS = ['za-favs2','za-cal-edits','za-prep','za-budget','za-kurs'];
+  var SOFT = ['za-kurs'];   // wird uebernommen, loest aber kein Neuladen aus
   var SK = 'za-sync-key', SM = 'za-sync-meta';
   var applying = false, timer = null, busy = false;
   var listeners = [];
@@ -832,10 +854,12 @@ window.SYNC = (function(){
 
   // Jede Aenderung an einem Sync-Schluessel stempeln und Push planen
   try{
-    var _set = Storage.prototype.setItem;
+    var _set = Storage.prototype.setItem, _get = Storage.prototype.getItem;
     Storage.prototype.setItem = function(k,v){
+      var alt = null;
+      if(this===window.localStorage && KEYS.indexOf(k)>=0){ try{ alt=_get.call(this,k) }catch(e){} }
       _set.call(this,k,v);
-      if(this===window.localStorage && !applying && KEYS.indexOf(k)>=0){
+      if(this===window.localStorage && !applying && KEYS.indexOf(k)>=0 && String(v)!==alt){
         try{ var m=meta(); m[k]=Date.now(); saveMeta(m); plan(); }catch(e){}
       }
     };
@@ -864,7 +888,8 @@ window.SYNC = (function(){
         var r=remote[kk], rt=(r&&typeof r.t==='number')?r.t:0;
         if(r && typeof r.v==='string' && rt>lt){
           applying=true; lsSet(kk, r.v); applying=false;
-          m[kk]=rt; out[kk]={t:rt,v:r.v}; changed=true;
+          m[kk]=rt; out[kk]={t:rt,v:r.v};
+          if(r.v!==lv && SOFT.indexOf(kk)<0) changed=true;
         } else if(lv!=null){
           if(!m[kk]){ m[kk]=lt=Date.now() }
           out[kk]={t:m[kk], v:lv};
@@ -892,22 +917,42 @@ window.SYNC = (function(){
       history.replaceState(null,'',location.pathname+location.search); }
   }catch(e){}
 
+  var pendingReload = false;
+  function lastReload(){ try{ return parseInt(sessionStorage.getItem('za-sync-lastreload')||'0',10)||0 }catch(e){ return 0 } }
+  function busyUser(){
+    if(document.querySelector('dialog[open]')) return true;
+    var a=document.activeElement;
+    return !!(a && (a.tagName==='INPUT' || a.tagName==='TEXTAREA' || a.isContentEditable));
+  }
+  function neuLaden(){
+    // hoechstens alle 60 s, nie waehrend der Nutzer tippt oder ein Dialog offen ist
+    if(Date.now()-lastReload() < 60000) return;
+    if(busyUser()){ pendingReload=true; return }
+    try{
+      var t=document.querySelector('.tabs button[aria-selected="true"]');
+      sessionStorage.setItem('za-sync-pos', JSON.stringify({p:t?t.dataset.p:'', y:window.scrollY||0}));
+    }catch(e){}
+    try{ sessionStorage.setItem('za-sync-lastreload', String(Date.now())) }catch(e){}
+    location.reload();
+  }
+  document.addEventListener('focusout',function(){ if(pendingReload && !busyUser()){ pendingReload=false; neuLaden() } });
+
   function boot(){
     if(!on()) return;
     run().then(function(changed){
       if(changed && !sessionStorage.getItem('za-sync-reload')){
         try{ sessionStorage.setItem('za-sync-reload','1') }catch(e){}
-        location.reload();
+        neuLaden();
       }
     });
   }
   try{ sessionStorage.removeItem('za-sync-reload') }catch(e){}
 
   document.addEventListener('visibilitychange',function(){
-    if(document.visibilityState==='visible' && on()) run().then(function(c){ if(c) location.reload() });
+    if(document.visibilityState==='visible' && on()) run().then(function(c){ if(c) neuLaden() });
   });
   window.addEventListener('online', function(){ if(on()) run() });
-  setInterval(function(){ if(on() && document.visibilityState==='visible') run().then(function(c){ if(c) location.reload() }) }, 90000);
+  setInterval(function(){ if(on() && document.visibilityState==='visible') run().then(function(c){ if(c) neuLaden() }) }, 90000);
 
   return {
     on:on, key:key, run:run, keys:KEYS,
@@ -918,6 +963,7 @@ window.SYNC = (function(){
     stop:function(){ try{ localStorage.removeItem(SK); localStorage.removeItem(SM) }catch(e){} emit('none','aus') },
     link:function(){ return location.origin+location.pathname+'#sync='+key() },
     watch:function(f){ listeners.push(f) },
+    reload:neuLaden,
     boot:boot
   };
 })();
@@ -991,21 +1037,22 @@ window.SYNC = (function(){
   var D=JSON.parse(el.textContent);
   var WD=['Mo','Di','Mi','Do','Fr','Sa','So'], H0=6, H1=21;
   var MN=['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sept','Okt','Nov','Dez'];
-  var ICONS={fahrt:'→',buchung:'✓',checkin:'⌂',checkout:'⌂',tipp:'·',warnung:'!',frei:'~'};
-  var EMO={fahrt:'🚗',buchung:'✅',checkin:'🔑',checkout:'🔑',tipp:'💡',warnung:'⚠️',frei:'😴'};
+  var ICONS={fahrt:'→',buchung:'✓',plan:'✓',checkin:'⌂',checkout:'⌂',tipp:'·',warnung:'!',frei:'~'};
+  var EMO={fahrt:'🚗',buchung:'✅',plan:'📌',checkin:'🔑',checkout:'🔑',tipp:'💡',warnung:'⚠️',frei:'😴'};
 
   // ---------- Zustand ----------
-  var LS='za-cal-edits', CATS=['fahrt','buchung','checkin','tipp','warnung','frei'];
+  var LS='za-cal-edits', CATS=['fahrt','buchung','plan','checkin','tipp','warnung','frei'];
   var ED={hidden:{},edit:{},add:[],cats:{}};
   try{var raw=JSON.parse(localStorage.getItem(LS)||'{}')||{};
       ['hidden','edit','cats'].forEach(function(k){ if(raw[k]) ED[k]=raw[k] });
       if(Array.isArray(raw.add)) ED.add=raw.add;
   }catch(e){}
   CATS.forEach(function(c){ if(typeof ED.cats[c]!=='boolean') ED.cats[c]=(c!=='frei') });
+  (function(){ var mig=false; (ED.add||[]).forEach(function(x){ if(x.src && x.art==='tipp'){ x.art='plan'; mig=true } }); if(mig) saveED(); })();
   function saveED(){ try{localStorage.setItem(LS,JSON.stringify(ED))}catch(e){} }
   function cat(a){ return a==='checkout'?'checkin':a }
   function merged(b){ var e=ED.edit[b.id]; if(!e) return b; var o={}; for(var k in b)o[k]=b[k]; for(var k2 in e)o[k2]=e[k2]; return o }
-  function vis(e){ return !ED.hidden[e.id] && ED.cats[cat(e.art)]!==false }
+  function vis(e){ if(ED.hidden[e.id]) return false; if(e.own) return true; return ED.cats[cat(e.art)]!==false }
 
   var BASE=[];
   D.timed.forEach(function(t){ BASE.push(t) });
@@ -1335,7 +1382,7 @@ window.SYNC = (function(){
       else {
         var ds=d8(e.d)+'T'+String(Math.floor(e.s/60)).padStart(2,'0')+String(e.s%60).padStart(2,'0')+'00';
         var de=d8(e.d)+'T'+String(Math.floor(e.e/60)).padStart(2,'0')+String(e.e%60).padStart(2,'0')+'00';
-        ev(e.id, sum, ds, de, e.detail, '', false, (e.art==='buchung'||e.art==='fahrt')?30:null);
+        ev(e.id, sum, ds, de, e.detail, '', false, (e.art==='buchung'||e.art==='plan'||e.art==='fahrt')?30:null);
       }
     });
     DATES.forEach(function(d){
@@ -1627,7 +1674,7 @@ window.SYNC = (function(){
         lat:pCur.lat, lng:pCur.lng});
     }
     ED.add.push({id:base, own:true, d:d, s:s0, e:e0,
-      art: pCur.typ==='rest' ? 'buchung' : 'tipp',
+      art: pCur.typ==='rest' ? 'buchung' : 'plan',
       titel: pCur.name, detail: pCur.ort, lat:pCur.lat, lng:pCur.lng, src:pCur.id});
     saveED(); renderAll(); markPlanned();
     if(pdlg.close) pdlg.close(); else pdlg.removeAttribute('open');
@@ -1935,18 +1982,28 @@ window.ROUTE = (function(){
      bJoin=document.getElementById('syncjoin'), inp=document.getElementById('synckeyin'),
      row=document.getElementById('syncjoinrow'), kl=document.getElementById('synckeyline');
  var LBL={ok:'●',busy:'◐',err:'▲',off:'◌',none:'◌'};
+ var LS=null, LT=null;
  function paint(state,txt){
-   var an=SYNC.on();
+   if(state!==undefined) LS=state;
+   if(txt!==undefined) LT=txt;
+   state=LS; txt=LT;
+   var an=SYNC.on(), zu=!box.open;
    bOn.hidden=an; bNow.hidden=!an; bLink.hidden=!an; bOff.hidden=!an;
    bJoin.hidden=an; kl.hidden=!an; if(an) row.hidden=true;
    if(an) kl.innerHTML='Schlüssel: <code>'+SYNC.key()+'</code>';
    st.className='syncstate '+(an?(state||'ok'):'none');
-   st.textContent = an ? (LBL[state||'ok']+' Abgleich aktiv · '+(txt||'bereit'))
-                       : '◌ Abgleich aus – Haken gelten nur in diesem Browser';
+   if(!an) st.textContent = zu ? '◌ aus' : '◌ Abgleich aus – Haken gelten nur in diesem Browser';
+   else st.textContent = LBL[state||'ok'] + (zu ? ' ' + (txt||'aktiv') : ' Abgleich aktiv · ' + (txt||'bereit'));
  }
+ var FK='za-syncfold';
+ try{ box.open = localStorage.getItem(FK)==='1' }catch(e){}
+ box.addEventListener('toggle',function(){
+   try{ localStorage.setItem(FK, box.open?'1':'0') }catch(e){}
+   paint();
+ });
  SYNC.watch(paint);
  bOn.addEventListener('click',function(){ paint('busy','…'); SYNC.start(); });
- bNow.addEventListener('click',function(){ SYNC.run().then(function(c){ if(c) location.reload() }) });
+ bNow.addEventListener('click',function(){ SYNC.run().then(function(c){ if(c) SYNC.reload() }) });
  bOff.addEventListener('click',function(){ SYNC.stop(); paint() });
  bJoin.addEventListener('click',function(){ row.hidden=!row.hidden; if(!row.hidden) inp.focus() });
  document.getElementById('syncjoingo').addEventListener('click',function(){
@@ -1961,6 +2018,15 @@ window.ROUTE = (function(){
           try{document.execCommand('copy'); done()}catch(e){} a.remove() }
  });
  paint();
+ // Nach einem Sync-Neuladen: Reiter und Scrollposition wiederherstellen
+ try{
+   var pos=JSON.parse(sessionStorage.getItem('za-sync-pos')||'null');
+   sessionStorage.removeItem('za-sync-pos');
+   if(pos && pos.p){
+     var tb=document.querySelector('.tabs button[data-p="'+pos.p+'"]');
+     if(tb){ tb.click(); setTimeout(function(){ window.scrollTo(0,pos.y||0) },80) }
+   }
+ }catch(e){}
  SYNC.boot();
 })();
 

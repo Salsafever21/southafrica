@@ -240,9 +240,8 @@ PREPLIST = ('<p class="sub">Diese Punkte stecken auch im abonnierten Kalender �
 
 CHECKPANEL = ('<section class="igrp" id="i-todo"><h2>Checkliste</h2>'
   '<div class="isec">' + PREPLIST + '</div>'
-  + '''<div class="isec" id="syncbox"><h3>Geräte-Abgleich</h3>
+  + '''<details class="isec fold" id="syncbox"><summary><span class="foldt">Geräte-Abgleich</span><div class="syncstate none" id="syncstate">◌ aus</div></summary>
 <p class="sub">Ohne Abgleich gelten Haken, Kalenderänderungen und Merkliste nur in dem Browser, in dem du sie gesetzt hast – iPad und PC führen dann getrennte Listen. Mit Abgleich halten alle Geräte denselben Stand.</p>
-<div class="syncstate none" id="syncstate">◌ Abgleich aus</div>
 <div class="btnrow">
  <button type="button" class="btn solid" id="syncon">Abgleich einschalten</button>
  <button type="button" class="btn" id="syncnow" hidden>Jetzt abgleichen</button>
@@ -256,7 +255,7 @@ CHECKPANEL = ('<section class="igrp" id="i-todo"><h2>Checkliste</h2>'
 </div>
 <p class="hint" id="synckeyline" hidden></p>
 <p class="hint"><b>So geht es:</b> auf einem Gerät einschalten, dort <i>Link fürs zweite Gerät kopieren</i> und sich den Link selbst schicken. Auf dem zweiten Gerät den Link öffnen – fertig. Danach gleicht sich alles von selbst ab, beim Öffnen der Seite und während sie offen ist.</p>
-<p class="hint"><b>Was gespeichert wird:</b> nur Haken der Checkliste, deine Kalenderänderungen, die Merkliste und die Budget-Einstellungen. Keine Namen, keine Passdaten. Der Schlüssel ist das Passwort – wer ihn hat, sieht diesen Stand. Offline funktioniert alles weiter, der Abgleich holt es nach. <b>Im Claude-Vorschaufenster ist der Abgleich blockiert</b> – er läuft nur auf der richtigen Seite auf github.io.</p></div>'''
+<p class="hint"><b>Was gespeichert wird:</b> nur Haken der Checkliste, deine Kalenderänderungen, die Merkliste und die Budget-Einstellungen. Keine Namen, keine Passdaten. Der Schlüssel ist das Passwort – wer ihn hat, sieht diesen Stand. Offline funktioniert alles weiter, der Abgleich holt es nach. <b>Im Claude-Vorschaufenster ist der Abgleich blockiert</b> – er läuft nur auf der richtigen Seite auf github.io.</p></details>'''
   '<div class="isec"><h3>Vor Ort kurz anrufen</h3>' + _ANRUF + '</div></section>')
 
 infohtml=[]

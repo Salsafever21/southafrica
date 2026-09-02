@@ -171,10 +171,12 @@ input[type=search]{flex:1 1 200px;min-width:0;padding:9px 12px;border:1px solid 
  border-radius:50%;font-size:.72rem;font-weight:600;background:var(--surface2);color:var(--ink3);margin-top:1px}
 .it.fahrt .ic{background:var(--sun-soft);color:var(--sun)}
 .it.buchung .ic{background:var(--accent);color:var(--ground)}
+.it.plan .ic{background:var(--ok);color:var(--ground)}
 .it.checkin .ic,.it.checkout .ic{background:var(--accent-soft);color:var(--accent-ink)}
 .it.warnung .ic{background:var(--warn);color:var(--ground)}
 .tx>b{font-weight:700;display:block}
 .it.buchung .tx b{color:var(--accent-ink)}
+.it.plan .tx b{color:var(--ok)}
 .it.warnung .tx b{color:var(--warn)}
 .dt{display:block;font-size:.84rem;color:var(--ink2);margin-top:2px}
 .it.warnung .dt{color:var(--warn);background:var(--warn-soft);padding:6px 9px;border-radius:2px;margin-top:4px}
@@ -235,6 +237,7 @@ input[type=search]{flex:1 1 200px;min-width:0;padding:9px 12px;border:1px solid 
 .blk.buchung{background:var(--accent)}
 .blk.checkin,.blk.checkout{background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--accent)}
 .blk.tipp{background:var(--idea)}
+.blk.plan{background:var(--ok)}
 .blk.frei{background:var(--rest-soft);color:var(--ink3);border:1px dashed var(--line2)}
 .blk.sel{outline:3px solid var(--ink);outline-offset:1px;z-index:5}
 .evdetail{margin-top:14px;padding:16px 18px;border:1px solid var(--line);border-left:4px solid var(--accent);
@@ -591,6 +594,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
   <div class="cats"><b>Anzeigen</b>
    <label><input type="checkbox" data-cat="fahrt"> Fahrten</label>
    <label><input type="checkbox" data-cat="buchung"> Gebuchtes</label>
+   <label><input type="checkbox" data-cat="plan"> Geplant</label>
    <label><input type="checkbox" data-cat="checkin"> Check-in / out</label>
    <label><input type="checkbox" data-cat="tipp"> Vorschläge</label>
    <label><input type="checkbox" data-cat="warnung"> Warnungen</label>
@@ -806,7 +810,7 @@ __CHECK__
    <label class="fld"><span>Bis</span><input type="time" id="f_bis"></label>
   </div>
   <label class="fld"><span>Art</span><select id="f_art">
-   <option value="fahrt">Fahrt</option><option value="buchung">Gebucht</option>
+   <option value="fahrt">Fahrt</option><option value="buchung">Gebucht</option><option value="plan">Geplant</option>
    <option value="checkin">Check-in / out</option><option value="tipp">Vorschlag</option>
    <option value="warnung">Warnung</option><option value="frei">Pause</option>
   </select></label>
@@ -1033,21 +1037,22 @@ window.SYNC = (function(){
   var D=JSON.parse(el.textContent);
   var WD=['Mo','Di','Mi','Do','Fr','Sa','So'], H0=6, H1=21;
   var MN=['Jan','Feb','März','Apr','Mai','Juni','Juli','Aug','Sept','Okt','Nov','Dez'];
-  var ICONS={fahrt:'→',buchung:'✓',checkin:'⌂',checkout:'⌂',tipp:'·',warnung:'!',frei:'~'};
-  var EMO={fahrt:'🚗',buchung:'✅',checkin:'🔑',checkout:'🔑',tipp:'💡',warnung:'⚠️',frei:'😴'};
+  var ICONS={fahrt:'→',buchung:'✓',plan:'✓',checkin:'⌂',checkout:'⌂',tipp:'·',warnung:'!',frei:'~'};
+  var EMO={fahrt:'🚗',buchung:'✅',plan:'📌',checkin:'🔑',checkout:'🔑',tipp:'💡',warnung:'⚠️',frei:'😴'};
 
   // ---------- Zustand ----------
-  var LS='za-cal-edits', CATS=['fahrt','buchung','checkin','tipp','warnung','frei'];
+  var LS='za-cal-edits', CATS=['fahrt','buchung','plan','checkin','tipp','warnung','frei'];
   var ED={hidden:{},edit:{},add:[],cats:{}};
   try{var raw=JSON.parse(localStorage.getItem(LS)||'{}')||{};
       ['hidden','edit','cats'].forEach(function(k){ if(raw[k]) ED[k]=raw[k] });
       if(Array.isArray(raw.add)) ED.add=raw.add;
   }catch(e){}
   CATS.forEach(function(c){ if(typeof ED.cats[c]!=='boolean') ED.cats[c]=(c!=='frei') });
+  (function(){ var mig=false; (ED.add||[]).forEach(function(x){ if(x.src && x.art==='tipp'){ x.art='plan'; mig=true } }); if(mig) saveED(); })();
   function saveED(){ try{localStorage.setItem(LS,JSON.stringify(ED))}catch(e){} }
   function cat(a){ return a==='checkout'?'checkin':a }
   function merged(b){ var e=ED.edit[b.id]; if(!e) return b; var o={}; for(var k in b)o[k]=b[k]; for(var k2 in e)o[k2]=e[k2]; return o }
-  function vis(e){ return !ED.hidden[e.id] && ED.cats[cat(e.art)]!==false }
+  function vis(e){ if(ED.hidden[e.id]) return false; if(e.own) return true; return ED.cats[cat(e.art)]!==false }
 
   var BASE=[];
   D.timed.forEach(function(t){ BASE.push(t) });
@@ -1377,7 +1382,7 @@ window.SYNC = (function(){
       else {
         var ds=d8(e.d)+'T'+String(Math.floor(e.s/60)).padStart(2,'0')+String(e.s%60).padStart(2,'0')+'00';
         var de=d8(e.d)+'T'+String(Math.floor(e.e/60)).padStart(2,'0')+String(e.e%60).padStart(2,'0')+'00';
-        ev(e.id, sum, ds, de, e.detail, '', false, (e.art==='buchung'||e.art==='fahrt')?30:null);
+        ev(e.id, sum, ds, de, e.detail, '', false, (e.art==='buchung'||e.art==='plan'||e.art==='fahrt')?30:null);
       }
     });
     DATES.forEach(function(d){
@@ -1669,7 +1674,7 @@ window.SYNC = (function(){
         lat:pCur.lat, lng:pCur.lng});
     }
     ED.add.push({id:base, own:true, d:d, s:s0, e:e0,
-      art: pCur.typ==='rest' ? 'buchung' : 'tipp',
+      art: pCur.typ==='rest' ? 'buchung' : 'plan',
       titel: pCur.name, detail: pCur.ort, lat:pCur.lat, lng:pCur.lng, src:pCur.id});
     saveED(); renderAll(); markPlanned();
     if(pdlg.close) pdlg.close(); else pdlg.removeAttribute('open');
