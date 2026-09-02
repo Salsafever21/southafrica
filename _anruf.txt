@@ -1,0 +1,12 @@
+("Vor Ort kurz anrufen","""
+<ul>
+<li><b>Tafelberg-Seilbahn</b> – am Morgen den Betriebsstatus prüfen (Wind).</li>
+<li><b>Dunes Beach Restaurant</b>, Hout Bay – war zwischenzeitlich als „temporarily closed“ gelistet.</li>
+<li><b>River Front Restaurant</b>, Addo – Betriebsstatus 2026 unbestätigt.</li>
+<li><b>Klein River Cheese</b>, Stanford – widersprüchliche Angaben, teils als geschlossen gemeldet. <span class="num">028 341 0693</span></li>
+<li><b>Viljoensdrift</b> Bootsfahrt – Google zeigte zwischenzeitlich „temporarily closed“. <span class="num">+27 23 615 1017</span></li>
+<li><b>Oppiplaas Padstal</b> – keine Öffnungszeiten hinterlegt.</li>
+<li><b>Storms River Suspension Bridge</b> – im Februar 2026 war nur eine der drei Brücken begehbar.</li>
+<li><b>SANCCOB</b> – Montags-Öffnung bestätigen lassen. <span class="num">+27 41 583 1830</span></li>
+</ul>
+"""),
