@@ -414,6 +414,7 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
  letter-spacing:.1em;text-transform:uppercase;background:var(--warn-soft);color:var(--warn);padding:2px 6px;border-radius:2px;vertical-align:2px}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
+.webcalhint{margin-top:10px;padding:10px 13px;border-radius:8px;background:var(--sun-soft);color:var(--sun);border:1px solid var(--sun)}
 .booked{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--ground);
   font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.04em}
 .plks{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0 0 27px}
@@ -589,7 +590,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
   </div>
   <button type="button" class="btn" id="editmode" aria-pressed="false">Bearbeiten</button>
   <button type="button" class="btn" id="printbtn"><span class="lg">Handschuhfach-Seite drucken</span><span class="sm">Drucken</span></button>
-  <a class="btn" style="margin-left:auto" href="https://calendar.google.com/calendar/u/0/r?cid=webcal%3A%2F%2Fsalsafever21.github.io%2Fsouthafrica%2Freise.ics" target="_blank" rel="noopener"><span class="lg">Als Kalender abonnieren</span><span class="sm">Kalender abo</span></a>
+  <a class="btn webcal" style="margin-left:auto" href="webcal://salsafever21.github.io/southafrica/reise.ics"><span class="lg">Im iPhone-Kalender abonnieren</span><span class="sm">Kalender-Abo</span></a>
  </div>
 
  <div class="editpanel" id="editpanel" hidden>
@@ -727,26 +728,27 @@ __CHECK__
  <nav class="inav">__INFONAV__</nav>
  __INFO__
 
- <section class="howto">
+ <section class="howto" id="abo">
   <h2>Ferienkalender abonnieren</h2>
-  <p class="sub">Alle Fahrten, Buchungen, Check-in-Zeiten und Tagesvorschläge als Kalender. Abonniert – nicht importiert: wenn hier etwas geändert wird, aktualisiert sich der Kalender auf allen Geräten von selbst.</p>
+  <p class="sub">Alle Fahrten, Buchungen, Check-in-Zeiten und Tagesvorschläge im Kalender des iPhones – abonniert, nicht importiert: wird hier etwas geändert, zieht der Kalender von selbst nach.</p>
   <div class="btnrow">
-   <a class="btn solid" href="https://calendar.google.com/calendar/u/0/r?cid=webcal%3A%2F%2Fsalsafever21.github.io%2Fsouthafrica%2Freise.ics" target="_blank" rel="noopener">In Google Kalender</a>
-   <a class="btn" href="webcal://salsafever21.github.io/southafrica/reise.ics">iPhone / Mac / Outlook</a>
+   <a class="btn solid webcal" href="webcal://salsafever21.github.io/southafrica/reise.ics">Auf dem iPhone abonnieren</a>
+   <button class="btn" type="button" id="copycal">Adresse kopieren</button>
    <a class="btn" href="https://salsafever21.github.io/southafrica/reise.ics" target="_blank" rel="noopener">ICS-Datei öffnen</a>
   </div>
   <div class="calurl">
    <input type="text" readonly value="https://salsafever21.github.io/southafrica/reise.ics" aria-label="Kalender-Adresse" onclick="this.select()">
-   <button class="btn" type="button" id="copycal">Adresse kopieren</button>
   </div>
+  <p class="hint webcalhint" id="webcalhint" hidden><b>Nichts passiert?</b> Vom Home-Bildschirm aus und im Claude-Vorschaufenster kann iOS das Abo nicht öffnen. Dann Weg 2 unten nehmen – dauert eine Minute.</p>
   <ol style="margin-top:18px">
-   <li><b>Google Kalender</b> (am Computer): der obere Knopf öffnet direkt den Abo-Dialog. Von Hand: <b>Weitere Kalender +</b> → <b>Per URL</b> → Adresse einfügen. Auf dem Handy erscheint er danach automatisch in der Google-Kalender-App.</li>
-   <li><b>iPhone / iPad</b>: Einstellungen → Kalender → Accounts → Account hinzufügen → Andere → <b>Kalenderabo hinzufügen</b> → Adresse einfügen. Der zweite Knopf macht das direkt.</li>
-   <li><b>Aktualisierung</b>: Google holt sich abonnierte Kalender meist alle 8 bis 24 Stunden, Apple lässt das Intervall einstellen (Einstellungen → Kalender → Accounts → das Abo → Aktualisieren: stündlich). Sofort ist es also nicht – aber es kommt an, ohne dass ihr etwas tun müsst.</li>
+   <li><b>Weg 1 – ein Tipp:</b> Diese Seite in <b>Safari</b> öffnen (nicht vom Home-Bildschirm) und auf <b>Auf dem iPhone abonnieren</b> tippen. iOS fragt „Kalender abonnieren?“ → <b>Abonnieren</b>. Fertig, der Kalender heisst „Südafrika Oktober 2026“.</li>
+   <li><b>Weg 2 – immer zuverlässig:</b> oben <b>Adresse kopieren</b>, dann auf dem iPhone: <b>Einstellungen → Apps → Kalender → Accounts → Account hinzufügen → Andere → Kalenderabo hinzufügen</b> → Adresse einfügen → <b>Weiter</b> → <b>Sichern</b>. Auf älteren iOS-Versionen heisst der Weg Einstellungen → Kalender → Accounts.</li>
+   <li><b>Aktualisierung:</b> iOS holt abonnierte Kalender nach einem einstellbaren Intervall. Am besten stündlich: Einstellungen → Apps → Kalender → Accounts → „Südafrika Oktober 2026“ → <b>Aktualisieren: Stündlich</b>. Neue Termine erscheinen also nicht sofort, aber von selbst.</li>
+   <li><b>Auch für Mac und die Familie:</b> Steht der Kalender einmal auf dem iPhone, taucht er über iCloud auch auf Mac und iPad auf, wenn das Abo dort mit iCloud-Sync eingerichtet wurde (im Abo-Dialog „Account: iCloud“ wählen). Deine Frau nimmt denselben Link auf ihrem iPhone.</li>
    <li><b>Einzelne Termine löschen geht nicht</b> – ein Abo ist schreibgeschützt. Vorschläge sind darum mit „Idee:“ gekennzeichnet. Wollt ihr etwas dauerhaft loswerden, blendet es im Bearbeiten-Modus aus und erzeugt die Datei neu.</li>
   </ol>
   <p class="sub" style="margin:16px 0 0"><b>Selbst ändern:</b> Im Reiter „Tagesplan“ auf <b>Bearbeiten</b> – dort lassen sich Termine ausblenden, verschieben, umbenennen und eigene ergänzen. Ganze Kategorien schaltet ihr mit einem Häkchen ab (Pausen sind ab Werk aus). Die Änderungen gelten sofort auf dieser Seite und bleiben in eurem Browser gespeichert. Damit sie auch im <em>abonnierten</em> Kalender ankommen: <b>Kalenderdatei neu erzeugen</b> und die heruntergeladene <code>reise.ics</code> ins GitHub-Repo hochladen – sie ersetzt die alte, und alle Abos ziehen nach.</p>
-  <p class="sub" style="margin:12px 0 0">Was drin ist: die Unterkünfte als mehrtägige Balken, alle Fahrten mit realistischer Dauer, eure vier festen Buchungen (mit Erinnerung 30 Minuten vorher), Check-in und Check-out sowie die Tagesvorschläge. Warnungen und alles ohne Uhrzeit stehen in der Beschreibung des jeweiligen Tages. Zeitzone: Südafrika (SAST).</p>
+  <p class="sub" style="margin:12px 0 0">Was drin ist: die Unterkünfte als mehrtägige Balken, alle Fahrten mit realistischer Dauer, eure Buchungen mit Erinnerung 30 Minuten vorher, Check-in und Check-out sowie die Tagesvorschläge. Warnungen und alles ohne Uhrzeit stehen in der Beschreibung des jeweiligen Tages. Zeitzone: Südafrika (SAST).</p>
  </section>
 
  <section class="howto" style="margin-top:16px">
@@ -2036,6 +2038,18 @@ window.ROUTE = (function(){
    }
  }catch(e){}
  SYNC.boot();
+})();
+
+// ---- Kalender-Abo: Hinweis, wenn webcal:// nicht greifen kann ----
+(function(){
+ var hint=document.getElementById('webcalhint'); if(!hint) return;
+ var standalone = (navigator.standalone===true) || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+ var framed = (function(){ try{ return window.self!==window.top }catch(e){ return true } })();
+ [].slice.call(document.querySelectorAll('a.webcal')).forEach(function(a){
+   a.addEventListener('click',function(){
+     if(standalone || framed){ setTimeout(function(){ hint.hidden=false; hint.scrollIntoView({block:'nearest'}) }, 900) }
+   });
+ });
 })();
 
 // ---- Drucken ----

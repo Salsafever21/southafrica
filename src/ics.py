@@ -76,7 +76,8 @@ for (pid, pd, ptit, pdet, purg) in PREP:
 
 CAL=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Suedafrika 2026//Reisekalender//DE","CALSCALE:GREGORIAN","METHOD:PUBLISH",
  "X-WR-CALNAME:Südafrika Oktober 2026",
- f"X-WR-CALDESC:Ferienkalender – Fahrten\\, Buchungen und Tagesplan. Quelle: {SITE}",
+ fold(f"X-WR-CALDESC:Ferienkalender – Fahrten\\, Buchungen und Tagesplan. Quelle: {SITE}"),
+ "X-APPLE-CALENDAR-COLOR:#0F5257",
  "X-WR-TIMEZONE:Africa/Johannesburg","REFRESH-INTERVAL;VALUE=DURATION:PT6H","X-PUBLISHED-TTL:PT6H",
  "BEGIN:VTIMEZONE","TZID:Africa/Johannesburg","BEGIN:STANDARD","DTSTART:19700101T000000",
  "TZOFFSETFROM:+0200","TZOFFSETTO:+0200","TZNAME:SAST","END:STANDARD","END:VTIMEZONE"] + ev + ["END:VCALENDAR"]
