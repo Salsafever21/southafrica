@@ -8,6 +8,7 @@ from events import build as build_events
 from prep import TASKS as PREP, LINKS as PREPLINKS
 import karte as _karte
 from preise import parse as _pparse, familie as _pfam, KURS as _KURS, BENZIN as _BENZIN
+from preise import OVERRIDE as _POV
 import json as _json
 _timed,_allday,_stays,_daymeta = build_events()
 _daysun = {a['d']: a.get('sun',{}) for a in _allday}
@@ -76,7 +77,7 @@ def card_rest(c,i):
 <button class="planbtn" data-id="r{i}" aria-label="In den Kalender eintragen" title="In den Kalender eintragen">✓</button>
 <button class="fav" data-id="r{i}" aria-label="Merken" title="Merken">☆</button>
 <h3>{E(c["Name"])}</h3>
-<div class="meta">{'<span class="booked">✓ Gebucht</span>' if c["Reservierung"].strip().upper().startswith("GEBUCHT") else ''}{ratechip(c)}<span class="cat">{E(c["Kategorie"])}</span><span class="pr">{price(c["Preis"])}</span></div>\n<div class="meta"><span class="prz">{_restzar(c["Preis"])}</span></div>
+<div class="meta">{'<span class="booked">✓ Gebucht</span>' if c["Reservierung"].strip().upper().startswith("GEBUCHT") else ''}{ratechip(c)}<span class="cat">{E(c["Kategorie"])}</span><span class="pr">{price(c["Preis"])}</span></div>\n<div class="meta"><span class="prz">{_restzar(c["Preis"], c["Name"])}</span></div>
 <p class="kid">{E(c["Kinderfreundlich"])}</p>
 <p class="addr">{E(c["Adresse"])} · {E(c["Ort"])}</p>
 {f'<p class="note{" warn" if warnp(note) else ""}">{E(note)}</p>' if note else ''}
@@ -137,7 +138,13 @@ def _preisrow(c):
     return '<p class="preis">'+body+hint+'</p>'
 
 _RESTBAND = {"E":(90,150),"EE":(160,300),"EEE":(310,520),"E-EE":(110,240),"EE-EEE":(220,420)}
-def _restzar(p):
+def _restzar(p, name=""):
+    # Ausnahme: fester Preis aus preise.OVERRIDE (z.B. Degustationsmenü) statt Schätzband
+    ov = _POV.get(name) if name else None
+    if ov and ov[0]:
+        e, k, note = ov; fam = _pfam(e, k)
+        num = f"{fam:,.0f}".replace(",", "\u2009")
+        return f'<span class="zar" data-zar="{fam:.0f}" title="{E(note)}">R {num}<i></i></span>'
     b = _RESTBAND.get((p or "").strip())
     if not b: return ""
     lo, hi = b
@@ -352,6 +359,7 @@ _BUDGET = {
   {"id":"l6","t":"Melozhori Semi-Catering (2 Nächte, optional)","z":4400,"p":False},
   {"id":"l7","t":"Unterkünfte, Flüge, Mietwagen (vorausbezahlt)","z":0,"p":True},
   {"id":"l8","t":"GOLD Restaurant 6.10. (3× Menü R560, R750 angezahlt)","z":1680,"p":False},
+  {"id":"l9","t":"La Colombe 6.10. Mittag (2× Menü R1'695, Kind offen, +13,5 % Service)","z":3848,"p":False},
  ]}
 BUDJSON = _json.dumps(_BUDGET, ensure_ascii=False, separators=(",",":"))
 
