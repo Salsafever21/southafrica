@@ -48,10 +48,12 @@ for s in stays:
     add(f"stay{s['st']}", f"🛏 Etappe {s['st']} · {s['name']}", d8(s["von"]), d8(s["bis"]),
         f"{s['naechte']} Nächte\n{s['adr']}\n\n{SITE}", s["adr"], allday=True)
 
-SKIP = {"frei"}   # Mittagsschlaf: standardmaessig nicht im Kalender
+# Nur harte Termine ins Abo: Fahrten, Gebuchtes, Check-in/out.
+# Bewusst draussen: tipp (Vorschlaege), plan (selbst geplant), warnung, frei.
+ABO = {"fahrt", "buchung", "checkin", "checkout"}
 
 for t in timed:
-    if t["art"] in SKIP: continue
+    if t["art"] not in ABO: continue
     hs,he = t["s"], t["e"]
     ds = f"{d8(t['d'])}T{hs//60:02d}{hs%60:02d}00"
     de = f"{d8(t['d'])}T{he//60:02d}{he%60:02d}00"
@@ -60,12 +62,13 @@ for t in timed:
 
 for a in allday:
     for i in a["items"]:
-        if i["art"] in SKIP: continue
+        if i["art"] not in ABO: continue
         summ = f"{ICON[i['art']]} {PREFIX.get(i['art'],'')}{i['titel']}"
         add(i["id"], summ, d8(a["d"]), plus1(a["d"]), i["detail"], allday=True)
-    lab = {"fahrt":"🚗","ankunft":"✈️","abreise":"✈️","stand":"📍"}.get(a["typ"],"📍")
-    add("day"+d8(a["d"]), f"{lab} {a['titel']}", d8(a["d"]), plus1(a["d"]),
-        f"Etappe {a['st']} · {a['sub']}\n\nTagesplan: {SITE}", allday=True)
+    # Tageskopf nur fuer die Flugtage (An- und Abreise)
+    if a["typ"] in ("ankunft", "abreise"):
+        add("day"+d8(a["d"]), f"✈️ {a['titel']}", d8(a["d"]), plus1(a["d"]),
+            f"Etappe {a['st']} · {a['sub']}\n\nTagesplan: {SITE}", allday=True)
 
 # Vorbereitung: 09:00, mit Erinnerung
 for (pid, pd, ptit, pdet, purg) in PREP:

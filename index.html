@@ -430,6 +430,7 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
  letter-spacing:.1em;text-transform:uppercase;background:var(--warn-soft);color:var(--warn);padding:2px 6px;border-radius:2px;vertical-align:2px}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
+.syncerr{margin:0 0 12px;padding:11px 14px;border-radius:8px;background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn)}
 .webcalhint{margin-top:10px;padding:10px 13px;border-radius:8px;background:var(--sun-soft);color:var(--sun);border:1px solid var(--sun)}
 .booked{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--ground);
   font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.04em}
@@ -863,6 +864,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 
 <div class="panel" id="p-check">
 <section class="igrp" id="i-todo"><h2>Checkliste</h2><div class="isec"><p class="sub">Diese Punkte stecken auch im abonnierten Kalender – jeweils um 9 Uhr mit Erinnerung. Abgehakt wird hier, gespeichert in diesem Browser.</p><div class="prepbar"><span id="prepcount"></span><button type="button" class="btn" id="prepreset">Haken zurücksetzen</button></div><div class="pgrp"><h4><span class="pdate">25. August</span><span class="plead">Dienstag · 5 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p01"><span><b>Lalibela: Kinderprogramm und Kinderpreis bestätigen</b><em>Mit 4 Jahren darf euer Kind auf die Safari-Fahrten (Mindestalter 2). Bestätigen lassen: Anmeldung fürs Kinderprogramm „Tiny Trackers&quot;, eigenes Kinderfahrzeug mit Ranger, Kinderpreis (2–12 Jahre zahlen 50 % plus 50 % der Abgaben), Zustellbett und Essenswünsche. stay@lalibela.co.za · +27 87 550 1885</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p02"><span><b>Melozhori anschreiben: Game Drive und Catering</b><em>Mindestalter für den Game Drive erfragen (wird nirgends publiziert). Semi-Catering bestellen falls gewünscht: R850/Erwachsener, R350/Kind unter 8, muss vor Anreise stehen. info@melozhori.co.za · +27 66 595 7823</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p03"><span><b>Whale Watching prüfen (13.10., 3 Std. mit 4-Jährigem)</b><em>Unter 13 Jahren ist durchgehend eine Schwimmweste Pflicht – Grösse für ein 4-jähriges Kind bestätigen lassen. Drei Stunden ohne Ausstieg sind lang: fragt nach einer kürzeren Tour. Notfalls Landbeobachtung (De Kelders oder Hermanus Cliff Path), da sind die Wale im Oktober oft 20–50 m vom Ufer entfernt.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p04"><span><b>Woodall: private Familien-Safari anfragen</b><em>Die regulären Game Drives und auch die Parkfahrten in Addo haben Mindestalter 6 – mit 4 Jahren also nicht möglich. Private Safaris für Familien sind auf Anfrage erlaubt, Preis erfragen. Sonst bleibt die Selbstfahrer-Safari im eigenen Auto, die mit einem 4-Jährigen ohnehin entspannter ist. +27 42 233 0128</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">7. September</span><span class="plead">Montag · 3 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p05"><span><b>Kinderpässe prüfen</b><em>Gültig mindestens 30 Tage über den Rückflug hinaus, zwei leere Seiten. Verlängerte Kinderpässe können bei der Einreise Probleme machen – im Zweifel neu ausstellen lassen.</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p06"><span><b>Reiseversicherung abschliessen</b><em>Medizinische Notfälle, Unfälle, Annullierung. Muss vor und während der Reise gelten, Prämie bei Buchung zahlen – der Schutz beginnt erst mit Zahlungseingang.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p07"><span><b>Internationalen Führerschein besorgen</b><em>Nicht vorgeschrieben, aber empfohlen. Erspart Diskussionen bei Polizeikontrollen, Unfällen und Versicherungsfällen.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">14. September</span><span class="plead">Montag · 2 Wochen vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p08"><span><b>Babylonstoren reservieren</b><em>Babel muss in der Hochsaison Wochen im Voraus gebucht werden. Das Greenhouse auf demselben Gelände ist die entspanntere Familienvariante. Gartenzugang R150, Kinder unter 18 gratis.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p09"><span><b>Weingut-Picknicks buchen</b><em>Boschendal (24 Std. vorher), Nederburg, Warwick, Spier, Laborie. Alle nur mit Vorbestellung. Oktober ist Beginn der Hochsaison.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p10"><span><b>Tafelberg-Tickets online kaufen</b><em>Vorab online ist günstiger. Anstehen muss man trotzdem, ausser mit den teuren Fast-Track-Tickets. Am Besuchstag morgens den Betriebsstatus prüfen – bei Wind wird geschlossen.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p11"><span><b>Keurbooms River Ferry und Tenikwa buchen</b><em>Keurbooms: Buchung zwingend, Abfahrten nach Tide – Tidenplan für den 17.–20.10. erfragen, dazu Toiletten an Bord klären. Tenikwa: nur die „Wild Cat Experience&quot; (1 Std., kein Mindestalter). 069 733 0410</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">21. September</span><span class="plead">Montag · 13 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p12"><span><b>E-SIM kaufen und Datenvolumen aufladen</b><em>Wichtig: das Datenvolumen noch in der Schweiz kaufen. Ohne Guthaben habt ihr bei der Ankunft keinen Empfang und könnt es offline nicht mehr kaufen. Saily oder Airalo.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p13"><span><b>Reiseapotheke zusammenstellen</b><em>Erkältung, Fieber, Schmerzen, Magen-Darm, Übelkeit, Pflaster, persönliche Medikamente. Vor Ort gibt es alles bei Clicks oder Dis-Chem.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p14"><span><b>Kindersitz bestätigen</b><em>African Twist Travel bucht Kindersitze bis 7 Jahre mit – für ein 4-jähriges Kind also enthalten. Kurz gegenprüfen, dass Alter und Gruppe stimmen. Ein Babybett braucht ihr nicht mehr, dafür bei den Unterkünften ein Zustellbett bestätigen.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">28. September</span><span class="plead">Montag · 6 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p15"><span><b>Öffnungsstatus der Wackelkandidaten prüfen</b><em>Bontebok NP nach dem Hochwasser (+27 28 514 2735) · Storms River Hängebrücken · Dunes Beach Restaurant Hout Bay · River Front Restaurant Addo · Viljoensdrift Bootsfahrt (+27 23 615 1017) · Klein River Cheese · SANCCOB montags (+27 41 583 1830)</em></span></label></li><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p16"><span><b>Offline-Karten in Google Maps laden</b><em>Westkap und Ostkap herunterladen. Auf der N2 und im Overberg ist der Empfang lückenhaft.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p17"><span><b>Packen: feste Schuhe, Badeschuhe, Zwiebelprinzip</b><em>Euer Kind läuft selbst – eine feste Schuhe braucht ihr nicht. Für Robberg, Platbos und die Storms-River-Brücke trotzdem feste Schuhe einpacken, das sind Fels-, Wald- und Treppenwege. Badeschuhe für die Gezeitenbecken. Sonnencreme, Hut, Sonnenbrille. Warme Schicht für den Tafelberg und die frühen Pirschfahrten bei Lalibela.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">2. Oktober</span><span class="plead">Freitag · 2 Tage vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p18"><span><b>Notrufnummern auf Papier notieren</b><em>Falls das Handy gestohlen wird oder der Akku leer ist. Dazu Kopien von Pass und Kreditkartennummern getrennt aufbewahren. Die Druckseite auf dieser Website enthält alles.</em></span></label></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p19"><span><b>Namola-App installieren und einrichten</b><em>Notfall-App für Südafrika, ortet euch per GPS. Dazu Uber vollständig einrichten, solange ihr noch Empfang habt.</em></span></label></li></ul></div><div class="pgrp"><h4><span class="pdate">3. Oktober</span><span class="plead">Samstag · 1 Tag vor Abflug</span></h4><ul class="plist"><li class="pt urg"><label><input type="checkbox" class="pchk" data-p="p20"><span><b>SARS Reiseerklärung einreichen (alle 3 Personen)</b><em>Frühestens 24 Stunden vor Abflug – vorher lehnt das Formular das Ankunftsdatum ab. Eine Deklaration deckt alle drei ab: du als Hauptperson, Frau und Sohn als Travelling Companions. Alle Feldwerte stehen fertig im PDF unten, inklusive Adresse Adamsgarth, Flugdaten und Hinweis NIL statt FULL. Beide Pässe der Companions bereithalten. Nach dem Absenden kommt eine Bestätigungsmail mit QR-Code – als Screenshot aufs Handy legen.</em></span></label><div class="plks"><a class="plk pdf" href="docs/sars-reiseerklaerung.pdf" target="_blank" rel="noopener">⬇︎ Ausfüllhilfe als PDF</a><a class="plk web" href="https://tools.sars.gov.za/sarsonlinequery/traveller" target="_blank" rel="noopener">↗ SARS-Formular öffnen</a></div></li><li class="pt"><label><input type="checkbox" class="pchk" data-p="p21"><span><b>Flug-Check-in und Wetterprognose</b><em>Wetter für Kapstadt anschauen – danach entscheidet sich, ob der Tafelberg am 6.10. klappt oder ihr tauschen müsst.</em></span></label></li></ul></div></div><details class="isec fold" id="syncbox"><summary><span class="foldt">Geräte-Abgleich</span><div class="syncstate none" id="syncstate">◌ aus</div></summary>
+<p class="hint syncerr" id="syncerr" hidden></p>
 <p class="sub">Ohne Abgleich gelten Haken, Kalenderänderungen und Merkliste nur in dem Browser, in dem du sie gesetzt hast – iPad und PC führen dann getrennte Listen. Mit Abgleich halten alle Geräte denselben Stand.</p>
 <div class="btnrow">
  <button type="button" class="btn solid" id="syncon">Abgleich einschalten</button>
@@ -3538,10 +3540,11 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
    <li><b>Weg 2 – immer zuverlässig:</b> oben <b>Adresse kopieren</b>, dann auf dem iPhone: <b>Einstellungen → Apps → Kalender → Accounts → Account hinzufügen → Andere → Kalenderabo hinzufügen</b> → Adresse einfügen → <b>Weiter</b> → <b>Sichern</b>. Auf älteren iOS-Versionen heisst der Weg Einstellungen → Kalender → Accounts.</li>
    <li><b>Aktualisierung:</b> iOS holt abonnierte Kalender nach einem einstellbaren Intervall. Am besten stündlich: Einstellungen → Apps → Kalender → Accounts → „Südafrika Oktober 2026“ → <b>Aktualisieren: Stündlich</b>. Neue Termine erscheinen also nicht sofort, aber von selbst.</li>
    <li><b>Auch für Mac und die Familie:</b> Steht der Kalender einmal auf dem iPhone, taucht er über iCloud auch auf Mac und iPad auf, wenn das Abo dort mit iCloud-Sync eingerichtet wurde (im Abo-Dialog „Account: iCloud“ wählen). Deine Frau nimmt denselben Link auf ihrem iPhone.</li>
-   <li><b>Einzelne Termine löschen geht nicht</b> – ein Abo ist schreibgeschützt. Vorschläge sind darum mit „Idee:“ gekennzeichnet. Wollt ihr etwas dauerhaft loswerden, blendet es im Bearbeiten-Modus aus und erzeugt die Datei neu.</li>
+   <li><b>Einzelne Termine löschen geht nicht</b> – ein Abo ist schreibgeschützt. Wollt ihr etwas dauerhaft loswerden, blendet es im Bearbeiten-Modus aus und erzeugt die Datei neu.</li>
   </ol>
   <p class="sub" style="margin:16px 0 0"><b>Selbst ändern:</b> Im Reiter „Tagesplan“ auf <b>Bearbeiten</b> – dort lassen sich Termine ausblenden, verschieben, umbenennen und eigene ergänzen. Ganze Kategorien schaltet ihr mit einem Häkchen ab (Pausen sind ab Werk aus). Die Änderungen gelten sofort auf dieser Seite und bleiben in eurem Browser gespeichert. Damit sie auch im <em>abonnierten</em> Kalender ankommen: <b>Kalenderdatei neu erzeugen</b> und die heruntergeladene <code>reise.ics</code> ins GitHub-Repo hochladen – sie ersetzt die alte, und alle Abos ziehen nach.</p>
-  <p class="sub" style="margin:12px 0 0">Was drin ist: die Unterkünfte als mehrtägige Balken, alle Fahrten mit realistischer Dauer, eure Buchungen mit Erinnerung 30 Minuten vorher, Check-in und Check-out sowie die Tagesvorschläge. Warnungen und alles ohne Uhrzeit stehen in der Beschreibung des jeweiligen Tages. Zeitzone: Südafrika (SAST).</p>
+  <p class="sub" style="margin:12px 0 0"><b>Was drin ist:</b> An- und Abreisetag als Flugtag, die Unterkünfte als mehrtägige Balken, Check-in und Check-out, alle Fahrten mit realistischer Dauer und alles Gebuchte – Fahrten und Buchungen mit Erinnerung 30 Minuten vorher. Zeitzone Südafrika (SAST). Dazu die datierten Vorbereitungspunkte vor der Abreise.</p>
+  <p class="sub" style="margin:8px 0 0"><b>Was bewusst draussen bleibt:</b> Vorschläge, selbst geplante Aktivitäten, Warnungen und Pausen. Der Kalender zeigt nur, was fix ist – alles andere steht auf dieser Seite im Tagesplan.</p>
  </section>
 
  <section class="howto" style="margin-top:16px">
@@ -3639,8 +3642,8 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 <script>
 // ---------- Geraete-Abgleich (Supabase) ----------
 window.SYNC = (function(){
-  var RPC = 'https://ywpyurlzrexznzlarubm.supabase.co/rest/v1/rpc/';
-  var AK  = 'sb_publishable_rrRqZ0tgC3uI2utoSKNl_g_UTeJAIN2';
+  var RPC = 'https://ibmtdbsfjmraplvkvgol.supabase.co/rest/v1/rpc/';
+  var AK  = 'sb_publishable_d6tXurAH8Zo1tBDm9IYhHA_EuwkUUxQ';
   var KEYS = ['za-favs2','za-cal-edits','za-prep','za-budget','za-kurs'];
   var SOFT = ['za-kurs'];   // wird uebernommen, loest aber kein Neuladen aus
   var SK = 'za-sync-key', SM = 'za-sync-meta';
@@ -3714,11 +3717,24 @@ window.SYNC = (function(){
         busy=false; emit('ok', changed?'aktualisiert':'aktuell');
         return changed;
       });
-    }).catch(function(e){
-      busy=false; emit('err','kein Abgleich möglich');
+    }).then(function(c){ lsSet('za-sync-ok', String(Date.now())); fails=0; return c })
+      .catch(function(e){
+      busy=false; fails++;
+      emit(navigator.onLine ? 'err' : 'off',
+           navigator.onLine ? 'Server nicht erreichbar' : 'offline');
+      retry();
       return false;
     });
   }
+
+  var fails=0, rtimer=null;
+  function retry(){
+    if(!on()) return;
+    clearTimeout(rtimer);
+    var wait = Math.min(30000 * Math.pow(2, Math.min(fails-1,4)), 480000); // 30 s … 8 Min
+    rtimer = setTimeout(function(){ run() }, wait);
+  }
+  function lastOk(){ var v=parseInt(ls('za-sync-ok')||'0',10); return v>0?v:0 }
 
   function plan(){ if(!on()) return; clearTimeout(timer); timer=setTimeout(function(){ run() },2000) }
 
@@ -3767,7 +3783,7 @@ window.SYNC = (function(){
   setInterval(function(){ if(on() && document.visibilityState==='visible') run().then(function(c){ if(c) neuLaden() }) }, 90000);
 
   return {
-    on:on, key:key, run:run, keys:KEYS,
+    on:on, key:key, run:run, keys:KEYS, lastOk:lastOk,
     start:function(){ lsSet(SK,newKey()); saveMeta({}); return run() },
     join:function(k){ k=String(k||'').trim().toLowerCase().replace(/[^a-z0-9]/g,'');
       if(k.length<16||k.length>64) return Promise.reject(new Error('kurz'));
@@ -4188,19 +4204,21 @@ window.SYNC = (function(){
     }
     D.stays.forEach(function(s){ ev('stay'+s.st,'🛏 Etappe '+s.st+' · '+s.name, d8(s.von), d8(s.bis),
       s.naechte+' Nächte\n'+s.adr, s.adr, true, null) });
+    var ABO={fahrt:1,buchung:1,checkin:1,checkout:1};   // Vorschlaege und Geplantes bleiben draussen
     events().forEach(function(e){
-      var sum=(EMO[e.art]||'•')+' '+(e.art==='tipp'?'Idee: ':'')+e.titel;
+      if(!ABO[e.art]) return;
+      var sum=(EMO[e.art]||'•')+' '+e.titel;
       if(e.s==null){ ev(e.id, sum, d8(e.d), plus1(e.d), e.detail, '', true, null) }
       else {
         var ds=d8(e.d)+'T'+String(Math.floor(e.s/60)).padStart(2,'0')+String(e.s%60).padStart(2,'0')+'00';
         var de=d8(e.d)+'T'+String(Math.floor(e.e/60)).padStart(2,'0')+String(e.e%60).padStart(2,'0')+'00';
-        ev(e.id, sum, ds, de, e.detail, '', false, (e.art==='buchung'||e.art==='plan'||e.art==='fahrt')?30:null);
+        ev(e.id, sum, ds, de, e.detail, '', false, 30);
       }
     });
     DATES.forEach(function(d){
       var m=DAYMETA[d]; if(!m) return;
-      var lab={fahrt:'🚗',ankunft:'✈️',abreise:'✈️',stand:'📍'}[m.typ]||'📍';
-      ev('day'+d8(d), lab+' '+m.titel, d8(d), plus1(d), 'Etappe '+m.st+' · '+m.sub, '', true, null);
+      if(m.typ!=='ankunft' && m.typ!=='abreise') return;   // nur die Flugtage
+      ev('day'+d8(d), '✈️ '+m.titel, d8(d), plus1(d), 'Etappe '+m.st+' · '+m.sub, '', true, null);
     });
     L.push('END:VCALENDAR');
     return L.join('\r\n')+'\r\n';
@@ -4811,7 +4829,21 @@ window.ROUTE = (function(){
    if(an) kl.innerHTML='Schlüssel: <code>'+SYNC.key()+'</code>';
    st.className='syncstate '+(an?(state||'ok'):'none');
    if(!an) st.textContent = zu ? '◌ aus' : '◌ Abgleich aus – Haken gelten nur in diesem Browser';
-   else st.textContent = LBL[state||'ok'] + (zu ? ' ' + (txt||'aktiv') : ' Abgleich aktiv · ' + (txt||'bereit'));
+   else st.textContent = LBL[state||'ok'] + (zu ? ' ' + (txt||'aktiv') : ' ' + (txt||'bereit'));
+   var box2=document.getElementById('syncerr');
+   if(box2){
+     if(an && (state==='err'||state==='off')){
+       var lo=SYNC.lastOk(), wann='';
+       if(lo){ var d=new Date(lo);
+         wann = ' Zuletzt erfolgreich: ' + d.toLocaleDateString('de-CH',{day:'numeric',month:'long'})
+              + ', ' + d.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'}) + ' Uhr.'; }
+       box2.innerHTML = (state==='off'
+         ? '<b>Kein Internet.</b> Die Seite läuft normal weiter, der Abgleich holt es nach, sobald du wieder online bist.'
+         : '<b>Der Abgleich-Server antwortet nicht.</b> Das ist kein Datenverlust: alle Haken, Kalendereinträge und Merkzettel liegen unverändert auf diesem Gerät und bleiben auch dort. Nur der Austausch mit dem anderen Gerät pausiert. Die Seite versucht es von selbst weiter.')
+         + wann;
+       box2.hidden=false;
+     } else box2.hidden=true;
+   }
  }
  var FK='za-syncfold';
  try{ box.open = localStorage.getItem(FK)==='1' }catch(e){}

@@ -1,5 +1,5 @@
 -- Geraete-Abgleich fuer den Reisebegleiter Suedafrika 2026
--- Liegt im Supabase-Projekt "Pure Lust" (ywpyurlzrexznzlarubm), Region eu-central-2.
+-- Liegt im Supabase-Projekt "wm2026-tippspiel" (ibmtdbsfjmraplvkvgol), Region eu-central-1.
 -- Isoliert: eigene Tabelle + zwei Funktionen. Entfernen mit:
 --   drop function if exists public.suedafrika_sync_put(text,jsonb);
 --   drop function if exists public.suedafrika_sync_get(text);

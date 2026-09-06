@@ -248,6 +248,7 @@ PREPLIST = ('<p class="sub">Diese Punkte stecken auch im abonnierten Kalender �
 CHECKPANEL = ('<section class="igrp" id="i-todo"><h2>Checkliste</h2>'
   '<div class="isec">' + PREPLIST + '</div>'
   + '''<details class="isec fold" id="syncbox"><summary><span class="foldt">Geräte-Abgleich</span><div class="syncstate none" id="syncstate">◌ aus</div></summary>
+<p class="hint syncerr" id="syncerr" hidden></p>
 <p class="sub">Ohne Abgleich gelten Haken, Kalenderänderungen und Merkliste nur in dem Browser, in dem du sie gesetzt hast – iPad und PC führen dann getrennte Listen. Mit Abgleich halten alle Geräte denselben Stand.</p>
 <div class="btnrow">
  <button type="button" class="btn solid" id="syncon">Abgleich einschalten</button>

@@ -414,6 +414,7 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
  letter-spacing:.1em;text-transform:uppercase;background:var(--warn-soft);color:var(--warn);padding:2px 6px;border-radius:2px;vertical-align:2px}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
+.syncerr{margin:0 0 12px;padding:11px 14px;border-radius:8px;background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn)}
 .webcalhint{margin-top:10px;padding:10px 13px;border-radius:8px;background:var(--sun-soft);color:var(--sun);border:1px solid var(--sun)}
 .booked{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--ground);
   font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:600;letter-spacing:.04em}
@@ -745,10 +746,11 @@ __CHECK__
    <li><b>Weg 2 – immer zuverlässig:</b> oben <b>Adresse kopieren</b>, dann auf dem iPhone: <b>Einstellungen → Apps → Kalender → Accounts → Account hinzufügen → Andere → Kalenderabo hinzufügen</b> → Adresse einfügen → <b>Weiter</b> → <b>Sichern</b>. Auf älteren iOS-Versionen heisst der Weg Einstellungen → Kalender → Accounts.</li>
    <li><b>Aktualisierung:</b> iOS holt abonnierte Kalender nach einem einstellbaren Intervall. Am besten stündlich: Einstellungen → Apps → Kalender → Accounts → „Südafrika Oktober 2026“ → <b>Aktualisieren: Stündlich</b>. Neue Termine erscheinen also nicht sofort, aber von selbst.</li>
    <li><b>Auch für Mac und die Familie:</b> Steht der Kalender einmal auf dem iPhone, taucht er über iCloud auch auf Mac und iPad auf, wenn das Abo dort mit iCloud-Sync eingerichtet wurde (im Abo-Dialog „Account: iCloud“ wählen). Deine Frau nimmt denselben Link auf ihrem iPhone.</li>
-   <li><b>Einzelne Termine löschen geht nicht</b> – ein Abo ist schreibgeschützt. Vorschläge sind darum mit „Idee:“ gekennzeichnet. Wollt ihr etwas dauerhaft loswerden, blendet es im Bearbeiten-Modus aus und erzeugt die Datei neu.</li>
+   <li><b>Einzelne Termine löschen geht nicht</b> – ein Abo ist schreibgeschützt. Wollt ihr etwas dauerhaft loswerden, blendet es im Bearbeiten-Modus aus und erzeugt die Datei neu.</li>
   </ol>
   <p class="sub" style="margin:16px 0 0"><b>Selbst ändern:</b> Im Reiter „Tagesplan“ auf <b>Bearbeiten</b> – dort lassen sich Termine ausblenden, verschieben, umbenennen und eigene ergänzen. Ganze Kategorien schaltet ihr mit einem Häkchen ab (Pausen sind ab Werk aus). Die Änderungen gelten sofort auf dieser Seite und bleiben in eurem Browser gespeichert. Damit sie auch im <em>abonnierten</em> Kalender ankommen: <b>Kalenderdatei neu erzeugen</b> und die heruntergeladene <code>reise.ics</code> ins GitHub-Repo hochladen – sie ersetzt die alte, und alle Abos ziehen nach.</p>
-  <p class="sub" style="margin:12px 0 0">Was drin ist: die Unterkünfte als mehrtägige Balken, alle Fahrten mit realistischer Dauer, eure Buchungen mit Erinnerung 30 Minuten vorher, Check-in und Check-out sowie die Tagesvorschläge. Warnungen und alles ohne Uhrzeit stehen in der Beschreibung des jeweiligen Tages. Zeitzone: Südafrika (SAST).</p>
+  <p class="sub" style="margin:12px 0 0"><b>Was drin ist:</b> An- und Abreisetag als Flugtag, die Unterkünfte als mehrtägige Balken, Check-in und Check-out, alle Fahrten mit realistischer Dauer und alles Gebuchte – Fahrten und Buchungen mit Erinnerung 30 Minuten vorher. Zeitzone Südafrika (SAST). Dazu die datierten Vorbereitungspunkte vor der Abreise.</p>
+  <p class="sub" style="margin:8px 0 0"><b>Was bewusst draussen bleibt:</b> Vorschläge, selbst geplante Aktivitäten, Warnungen und Pausen. Der Kalender zeigt nur, was fix ist – alles andere steht auf dieser Seite im Tagesplan.</p>
  </section>
 
  <section class="howto" style="margin-top:16px">
@@ -831,8 +833,8 @@ __PRINTCARD__
 <script>
 // ---------- Geraete-Abgleich (Supabase) ----------
 window.SYNC = (function(){
-  var RPC = 'https://ywpyurlzrexznzlarubm.supabase.co/rest/v1/rpc/';
-  var AK  = 'sb_publishable_rrRqZ0tgC3uI2utoSKNl_g_UTeJAIN2';
+  var RPC = 'https://ibmtdbsfjmraplvkvgol.supabase.co/rest/v1/rpc/';
+  var AK  = 'sb_publishable_d6tXurAH8Zo1tBDm9IYhHA_EuwkUUxQ';
   var KEYS = ['za-favs2','za-cal-edits','za-prep','za-budget','za-kurs'];
   var SOFT = ['za-kurs'];   // wird uebernommen, loest aber kein Neuladen aus
   var SK = 'za-sync-key', SM = 'za-sync-meta';
@@ -906,11 +908,24 @@ window.SYNC = (function(){
         busy=false; emit('ok', changed?'aktualisiert':'aktuell');
         return changed;
       });
-    }).catch(function(e){
-      busy=false; emit('err','kein Abgleich möglich');
+    }).then(function(c){ lsSet('za-sync-ok', String(Date.now())); fails=0; return c })
+      .catch(function(e){
+      busy=false; fails++;
+      emit(navigator.onLine ? 'err' : 'off',
+           navigator.onLine ? 'Server nicht erreichbar' : 'offline');
+      retry();
       return false;
     });
   }
+
+  var fails=0, rtimer=null;
+  function retry(){
+    if(!on()) return;
+    clearTimeout(rtimer);
+    var wait = Math.min(30000 * Math.pow(2, Math.min(fails-1,4)), 480000); // 30 s … 8 Min
+    rtimer = setTimeout(function(){ run() }, wait);
+  }
+  function lastOk(){ var v=parseInt(ls('za-sync-ok')||'0',10); return v>0?v:0 }
 
   function plan(){ if(!on()) return; clearTimeout(timer); timer=setTimeout(function(){ run() },2000) }
 
@@ -959,7 +974,7 @@ window.SYNC = (function(){
   setInterval(function(){ if(on() && document.visibilityState==='visible') run().then(function(c){ if(c) neuLaden() }) }, 90000);
 
   return {
-    on:on, key:key, run:run, keys:KEYS,
+    on:on, key:key, run:run, keys:KEYS, lastOk:lastOk,
     start:function(){ lsSet(SK,newKey()); saveMeta({}); return run() },
     join:function(k){ k=String(k||'').trim().toLowerCase().replace(/[^a-z0-9]/g,'');
       if(k.length<16||k.length>64) return Promise.reject(new Error('kurz'));
@@ -1380,19 +1395,21 @@ window.SYNC = (function(){
     }
     D.stays.forEach(function(s){ ev('stay'+s.st,'🛏 Etappe '+s.st+' · '+s.name, d8(s.von), d8(s.bis),
       s.naechte+' Nächte\n'+s.adr, s.adr, true, null) });
+    var ABO={fahrt:1,buchung:1,checkin:1,checkout:1};   // Vorschlaege und Geplantes bleiben draussen
     events().forEach(function(e){
-      var sum=(EMO[e.art]||'•')+' '+(e.art==='tipp'?'Idee: ':'')+e.titel;
+      if(!ABO[e.art]) return;
+      var sum=(EMO[e.art]||'•')+' '+e.titel;
       if(e.s==null){ ev(e.id, sum, d8(e.d), plus1(e.d), e.detail, '', true, null) }
       else {
         var ds=d8(e.d)+'T'+String(Math.floor(e.s/60)).padStart(2,'0')+String(e.s%60).padStart(2,'0')+'00';
         var de=d8(e.d)+'T'+String(Math.floor(e.e/60)).padStart(2,'0')+String(e.e%60).padStart(2,'0')+'00';
-        ev(e.id, sum, ds, de, e.detail, '', false, (e.art==='buchung'||e.art==='plan'||e.art==='fahrt')?30:null);
+        ev(e.id, sum, ds, de, e.detail, '', false, 30);
       }
     });
     DATES.forEach(function(d){
       var m=DAYMETA[d]; if(!m) return;
-      var lab={fahrt:'🚗',ankunft:'✈️',abreise:'✈️',stand:'📍'}[m.typ]||'📍';
-      ev('day'+d8(d), lab+' '+m.titel, d8(d), plus1(d), 'Etappe '+m.st+' · '+m.sub, '', true, null);
+      if(m.typ!=='ankunft' && m.typ!=='abreise') return;   // nur die Flugtage
+      ev('day'+d8(d), '✈️ '+m.titel, d8(d), plus1(d), 'Etappe '+m.st+' · '+m.sub, '', true, null);
     });
     L.push('END:VCALENDAR');
     return L.join('\r\n')+'\r\n';
@@ -2003,7 +2020,21 @@ window.ROUTE = (function(){
    if(an) kl.innerHTML='Schlüssel: <code>'+SYNC.key()+'</code>';
    st.className='syncstate '+(an?(state||'ok'):'none');
    if(!an) st.textContent = zu ? '◌ aus' : '◌ Abgleich aus – Haken gelten nur in diesem Browser';
-   else st.textContent = LBL[state||'ok'] + (zu ? ' ' + (txt||'aktiv') : ' Abgleich aktiv · ' + (txt||'bereit'));
+   else st.textContent = LBL[state||'ok'] + (zu ? ' ' + (txt||'aktiv') : ' ' + (txt||'bereit'));
+   var box2=document.getElementById('syncerr');
+   if(box2){
+     if(an && (state==='err'||state==='off')){
+       var lo=SYNC.lastOk(), wann='';
+       if(lo){ var d=new Date(lo);
+         wann = ' Zuletzt erfolgreich: ' + d.toLocaleDateString('de-CH',{day:'numeric',month:'long'})
+              + ', ' + d.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'}) + ' Uhr.'; }
+       box2.innerHTML = (state==='off'
+         ? '<b>Kein Internet.</b> Die Seite läuft normal weiter, der Abgleich holt es nach, sobald du wieder online bist.'
+         : '<b>Der Abgleich-Server antwortet nicht.</b> Das ist kein Datenverlust: alle Haken, Kalendereinträge und Merkzettel liegen unverändert auf diesem Gerät und bleiben auch dort. Nur der Austausch mit dem anderen Gerät pausiert. Die Seite versucht es von selbst weiter.')
+         + wann;
+       box2.hidden=false;
+     } else box2.hidden=true;
+   }
  }
  var FK='za-syncfold';
  try{ box.open = localStorage.getItem(FK)==='1' }catch(e){}
