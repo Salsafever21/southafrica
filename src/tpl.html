@@ -414,6 +414,16 @@ dialog.evdlg::backdrop{background:rgba(10,16,15,.55)}
  letter-spacing:.1em;text-transform:uppercase;background:var(--warn-soft);color:var(--warn);padding:2px 6px;border-radius:2px;vertical-align:2px}
 .plist input:checked ~ span b{text-decoration:line-through;color:var(--ink3)}
 .plist input:checked ~ span em{color:var(--ink3);opacity:.7}
+.detbtns{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.detbtns .btn{font-size:.8rem;padding:7px 14px}
+.undobar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px;padding:11px 16px;
+  border-radius:10px;background:var(--ink);color:var(--ground);font-size:.86rem}
+.undobar[hidden]{display:none}
+.undobar .btn{background:transparent;color:var(--ground);border-color:var(--ground);font-size:.8rem;padding:6px 13px}
+.undobar .btn:hover{background:var(--ground);color:var(--ink)}
+.pl-schon{margin:10px 0 0;padding:10px 13px;border-radius:8px;background:var(--accent-soft);
+  color:var(--accent-ink);font-size:.83rem;line-height:1.45}
+.pl-schon[hidden]{display:none}
 .syncerr{margin:0 0 12px;padding:11px 14px;border-radius:8px;background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn)}
 .webcalhint{margin-top:10px;padding:10px 13px;border-radius:8px;background:var(--sun-soft);color:var(--sun);border:1px solid var(--sun)}
 .booked{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:var(--accent);color:var(--ground);
@@ -631,20 +641,23 @@ __ROUTE__
   </div>
   <div class="calwrap"><div class="cal" id="cal"></div></div>
   <div class="evdetail empty" id="evdetail">Auf einen Balken tippen, um Details zu sehen.</div>
+  <div class="undobar" id="undobar" hidden></div>
   <div class="callegend">
    <span><i style="background:var(--sun)"></i> Fahrt</span>
    <span><i style="background:var(--accent)"></i> Gebucht</span>
+   <span><i style="background:var(--ok)"></i> Geplant</span>
    <span><i style="background:var(--accent-soft);border:1px solid var(--accent)"></i> Check-in / out</span>
    <span><i style="background:var(--idea)"></i> Vorschlag</span>
    <span><i style="background:var(--rest-soft);border:1px dashed var(--line2)"></i> Pause</span>
   </div>
-  <p class="calnote">Die Fahrtbalken zeigen die <b>Abfahrtszeit und die realistische Dauer mit Kindern</b> – nicht die Google-Zeit. Was keine Uhrzeit hat, steht als Zettel oben im jeweiligen Tag.</p>
+  <p class="calnote">Die Fahrtbalken zeigen die <b>Abfahrtszeit und die realistische Dauer mit Kindern</b> – nicht die Google-Zeit. Was keine Uhrzeit hat, steht als Zettel oben im jeweiligen Tag. <b>Auf einen Balken tippen</b>, um ihn zu ändern, auszublenden oder – wenn du ihn selbst eingetragen hast – zu löschen.</p>
  </div>
 
  <div id="v-liste">
  <div class="legend">
   <span><i style="background:var(--sun-soft);color:var(--sun)">→</i> Fahrt</span>
   <span><i style="background:var(--accent);color:var(--ground)">✓</i> Gebucht</span>
+  <span><i style="background:var(--ok);color:var(--ground)">✓</i> Geplant</span>
   <span><i style="background:var(--accent-soft);color:var(--accent-ink)">⌂</i> Check-in / out</span>
   <span><i style="background:var(--warn);color:var(--ground)">!</i> Achtung</span>
   <span><i style="background:var(--surface2);color:var(--ink3)">·</i> Vorschlag</span>
@@ -802,7 +815,9 @@ __CHECK__
   </div>
   <label class="pl-chk"><input type="checkbox" id="pl-fahrt" checked><span>Anfahrt als Fahrt eintragen</span></label>
   <div class="pl-sum" id="pl-info"></div>
+  <p class="pl-schon" id="pl-schon" hidden></p>
   <div class="dlgbtns">
+   <button type="button" class="btn danger" id="pl-del" hidden>Aus Kalender nehmen</button>
    <button type="button" class="btn grow" id="pl-cancel">Abbrechen</button>
    <button type="button" class="btn solid" id="pl-save">Eintragen</button>
   </div>
@@ -1140,14 +1155,44 @@ window.SYNC = (function(){
     [].slice.call(document.querySelectorAll('.blk.sel')).forEach(function(x){x.classList.remove('sel')});
     if(node) node.classList.add('sel');
     det.className='evdetail';
-    det.innerHTML='<h3></h3><p class="when"></p><p></p>';
+    det.innerHTML='<h3></h3><p class="when"></p><p class="dtx"></p><div class="detbtns"></div>';
     det.querySelector('h3').textContent=ev.titel;
     det.querySelector('.when').textContent = ev.s!=null
       ? hhmm(ev.s)+' – '+hhmm(ev.e)+'  ·  '+Math.round((ev.e-ev.s)/60*10)/10+' h' : 'ohne feste Uhrzeit';
-    det.querySelector('p:last-child').textContent=ev.detail||'';
+    det.querySelector('.dtx').textContent=ev.detail||'';
+    var row=det.querySelector('.detbtns');
+    function knopf(txt,cls,fn){
+      var b=document.createElement('button'); b.type='button'; b.className='btn '+(cls||'');
+      b.textContent=txt; b.addEventListener('click',fn); row.appendChild(b); return b;
+    }
+    knopf('Ändern','',function(){ openEdit(ev) });
+    if(ev.own){
+      knopf('Löschen','danger',function(){
+        var weg=[ev], kill={}; kill[ev.id]=1;
+        // die automatisch erzeugte Anfahrt gleich mitnehmen
+        ED.add.forEach(function(x){ if(x.id===ev.id+'f' || (ev.id.slice(-1)==='f' && x.id===ev.id.slice(0,-1))){ kill[x.id]=1; weg.push(x) } });
+        ED.add = ED.add.filter(function(x){ return !kill[x.id] });
+        saveED(); renderAll(); markPlanned(); leerDetail();
+        zeigeUndo(weg.length===1?'Termin gelöscht':weg.length+' Termine gelöscht',function(){
+          weg.forEach(function(x){ ED.add.push(x) }); saveED(); renderAll(); markPlanned();
+        });
+      });
+    } else {
+      knopf('Ausblenden','danger',function(){
+        ED.hidden[ev.id]=1; saveED(); renderAll(); leerDetail();
+        zeigeUndo('Termin ausgeblendet',function(){
+          delete ED.hidden[ev.id]; saveED(); renderAll();
+        });
+      });
+    }
     try{det.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}
   }
+  function leerDetail(){
+    det.className='evdetail empty';
+    det.textContent='Auf einen Balken tippen, um Details zu sehen.';
+  }
   function pick(ev,node){ if(editing) openEdit(ev); else showDetail(ev,node) }
+  window.__leerDetail = function(){ try{ leerDetail() }catch(e){} };
 
   function renderWeek(){
     var EV=events(), byD={}, days=[];
@@ -1673,6 +1718,15 @@ window.SYNC = (function(){
     document.getElementById('pl-bis').value=hhmm(Math.min(start+pCur.dauer,23*60+59));
     document.getElementById('pl-fahrt').checked = pCur.lat!=null;
     document.getElementById('pl-fahrt').disabled = pCur.lat==null;
+    var schon = ED.add.filter(function(x){ return x.src===pCur.id });
+    var db=document.getElementById('pl-del'), hs=document.getElementById('pl-schon');
+    db.hidden = !schon.length; hs.hidden = !schon.length;
+    if(schon.length){
+      var w=schon.map(function(x){ return dlabel(x.d)+(x.s!=null?', '+hhmm(x.s):'') }).join(' · ');
+      hs.textContent = schon.length===1
+        ? 'Steht schon im Kalender: ' + w + '. Unten kannst du den Eintrag wieder entfernen – oder hier einen zweiten Termin anlegen.'
+        : 'Steht schon ' + schon.length + '× im Kalender: ' + w + '. „Aus Kalender nehmen" entfernt alle davon.';
+    }
     plInfo();
     if(pdlg.showModal) pdlg.showModal(); else pdlg.setAttribute('open','');
   }
@@ -1700,12 +1754,51 @@ window.SYNC = (function(){
     saveED(); renderAll(); markPlanned();
     if(pdlg.close) pdlg.close(); else pdlg.removeAttribute('open');
   });
+  function dlabel(d){
+    var m=DAYMETA[d]; var t=new Date(d+'T00:00:00Z');
+    return ['So','Mo','Di','Mi','Do','Fr','Sa'][t.getUTCDay()]+' '+t.getUTCDate()+'.'+(t.getUTCMonth()+1)+'.';
+  }
+  function entbuchen(srcId){
+    var treffer = ED.add.filter(function(x){ return x.src===srcId });
+    if(!treffer.length) return 0;
+    var kill={};
+    treffer.forEach(function(x){ kill[x.id]=1; kill[x.id+'f']=1 });
+    var weg = ED.add.filter(function(x){ return kill[x.id] });
+    ED.add = ED.add.filter(function(x){ return !kill[x.id] });
+    saveED(); renderAll(); markPlanned();
+    zeigeUndo(weg.length + (weg.length===1?' Eintrag entfernt':' Einträge entfernt'), function(){
+      weg.forEach(function(x){ ED.add.push(x) });
+      saveED(); renderAll(); markPlanned();
+    });
+    return treffer.length;
+  }
+  document.getElementById('pl-del').addEventListener('click',function(){
+    if(!pCur) return;
+    entbuchen(pCur.id);
+    if(pdlg.close) pdlg.close(); else pdlg.removeAttribute('open');
+  });
+
+  // kleine Rückgängig-Leiste unter dem Kalender
+  var undoT=null;
+  function zeigeUndo(text, back){
+    var bar=document.getElementById('undobar'); if(!bar) return;
+    clearTimeout(undoT);
+    bar.innerHTML='';
+    var sp=document.createElement('span'); sp.textContent=text; bar.appendChild(sp);
+    var b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Rückgängig';
+    b.addEventListener('click',function(){ clearTimeout(undoT); bar.hidden=true; back() });
+    bar.appendChild(b);
+    bar.hidden=false;
+    undoT=setTimeout(function(){ bar.hidden=true }, 12000);
+  }
+
   function markPlanned(){
     var srcs={}; ED.add.forEach(function(x){ if(x.src) srcs[x.src]=1 });
     [].slice.call(document.querySelectorAll('.planbtn')).forEach(function(b){
       var on=!!srcs[b.dataset.id];
       b.classList.toggle('done',on);
-      b.title = on ? 'Steht im Kalender – nochmal tippen für einen weiteren Termin' : 'In den Kalender eintragen';
+      b.title = on ? 'Steht im Kalender – tippen zum Entfernen oder für einen zweiten Termin' : 'In den Kalender eintragen';
+      b.setAttribute('aria-label', on ? 'Im Kalender – tippen zum Entfernen' : 'In den Kalender eintragen');
     });
   }
   document.addEventListener('click',function(e){

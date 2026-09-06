@@ -17,7 +17,7 @@ OVERRIDE = {
  "Lalibela Mark's Camp - Safari Drives": (0, 0, "im All-Inclusive enthalten"),
  "Lalibela Kinderprogramm (Tiny Trackers)": (0, 0, "im All-Inclusive enthalten"),
  "Spice Route Destination": (0, 0, "Eintritt frei, pro Aktivität zahlen"),
- "Redberry Farm": (0, 0, "Eintritt frei, pro Aktivität zahlen"),
+ "Redberry Farm": (0, 0, "Eintritt frei, Mittagessen und Aktivitäten einzeln zahlen"),
  "Grass Roof Farm - Kids Area": (0, 0, "Kids Area 1 gratis, Area 2 R80/Kind"),
  "Cape Recife Nature Reserve": (32, 0, "R32 pro Fahrzeug"),
  "Addo Cruises & Sand Sledding": (760, 380, "Kinderpreis gilt ab 5 – für 4 J. nachfragen"),

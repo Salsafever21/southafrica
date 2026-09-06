@@ -87,11 +87,12 @@ DAYS = [
 ("Fr 16. Okt","5","Melozhori → Plettenberg Bay","Der lange Fahrtag","fahrt",[
  ("","warnung","Das ist die härteste Etappe der Reise","350 km · Google 3:45–4:00 h · <b>realistisch 5:45–6:30 h mit zwei Pausen</b>. Bei Check-out um 10:00 wärt ihr erst gegen 16:30 da. <b>Fahrt früher los – 07:30 statt 10:00.</b> Die R62-Variante über Oudtshoorn wäre 420–466 km und ist an einem Tag mit Kindern nicht machbar."),
  ("07:30","fahrt","Melozhori → Plettenberg Bay","R317 → N2 durchgehend ostwärts: Swellendam – Riversdale – Mossel Bay – George – Wilderness – Knysna – Plett. Komplett geteert, gut ausgebaut.",390),
- ("10:15","tipp","Stopp 1: Dias Museum Mossel Bay","Umweg nur 9 km. Lebensgrosse Karavelle im Trockendock, Garten mit Meerblick. Oder: Die Skeerhok Padstal bei Heidelberg (4,7) bzw. Ou Meul Riversdale mit grossem Spielplatz.",75),
- ("13:00","tipp","Stopp 2: Timberlake Village","Direkt an der N2, kein Umweg. Spielplatz, Bäckerei, Naughty Monkey Cafe. Für ein 4-jähriges Kind: Acrobranch „Acro-twigs\" (ab 4 Jahren, R130, 45 Min).",75),
- ("15:00","tipp","Stopp 3: Knysna Elephant Park","20 Min. vor eurer Lodge, direkt an der N2. Kein Mindestalter, unter 5 gratis, Touren alle 30 Min bis 15:30. Die perfekte Ankunfts-Belohnung.",75),
+ ("10:15","tipp","Stopp 1: Dias Museum Mossel Bay","Umweg nur 9 km, kurz halten – ihr habt um 12:00 einen Tisch. Lebensgrosse Karavelle im Trockendock, Garten mit Meerblick. Alternativ nur Beine vertreten bei Ou Meul Riversdale.",45),
+ ("11:10","fahrt","Losfahren nach George","Mossel Bay → Redberry Farm, Blanco · 55 km · N2 ostwärts, dann rund 10 km Umweg ab der R404. Rechnet 45–50 Min.",50),
+ ("12:00","buchung","Mittagessen Redberry Farm","GEBUCHT · Erdbeerfarm mit Restaurant und Pizzeria. Danach Erdbeerpflücken, Minieisenbahn, Heckenlabyrinth und Gokarts – Aktivitäten werden einzeln bezahlt. Der beste Kinderstopp der ganzen Strecke, plant 2 bis 2,5 Stunden ein.",150),
+ ("14:30","fahrt","Weiter nach Plettenberg Bay","130 km · N2 über Wilderness und Knysna · <b>realistisch 2:00–2:15 h</b> mit einer kurzen Pause.",135),
  ("16:45","checkin","Check-in Emily Moon River Lodge","Rietvlei Road, nördlich der Stadt am Bitou River."),
- ("","warnung","Redberry Farm und Elephant Park gehen nicht beide","Beide schliessen um 16:00. Entweder Erdbeeren pflücken in George (Umweg 10 km, Mo–Sa 9–16) oder Elefanten kurz vor Plett."),
+ ("","warnung","Timberlake und Elephant Park fallen heute weg","Mit dem Tisch um 12:00 in George ist der Tag voll. Der <b>Knysna Elephant Park</b> steht am Montag 19.10. ohnehin im Plan. <b>Timberlake Village</b> mit Acrobranch könnt ihr auf der Rückfahrt Richtung Addo am 20.10. mitnehmen – es liegt direkt an der N2."),
 ]),
 ("Sa 17. Okt","6","Plettenberg Bay","Animal Alley","stand",[
  ("08:00","tipp","Birds of Eden","25–30 Min. Überkuppelt, also wind- und regensicher, über 1 km durchgehende Holzstege – die bequemste Aktivität der Etappe.",120),
@@ -113,10 +114,12 @@ DAYS = [
 ]),
 ("Di 20. Okt","7","Plettenberg Bay → Addo","Woodall Country House & Spa","fahrt",[
  ("09:00","checkout","Check-out Emily Moon (bis 10:00)",""),
- ("09:15","fahrt","Plettenberg Bay → Woodall, Addo","272–311 km · Google 3:05–3:30 h · <b>realistisch 4:45–5:15 h mit zwei Pausen</b> · Empfohlen: N2 durchgehend bis Gqeberha, weiter Richtung Makhanda, Abfahrt 761 auf die R335, 43 km nordwärts durch Addo Village.",315),
- ("","tipp","Stopp: Nanaga Farm Stall","Am Kreuz N10/R72, berühmt für Roosterkoek und Ananassaft, mit Spielbereich und grossen Rasenflächen."),
+ ("09:15","fahrt","Plettenberg Bay → Jeffreys Bay","185 km · N2 ostwärts über Storms River und Humansdorp · <b>realistisch 2:30 h mit einer kurzen Pause</b>. Unterwegs liegt die Bloukrans-Brücke – Aussichtspunkt ohne Aufpreis.",150),
+ ("12:00","buchung","Mittagessen Unwind Tapa Bar","GEBUCHT · Jeffreys Bay, JBay Surf Village · genau die Hälfte der Strecke. Danach im Surf Village die Beine vertreten, bevor der zweite Fahrtabschnitt kommt.",90),
+ ("13:30","fahrt","Jeffreys Bay → Woodall, Addo","130 km · <b>realistisch 2:00–2:15 h</b> · N2 bis Gqeberha, weiter Richtung Makhanda, Abfahrt 761 auf die R335, 43 km nordwärts durch Addo Village.",135),
+ ("","tipp","Optionaler Stopp: Nanaga Farm Stall","Am Kreuz N10/R72, berühmt für Roosterkoek und Ananassaft, mit Spielbereich und grossen Rasenflächen. Nach dem Mittagessen wahrscheinlich nicht mehr nötig."),
  ("","warnung","Letzte 1,2 km Schotter","Rechts von der R335 am Woodall-Schild abbiegen, nach 40 m nochmals rechts vor dem Elephant House, dann 1,2 km. Für einen Pkw problemlos, bei Regen langsam. <b>Das ist der einzige Schotterabschnitt der ganzen Reise.</b>"),
- ("14:00","checkin","Check-in Woodall Country House","Woodall Farm, Jan Smuts Avenue, Addo. Tische im Restaurant sind für Hausgäste automatisch reserviert."),
+ ("15:45","checkin","Check-in Woodall Country House","Woodall Farm, Jan Smuts Avenue, Addo. Tische im Restaurant sind für Hausgäste automatisch reserviert."),
 ]),
 ("Mi 21. Okt","7","Addo","Addo Elephant National Park","stand",[
  ("06:45","tipp","Selbstfahrer-Safari im Addo NP","Nur 18–22 Min ab Woodall. Tor öffnet 07:00. Im eigenen Auto mit Klimaanlage – die entspannteste Safariform mit Kindern. <b>Ausweis mitbringen</b>, das ist Pflicht.",165),
